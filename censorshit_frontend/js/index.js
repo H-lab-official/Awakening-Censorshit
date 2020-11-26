@@ -27,6 +27,8 @@ const censorEmoji = 0x1F4A9;
 
 let username = '';
 
+let output_height = 0;
+
 let remainTime = 0;
 
 let emoji_output = [];
@@ -144,7 +146,19 @@ const InsertQ = async (username,content)=>{
     }
 } 
 //------------END FIREBASE FUNCTION------------//
-
+const addAutoResize=()=>{
+    // alert("autoresize")
+            document.querySelectorAll('[data-autoresize]').forEach(function (element) {
+                console.log(element);
+                element.style.boxSizing = 'border-box';
+                var offset = element.offsetHeight - element.clientHeight;
+                element.addEventListener('input', function (event) {
+                    event.target.style.height = 'auto';
+                    event.target.style.height = event.target.scrollHeight + offset + 'px';
+                });
+                element.removeAttribute('data-autoresize');
+            });
+}
 
 const func =(a, b) =>{  
   return 0.5 - Math.random();
@@ -290,19 +304,19 @@ const css=(element, style)=> {
 let state = 1;
 
 //----------------countText----------------
-const countText = (event) =>{
-    console.log("Countext = "+event.target.value);
-    let input_area = event.target.value;
-    let textarea = document.querySelector('#inputarea');
-    var pattern = new RegExp('^' + textarea.getAttribute('pattern') + '$');
-    var phoneResult = pattern.test(input_area);
-    if(phoneResult==false){
-        let new_textarea = textarea.value.substr(0,textarea.value.length-1);
-        textarea.value = new_textarea;
-        alert("Support English only")
-        return false;
-    }
-}
+// const countText = (event) =>{
+//     console.log("Countext = "+event.target.value);
+//     let input_area = event.target.value;
+//     let textarea = document.querySelector('#inputarea');
+//     var pattern = new RegExp('^' + textarea.getAttribute('pattern') + '$');
+//     var phoneResult = pattern.test(input_area);
+//     if(phoneResult==false){
+//         let new_textarea = textarea.value.substr(0,textarea.value.length-1);
+//         textarea.value = new_textarea;
+//         alert("Support English only")
+//         return false;
+//     }
+// }
 
 
 
@@ -311,6 +325,7 @@ const countText = (event) =>{
 const inputnameInit=()=>{
     let submit_btn = document.querySelector('#inputnamesubmit_btn');
     let nameinput = document.querySelector('.nameinput');
+    let countingword = document.querySelector('#countingword');
     output_string = "";
     nameinput.value = "";
     submit_btn.onclick = () =>{
@@ -339,10 +354,42 @@ const instructionInit = () =>{
 }
 
 const poopcontentInit = () =>{
+    // addAutoResize();
     let poopcontentsectionback_btn = document.querySelector('#poopcontentsectionback_btn');
     let convert_btn = document.querySelector('#poopcontentsectionnext_btn');
     let textarea = document.querySelector('#inputarea');
-    textarea.onkeyup = countText;
+
+    let offset = textarea.offsetHeight - textarea.clientHeight;
+    textarea.onkeyup = (event)=>{
+        // console.log("Countext = "+event.target.value);
+        let input_area = event.target.value;
+    
+    
+        // var wordsCount = event.target.value.match(/\S+/g).length;
+        var wordsCount = input_area.length;
+        var wordRest = 140-wordsCount;
+        if(wordRest<20){
+            countingword.style.color ="red";
+        }else{
+            countingword.style.color ="black";
+        }
+        countingword.innerHTML=wordsCount+"/140";
+        console.log('wordsCount = '+ wordsCount);
+        console.log('wordsRest = '+ wordRest);
+        let textarea = document.querySelector('#inputarea');
+        var pattern = new RegExp('^' + textarea.getAttribute('pattern') + '$');
+        var phoneResult = pattern.test(input_area);
+        if(phoneResult==false){
+            let new_textarea = textarea.value.substr(0,textarea.value.length-1);
+            textarea.value = new_textarea;
+            alert("Support English only")
+            return false;
+        }
+        event.target.style.height = 'auto';
+        event.target.style.height = event.target.scrollHeight + offset + 'px';
+        output_height = textarea.getBoundingClientRect().height;
+        console.log("output_height = "+output_height);
+    };
     
     poopcontentsectionback_btn.onclick = () =>{
         controller(2);
@@ -384,6 +431,7 @@ const poopcontentInit = () =>{
 }
 
 const popproogressInit=()=>{
+    
     let smallspan = document.querySelector('#smallspan');
     let bigspan = document.querySelector('#bigspan');
     let showpercent = document.querySelector('#showpercent');
@@ -401,11 +449,13 @@ const popproogressInit=()=>{
 
 
 const poopoutputInit=()=>{
+    
     let outputarea = document.querySelector('#outputarea');
     let decoderarea = document.querySelector('.decoderarea');
     let loader = document.querySelector('.loader');
     let toggle_state = false;
     outputarea.style.display = "flex";
+    
     decoderarea.style.display = "none";
     let pooptranslationsectionback_btn = document.querySelector('#pooptranslationsectionback_btn');
     let pooptranslationsectionnext_btn = document.querySelector('#pooptranslationsectionnext_btn');
@@ -413,6 +463,7 @@ const poopoutputInit=()=>{
     loader.style.display = "none"
 
     outputarea.value = output_string;
+    outputarea.style.height = output_height+'px';
     let tabledecoder = document.querySelector('#decodertable');
     
     for (let index = 0; index < characters.length-1; index++) {
@@ -439,7 +490,7 @@ const poopoutputInit=()=>{
     }
     
     pooptranslationsectionnext_btn.onclick = () =>{
-        document.querySelector('#downloadoutput').remove();
+        // document.querySelector('#downloadoutput').remove();
         
         //insert
         //username
@@ -456,23 +507,23 @@ const poopoutputInit=()=>{
     
     let clickbtndiv = document.querySelector('.clickbtndiv2');
     // outputarea.replaceWith("<div contenteditable=\"true\">"+outputarea+"</div>")
-    html2canvas(document.querySelector('#outputarea')).then(function(canvas) {
-        canvas.setAttribute("id", "canvasdiv");
-        // canvas_div.appendChild(canvas);
-        let img = canvas.toDataURL("image/png");
-        let canvas_img= document.createElement('img');
-        let link = document.createElement('a');
-        link.setAttribute("id","downloadoutput");
-        link.download = 'emojis.png';
-        link.setAttribute('href',img);
-        link.href = canvas.toDataURL();
-        link.innerHTML = "testDownload";
-        canvas_img.setAttribute('src',img);
+    // html2canvas(document.querySelector('#outputarea')).then(function(canvas) {
+    //     canvas.setAttribute("id", "canvasdiv");
+    //     // canvas_div.appendChild(canvas);
+    //     let img = canvas.toDataURL("image/png");
+    //     // let canvas_img= document.createElement('img');
+    //     let link = document.createElement('a');
+    //     link.setAttribute("id","downloadoutput");
+    //     link.download = 'emojis.png';
+    //     link.setAttribute('href',img);
+    //     link.href = canvas.toDataURL();
+    //     link.innerHTML = "testDownload";
+    //     // canvas_img.setAttribute('src',img);
         
-        clickbtndiv.appendChild(link);
-        // <a href="/images/myw3schoolsimage.jpg" download></a>
-        // document.write('<img src="'+img+'"/>');
-    });
+    //     clickbtndiv.appendChild(link);
+    //     // <a href="/images/myw3schoolsimage.jpg" download></a>
+    //     // document.write('<img src="'+img+'"/>');
+    // });
 
     let toggledecode = document.querySelector('#toggledecode');
     toggledecode.onclick =()=>{
@@ -518,8 +569,51 @@ const poopplayInit=()=>{
     let warningmassage = document.querySelector('#warningmassage');
     let whosaid = document.querySelector('#whosaid');
     let outputarea2 = document.querySelector('#outputarea2');
+    let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
+
     console.log("OUTPUT_string = "+output_string);
     outputarea2.value = output_string; 
+    
+    let tabledecoder = document.querySelector('#decodertable2');
+    
+    for (let index = 0; index < characters.length-1; index++) {
+        var row = tabledecoder.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        if(characters[index]==" "){
+            cell1.innerHTML = "space";
+        }else{
+            cell1.innerHTML = characters[index];
+        }
+        
+        // cell2.innerHTML = String.fromCodePoint(randomEmoji[index]);
+        cell2.innerHTML = String.fromCodePoint(emojis[index]);
+    }
+    html2canvas(document.querySelector('#decodertable2')).then(function(canvas) {
+        canvas.setAttribute("id", "canvasdiv");
+        // canvas_div.appendChild(canvas);
+        let img = canvas.toDataURL("image/png");
+        // console.log("img = "+img);
+        
+        // let canvas_img= document.createElement('img');
+        let link = document.createElement('a');
+        link.setAttribute("id","downloadoutput");
+        link.download = 'emojis.png';
+        link.setAttribute('href',img);
+        link.href = canvas.toDataURL();
+        link.innerHTML = "Download Key";
+        // canvas_img.setAttribute('src',img);
+        
+        poopdownloadkey_btn.appendChild(link);
+        // <a href="/images/myw3schoolsimage.jpg" download></a>
+        // document.write('<img src="'+img+'"/>');
+        // console.log("img_canvas = "+img);
+    });
+
+    poopdownloadkey_btn.onclick = ()=>{
+        // console.log("img = "+img);
+        // location.href = imgpath;
+    }
     whosaid.innerHTML = username+" said...";
     let countTime = 30;
     warningmassage.innerHTML = `Your message willend in ${countTime} Second`;
@@ -618,7 +712,7 @@ const controller=(state)=>{
     }
 }
 
-controller(1);
+controller(3);
     
 
 

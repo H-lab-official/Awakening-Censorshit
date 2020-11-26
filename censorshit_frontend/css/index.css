@@ -92,6 +92,10 @@ body {
     border-width: 0px; 
 }
 
+#countingword{
+    font-size: 0.3rem;
+    text-align: right;
+}
 
 /* secondpage inputname section */
 .tutorialdiv{
@@ -225,6 +229,8 @@ table, th, td {
 
 .decoderarea{
     margin-bottom: 40px;
+    position: absolute; 
+    left: -999em;
 }
 
 .loader {
@@ -284,4 +290,24 @@ table, th, td {
     outline: none !important;
     border:0px solid #C4C4C4;
     box-shadow: 0 0 10px #719ECE;
+}
+
+#downloadoutput:link{
+    color: rgb(238, 238, 238);
+    text-decoration: none;
+}
+
+#downloadoutput:visited{
+    color: rgb(238, 238, 238);
+    text-decoration: none;
+}
+
+#downloadoutput:hover{
+    color: rgb(219, 219, 219);
+    text-decoration: none;
+}
+
+#downloadoutput:active{
+    color: white;
+    text-decoration: none;
 }

@@ -65,7 +65,8 @@
                 </div>
             </div>
             <div class="inputarea">
-                <textarea rows="15" cols="34" id="inputarea" pattern="[a-zA-Z\s]+"
+                <p id="countingword">0/140</p>
+                <textarea data-autoresize rows="15" cols="34" id="inputarea" pattern="[a-zA-Z\s]+"
                     placeholder="Compose your poop here.." maxlength="140"></textarea>
             </div>
             <div class="clickbtndiv">
@@ -101,7 +102,7 @@
                 </div>
             </div>
             <div class="outputarea">
-                <textarea readonly rows="19" cols="34" id="outputarea" maxlength="140"></textarea>
+                <textarea data-autoresize  rows="19" cols="34" id="outputarea" maxlength="140"></textarea>
             </div>
             <div class="decoderarea">
                 <table id="decodertable" style="width:100%">
@@ -151,8 +152,16 @@
             <div class="outputarea">
                 <textarea readonly rows="19" cols="34" id="outputarea2" maxlength="140"></textarea>
             </div>
+            <div class="decoderarea">
+                <table id="decodertable2" style="width:100%">
+                    <tr>
+                        <th>Characters</th>
+                        <th>Emojis</th>
+                    </tr>
+                </table>
+            </div>
             <div class="clickbtndiv2">
-                <button class="clickbtn2" id="poopdownloadkey_btn">Download Key</button>
+                <button class="clickbtn2" id="poopdownloadkey_btn"></button>
             </div>
         </div>
 
