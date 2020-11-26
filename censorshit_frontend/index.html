@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;500&family=Roboto:wght@300;500&display=swap"
+        rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Censorshit</title>
+</head>
+
+<body>
+    <div class="main">
+        <!-- firstpage inputname section -->
+        <div class="inputnamesection containerz">
+            <div class="titlediv">
+                <div class="backbtn">
+                    <p></p>
+                </div>
+                <h1></h1>
+                <div class="fwdbtn">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="nameinputdiv">
+                <input type="text" class="nameinput" placeholder="Anonymous poop name">
+            </div>
+
+            <div class="clickbtndiv">
+                <button class="clickbtn" id="inputnamesubmit_btn">Enter</button>
+            </div>
+        </div>
+
+        <!-- secondpage tutorial section -->
+        <div class="tutorialsection containerz">
+            <div class="titlediv">
+                <div class="backbtn">
+                    <p id="tutorialsectionback_btn">Back</p>
+                </div>
+                <h1>Instruction</h1>
+                <div class="fwdbtn">
+                    <p></p>
+                </div>
+            </div>
+            <div class="tutorialdiv">
+
+            </div>
+            <div class="nextbtn">
+                <h3 id="tutorialsectionback_next">Next</h3>
+            </div>
+        </div>
+
+        <!-- thirdpage poopcontent section -->
+        <div class="poopcontentsection containerz">
+            <div class="titlediv">
+                <div class="backbtn">
+                    <p id="poopcontentsectionback_btn">Back</p>
+                </div>
+                <h1>Poop content</h1>
+                <div class="fwdbtn">
+                    <p></p>
+                </div>
+            </div>
+            <div class="inputarea">
+                <textarea rows="15" cols="34" id="inputarea" pattern="[a-zA-Z\s]+"
+                    placeholder="Compose your poop here.." maxlength="140"></textarea>
+            </div>
+            <div class="clickbtndiv">
+                <button id="poopcontentsectionnext_btn" class="clickbtn">Sent</button>
+            </div>
+        </div>
+        
+        <!-- watingpage wating section -->
+        <div class="poopwatingsection containerz">
+            <div class="titlediv2">
+                <h1>Poop is in progress</h1>
+            </div>
+            <div class="poopprogress">
+                <div class="meter">
+                    <span id="smallspan"></span>
+                    <span id="bigspan"></span>
+                </div>
+                <div class="showpercent">
+                    <p id="showpercent">1</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- fifthpage poop translation section -->
+        <div class="pooptranslationsection containerz">
+            <div class="titlediv">
+                <div class="backbtn">
+                    <p id="pooptranslationsectionback_btn">Back</p>
+                </div>
+                <h1 id="toggledecode">Poop Result</h1>
+                <div class="fwdbtn">
+                    <p></p>
+                </div>
+            </div>
+            <div class="outputarea">
+                <textarea readonly rows="19" cols="34" id="outputarea" maxlength="140"></textarea>
+            </div>
+            <div class="decoderarea">
+                <table id="decodertable" style="width:100%">
+                    <tr>
+                        <th>Characters</th>
+                        <th>Emojis</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="clickbtndiv2">
+                <button class="clickbtn2" id="pooptranslationsectionnext_btn">Send</button>
+            </div>
+            <div class="loader"></div>
+        </div>
+
+
+        <!-- sixthpage Sents section -->
+        <div class="poopsentsection containerz">
+            <div class="titlediv2">
+                <h1>Poop Sents</h1>
+            </div>
+            <div class="poopsentdetail">
+                <div class="imgcorrect"><img src="img/correct.png"></div>
+                <div class="textdetail">
+                    <p>
+                        You’ve successfully sent your poop.
+                        Please look at the building
+                    </p>
+                    <p id="timertext">you will be redirect in 10 sec</p>
+                </div>
+            </div>
+            <div class="clickbtndiv2">
+                <button class="clickbtn2" id="poopsentsectionback_btn">Back</button>
+            </div>
+        </div>
+
+        <!-- sevenpage Play section -->
+        <div class="poopplaysection containerz">
+            <div class="titlediv2">
+                    <h3 id="warningmassage">fd</h3>
+            </div>
+            <div class="titlediv2">
+                    <h2 id="whosaid">fdd</h2>
+            </div>
+                
+            
+            <div class="outputarea">
+                <textarea readonly rows="19" cols="34" id="outputarea2" maxlength="140"></textarea>
+            </div>
+            <div class="clickbtndiv2">
+                <button class="clickbtn2" id="poopdownloadkey_btn">Download Key</button>
+            </div>
+        </div>
+
+        <!-- eightpage End section -->
+        <!-- <div class="poopendsection containerz">
+            <div class="titlediv2">
+                <h1>Poop Sents</h1>
+            </div>
+            <div class="poopsentdetail">
+                <div class="imgcorrect"><img src="img/correct.png"></div>
+                <div class="textdetail">
+                    <p>
+                        You’ve successfully sent your poop.
+                        Please look at the building
+                    </p>
+                    <p>you will be redirect in 10 sec</p>
+                </div>
+            </div>
+            <div class="clickbtndiv2">
+                <button class="clickbtn2" id="poopsentsectionnext_btn">Download Key</button>
+            </div>
+        </div> -->
+
+    </div>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+               https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <script>
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDFSl2QDM96BReRFGR4MwrpbFXwao7NuP0",
+            authDomain: "ubon-88459.firebaseapp.com",
+            databaseURL: "https://ubon-88459.firebaseio.com",
+            projectId: "ubon-88459",
+            storageBucket: "ubon-88459.appspot.com",
+            messagingSenderId: "835364456620",
+            appId: "1:835364456620:web:337d85f78f0f4f75da7709",
+            measurementId: "G-J3YXEF9H0V"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!-- <script type="text/javascript" type="module" src="test.js"></script> -->
+</body>
+
+</html>

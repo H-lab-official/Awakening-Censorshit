@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="pooptranslationsection containerz">
+            <div class="titlediv">
+                <div class="backbtn">
+                    <p id="pooptranslationsectionback_btn"></p>
+                </div>
+                <h1 id="toggledecode">Poop Result</h1>
+                <div class="fwdbtn">
+                    <p></p>
+                </div>
+            </div>
+            <div class="outputarea">
+                <textarea readonly rows="19" cols="34" id="outputarea" maxlength="140"></textarea>
+            </div>
+            
+            
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <script>
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDFSl2QDM96BReRFGR4MwrpbFXwao7NuP0",
+            authDomain: "ubon-88459.firebaseapp.com",
+            databaseURL: "https://ubon-88459.firebaseio.com",
+            projectId: "ubon-88459",
+            storageBucket: "ubon-88459.appspot.com",
+            messagingSenderId: "835364456620",
+            appId: "1:835364456620:web:337d85f78f0f4f75da7709",
+            measurementId: "G-J3YXEF9H0V"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
