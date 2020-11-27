@@ -1,1 +1,2 @@
 # Awakening-Censorshit
+อะหิอะหิ
