@@ -285,6 +285,7 @@ const censorFunckingthings = (fuckingwords)=>{
 // main();
 
 let splashsection = document.querySelector('.splashsection');
+let explainsection = document.querySelector('.explainsection');
 
 let inputnamesection = document.querySelector('.inputnamesection');
 let tutorialsection = document.querySelector('.tutorialsection');
@@ -360,6 +361,10 @@ const instructionInit = () =>{
     tutorialsectionnext_btn.onclick = () =>{
         controller(3);
     }
+}
+
+explainInit=()=>{
+
 }
 
 const poopcontentInit = () =>{
@@ -736,12 +741,34 @@ const controller=(state)=>{
                 poopsentsection.style.display = "none";
                 poopplaysection.style.display = "flex";
                 poopplayInit();
+
+            case 8:
+
+                explainsection.style.display = "flex";
+
+                splashsection.style.display = "none";
+                inputnamesection.style.display = "none";
+                tutorialsection.style.display = "none";
+                poopcontentsection.style.display = "none";
+                poopwatingsection.style.display = "none";
+                pooptranslationsection.style.display = "none";
+                poopsentsection.style.display = "none";
+                poopplaysection.style.display = "none";
+                explainInit();
+
+                break;
             default:
                 break;
+
+
+
+
+
+            
     }
 }
 
-controller(1);
+controller(8);
     
 
 

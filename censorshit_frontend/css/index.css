@@ -149,6 +149,33 @@ body {
     text-align: right;
 }
 
+/*  explain section */
+
+.explainwrap{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.explainwrap h2{
+    font-size: 2rem;
+}
+
+.explaindot h2{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.explaindetail h2{
+    text-align: center;
+}
+
+
+
 /* secondpage tutorial section */
 .tutorialdiv{
     /* width: 100%; */
