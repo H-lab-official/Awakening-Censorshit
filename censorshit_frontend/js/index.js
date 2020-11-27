@@ -134,7 +134,7 @@ const InsertQ = async (username,content)=>{
         lastID = ""+Object.keys(lastID);
         setnowPlayer(lastID);
         //goto state 7
-        controller(7);
+        controller(8);
     }
     else{
         countQ = countQ+1;
@@ -142,7 +142,7 @@ const InsertQ = async (username,content)=>{
         remainTime = nowSecond + ((countQ-2)*30);
         //goto state 6
         setCountQ(countQ);
-        controller(6);
+        controller(7);
     }
 } 
 //------------END FIREBASE FUNCTION------------//
@@ -330,6 +330,19 @@ const splashInit=()=>{
     }
 }
 
+//----------------instruction page----------------
+const instructionInit = () =>{
+    let tutorialsectionback_btn = document.querySelector('#tutorialsectionback_btn');
+    let tutorialsectionnext_btn = document.querySelector('#tutorialsectionback_next');
+    tutorialsectionback_btn.onclick = () =>{
+        // controller(1);
+    }
+
+    tutorialsectionnext_btn.onclick = () =>{
+        controller(2);
+    }
+}
+
 
 //----------------inputname page----------------
 const inputnameInit=()=>{
@@ -343,7 +356,7 @@ const inputnameInit=()=>{
             // alert("Hello "+nameinput.value+" !!");
             username = nameinput.value;
             randommapping(emojis);
-            controller(2);
+            controller(3);
         }else{
             alert("please input your name!");
         }
@@ -351,28 +364,24 @@ const inputnameInit=()=>{
 }
 
 
-const instructionInit = () =>{
-    let tutorialsectionback_btn = document.querySelector('#tutorialsectionback_btn');
-    let tutorialsectionnext_btn = document.querySelector('#tutorialsectionback_next');
-    tutorialsectionback_btn.onclick = () =>{
-        controller(1);
-    }
-
-    tutorialsectionnext_btn.onclick = () =>{
-        controller(3);
-    }
-}
-
+//----------------explain page----------------
 explainInit=()=>{
+    let explainsubmit_btn = document.querySelector('#explainsubmit_btn');
 
+    explainsubmit_btn.onclick =()=>{
+        controller(4);
+    }
 }
 
+
+
+//----------------poop add content page----------------
 const poopcontentInit = () =>{
     // addAutoResize();
     let poopcontentsectionback_btn = document.querySelector('#poopcontentsectionback_btn');
     let convert_btn = document.querySelector('#poopcontentsectionnext_btn');
     let textarea = document.querySelector('#inputarea');
-
+    let clickbtndiv = document.querySelector('.clickbtndiv');
     let offset = textarea.offsetHeight - textarea.clientHeight;
     textarea.onkeyup = (event)=>{
         // console.log("Countext = "+event.target.value);
@@ -402,12 +411,18 @@ const poopcontentInit = () =>{
         event.target.style.height = 'auto';
         event.target.style.height = event.target.scrollHeight + offset + 'px';
         output_height = textarea.getBoundingClientRect().height;
+        if(output_height>screen.height-350){
+            clickbtndiv.style.position = "relative"
+        }else{
+            clickbtndiv.style.position = "absolute"
+        }
         console.log("output_height = "+output_height);
+        console.log("screen_height = "+screen.height);
     };
     
-    poopcontentsectionback_btn.onclick = () =>{
-        controller(2);
-    }
+    // poopcontentsectionback_btn.onclick = () =>{
+    //     controller(2);
+    // }
 //2181
     convert_btn.onclick = () =>{
         if(textarea.value==""){
@@ -439,7 +454,7 @@ const poopcontentInit = () =>{
             console.log("output_string = "+output_string);
             textarea.value = "";
             // alert(output_string)
-            controller(4);
+            controller(5);
         }
     }
 }
@@ -455,7 +470,7 @@ const popproogressInit=()=>{
             bigspan.style.width = `${i}%`;
             showpercent.innerHTML = `${i}%`
             if(i==100){
-                controller(5);
+                controller(6);
             }
         }, i * 20);
     }
@@ -475,9 +490,14 @@ const poopoutputInit=()=>{
     let pooptranslationsectionnext_btn = document.querySelector('#pooptranslationsectionnext_btn');
     pooptranslationsectionnext_btn.style.display = "inline-block"
     loader.style.display = "none"
-
-    outputarea.value = output_string;
+    if(output_height>300){
+        output_height = output_height+100;
+    }
     outputarea.style.height = output_height+'px';
+    console.log("output_height   =  "+output_height);
+    outputarea.value = output_string;
+    // output_height=output_height;
+    
     let tabledecoder = document.querySelector('#decodertable');
     
     for (let index = 0; index < characters.length-1; index++) {
@@ -495,12 +515,12 @@ const poopoutputInit=()=>{
     }
 
     pooptranslationsectionback_btn.onclick = () =>{
-        document.querySelector('#downloadoutput').remove();
+        // document.querySelector('#downloadoutput').remove();
         output_string ="";
         for (let index = 0; index < characters.length-1; index++) {
              tabledecoder.deleteRow(-1);
         }
-        controller(3);
+        controller(4);
     }
     
     pooptranslationsectionnext_btn.onclick = () =>{
@@ -513,32 +533,16 @@ const poopoutputInit=()=>{
         loader.style.display = "inline-block"
         InsertQ(username,output_string);
 
-        // controller(6);
+        
         for (let index = 0; index < characters.length-1; index++) {
              tabledecoder.deleteRow(-1);
         }
+
+        // controller(7);
     }
     
     let clickbtndiv = document.querySelector('.clickbtndiv2');
-    // outputarea.replaceWith("<div contenteditable=\"true\">"+outputarea+"</div>")
-    // html2canvas(document.querySelector('#outputarea')).then(function(canvas) {
-    //     canvas.setAttribute("id", "canvasdiv");
-    //     // canvas_div.appendChild(canvas);
-    //     let img = canvas.toDataURL("image/png");
-    //     // let canvas_img= document.createElement('img');
-    //     let link = document.createElement('a');
-    //     link.setAttribute("id","downloadoutput");
-    //     link.download = 'emojis.png';
-    //     link.setAttribute('href',img);
-    //     link.href = canvas.toDataURL();
-    //     link.innerHTML = "testDownload";
-    //     // canvas_img.setAttribute('src',img);
-        
-    //     clickbtndiv.appendChild(link);
-    //     // <a href="/images/myw3schoolsimage.jpg" download></a>
-    //     // document.write('<img src="'+img+'"/>');
-    // });
-
+    
     let toggledecode = document.querySelector('#toggledecode');
     toggledecode.onclick =()=>{
         if(toggle_state == false){
@@ -558,25 +562,26 @@ const poopoutputInit=()=>{
 
 const poopsentInit=()=>{
 
-    let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
+    // let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
     let timertext = document.querySelector('#timertext');
     console.log("remainTIme0 = "+remainTime);
-    timertext.innerHTML =`you will be redirect in ${remainTime} sec`;
+    timertext.innerHTML =`ข้อความของคุณจะปรากฏบนผนังในอีก ${remainTime} วินาที`;
     let countTime = remainTime;
+    // let countTime = 30;
     
         console.log("remainTIme = "+countTime);
         let timer = setInterval(() => {
         --countTime;
-        timertext.innerHTML =`you will be redirect in ${countTime} sec`;
+        timertext.innerHTML =`ข้อความของคุณจะปรากฏบนผนังในอีก ${countTime} วินาที`;
         if(countTime<0){
             clearInterval(timer);
-            controller(7);
+            controller(8);
         }
         }, 1000);
 
-    poopsentsectionback_btn.onclick = () =>{
-        controller(1);
-    }
+    // poopsentsectionback_btn.onclick = () =>{
+    //     controller(1);
+    // }
 }
 
 const poopplayInit=()=>{
@@ -584,10 +589,20 @@ const poopplayInit=()=>{
     let whosaid = document.querySelector('#whosaid');
     let outputarea2 = document.querySelector('#outputarea2');
     let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
+    let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
+    let contentwrap = document.querySelector('.contentwrap');
+    let endgame = document.querySelector('.endgame');
+    contentwrap.style.display = "flex";
+    endgame.style.display = "none";
 
+    poopdownloademoji_btn.innerHTML = "Download Your Emojis";
+    poopdownloadkey_btn.innerHTML = "Download Your Key";
     console.log("OUTPUT_string = "+output_string);
     outputarea2.value = output_string; 
-    
+    if(output_height>300){
+        output_height = output_height+100;
+    }
+    outputarea2.style.height = output_height+'px';
     let tabledecoder = document.querySelector('#decodertable2');
     
     for (let index = 0; index < characters.length-1; index++) {
@@ -603,41 +618,74 @@ const poopplayInit=()=>{
         // cell2.innerHTML = String.fromCodePoint(randomEmoji[index]);
         cell2.innerHTML = String.fromCodePoint(emojis[index]);
     }
-    html2canvas(document.querySelector('#decodertable2')).then(function(canvas) {
-        canvas.setAttribute("id", "canvasdiv");
-        // canvas_div.appendChild(canvas);
-        let img = canvas.toDataURL("image/png");
-        // console.log("img = "+img);
-        
-        // let canvas_img= document.createElement('img');
-        let link = document.createElement('a');
-        link.setAttribute("id","downloadoutput");
-        link.download = 'emojis.png';
-        link.setAttribute('href',img);
-        link.href = canvas.toDataURL();
-        link.innerHTML = "Download Key";
-        // canvas_img.setAttribute('src',img);
-        
-        poopdownloadkey_btn.appendChild(link);
-        // <a href="/images/myw3schoolsimage.jpg" download></a>
-        // document.write('<img src="'+img+'"/>');
-        // console.log("img_canvas = "+img);
-    });
+    
 
     poopdownloadkey_btn.onclick = ()=>{
         // console.log("img = "+img);
         // location.href = imgpath;
     }
-    whosaid.innerHTML = username+" said...";
+    whosaid.innerHTML = `ผลงานของคุณ${username}ได้จัดแสดงแล้ว<br>มองไปที่กำแพง ด้านบนได้เลย!`;
     let countTime = 30;
-    warningmassage.innerHTML = `Your message willend in ${countTime} Second`;
+    
+    warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
     let timerwarningmassage = setInterval(() => {
         --countTime;
-        warningmassage.innerHTML = `Your message willend in ${countTime} Second`;
+        warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
         if(countTime<=0){
             warningmassage.innerHTML = `Timeout`;
             clearInterval(timerwarningmassage);
             // controller(7);
+
+
+            contentwrap.style.display = "none";
+            endgame.style.display = "flex";
+            poopdownloademoji_btn.innerHTML="";
+            poopdownloadkey_btn.innerHTML="";
+            poopdownloademoji_btn.classList.add("clickbtn2");
+            poopdownloadkey_btn.classList.add("clickbtn2");
+            html2canvas(document.querySelector('#outputarea2')).then(function(canvas) {
+            canvas.setAttribute("id", "canvasdiv");
+            // canvas_div.appendChild(canvas);
+            let img = canvas.toDataURL("image/png");
+            // console.log("img = "+img);
+            
+            // let canvas_img= document.createElement('img');
+            let link = document.createElement('a');
+            link.setAttribute("id","downloadoutput");
+            link.download = 'emojis.png';
+            link.setAttribute('href',img);
+            link.href = canvas.toDataURL();
+            link.innerHTML = "Download Your Emojis";
+            // canvas_img.setAttribute('src',img);
+            
+            poopdownloademoji_btn.appendChild(link);
+            // <a href="/images/myw3schoolsimage.jpg" download></a>
+            // document.write('<img src="'+img+'"/>');
+            // console.log("img_canvas = "+img);
+        });
+
+        html2canvas(document.querySelector('#decodertable2')).then(function(canvas) {
+            canvas.setAttribute("id", "canvasdiv");
+            // canvas_div.appendChild(canvas);
+            let img = canvas.toDataURL("image/png");
+            // console.log("img = "+img);
+            
+            // let canvas_img= document.createElement('img');
+            let link = document.createElement('a');
+            link.setAttribute("id","downloadoutput");
+            link.download = 'emojis.png';
+            link.setAttribute('href',img);
+            link.href = canvas.toDataURL();
+            link.innerHTML = "Download Your Key";
+            // canvas_img.setAttribute('src',img);
+            
+            poopdownloadkey_btn.appendChild(link);
+            // <a href="/images/myw3schoolsimage.jpg" download></a>
+            // document.write('<img src="'+img+'"/>');
+            // console.log("img_canvas = "+img);
+        });
+
+
         }
         }, 1000);
 }
@@ -648,6 +696,7 @@ const controller=(state)=>{
             case 0:
                 splashsection.style.display = "flex";
                 inputnamesection.style.display = "none";
+                explainsection.style.display = "none";
                 tutorialsection.style.display = "none";
                 poopcontentsection.style.display = "none";
                 poopwatingsection.style.display = "none";
@@ -659,8 +708,25 @@ const controller=(state)=>{
                 break;
 
             case 1:
+
+                splashsection.style.display = "none";
+                inputnamesection.style.display = "none";
+                explainsection.style.display = "none";
+                tutorialsection.style.display = "flex";
+                poopcontentsection.style.display = "none";
+                poopwatingsection.style.display = "none";
+                pooptranslationsection.style.display = "none";
+                poopsentsection.style.display = "none";
+                poopplaysection.style.display = "none";
+                instructionInit();
+
+                
+
+                break;
+            case 2:
                 splashsection.style.display = "none";
                 inputnamesection.style.display = "flex";
+                explainsection.style.display = "none";
                 tutorialsection.style.display = "none";
                 poopcontentsection.style.display = "none";
                 poopwatingsection.style.display = "none";
@@ -670,79 +736,8 @@ const controller=(state)=>{
                 inputnameInit();
 
                 break;
-            case 2:
-                splashsection.style.display = "none";
-                inputnamesection.style.display = "none";
-                tutorialsection.style.display = "flex";
-                poopcontentsection.style.display = "none";
-                poopwatingsection.style.display = "none";
-                pooptranslationsection.style.display = "none";
-                poopsentsection.style.display = "none";
-                poopplaysection.style.display = "none";
-                instructionInit();
 
-                break;
             case 3:
-                splashsection.style.display = "none";
-                inputnamesection.style.display = "none";
-                tutorialsection.style.display = "none";
-                poopcontentsection.style.display = "flex";
-                poopwatingsection.style.display = "none";
-                pooptranslationsection.style.display = "none";
-                poopsentsection.style.display = "none";
-                poopplaysection.style.display = "none";
-                poopcontentInit();
-
-                break;
-            case 4:
-                splashsection.style.display = "none";
-            inputnamesection.style.display = "none";
-            tutorialsection.style.display = "none";
-            poopcontentsection.style.display = "none";
-            poopwatingsection.style.display = "flex";
-            pooptranslationsection.style.display = "none";
-            poopsentsection.style.display = "none";
-            poopplaysection.style.display = "none";
-            popproogressInit();
-
-            break;
-            case 5:
-                splashsection.style.display = "none";
-                inputnamesection.style.display = "none";
-                tutorialsection.style.display = "none";
-                poopcontentsection.style.display = "none";
-                poopwatingsection.style.display = "none";
-                pooptranslationsection.style.display = "flex";
-                poopsentsection.style.display = "none";
-                poopplaysection.style.display = "none";
-                poopoutputInit();
-
-                break;
-            case 6:
-                splashsection.style.display = "none";
-                inputnamesection.style.display = "none";
-                tutorialsection.style.display = "none";
-                poopcontentsection.style.display = "none";
-                poopwatingsection.style.display = "none";
-                pooptranslationsection.style.display = "none";
-                poopsentsection.style.display = "flex";
-                poopplaysection.style.display = "none";
-                poopsentInit();
-
-                break;
-            
-            case 7:
-                splashsection.style.display = "none";
-                inputnamesection.style.display = "none";
-                tutorialsection.style.display = "none";
-                poopcontentsection.style.display = "none";
-                poopwatingsection.style.display = "none";
-                pooptranslationsection.style.display = "none";
-                poopsentsection.style.display = "none";
-                poopplaysection.style.display = "flex";
-                poopplayInit();
-
-            case 8:
 
                 explainsection.style.display = "flex";
 
@@ -757,6 +752,73 @@ const controller=(state)=>{
                 explainInit();
 
                 break;
+            case 4:
+                splashsection.style.display = "none";
+                inputnamesection.style.display = "none";
+                explainsection.style.display = "none";
+                tutorialsection.style.display = "none";
+                poopcontentsection.style.display = "flex";
+                poopwatingsection.style.display = "none";
+                pooptranslationsection.style.display = "none";
+                poopsentsection.style.display = "none";
+                poopplaysection.style.display = "none";
+                poopcontentInit();
+
+                break;
+            case 5:
+                splashsection.style.display = "none";
+                inputnamesection.style.display = "none";
+                explainsection.style.display = "none";
+                tutorialsection.style.display = "none";
+                poopcontentsection.style.display = "none";
+                poopwatingsection.style.display = "flex";
+                pooptranslationsection.style.display = "none";
+                poopsentsection.style.display = "none";
+                poopplaysection.style.display = "none";
+                popproogressInit();
+
+            break;
+            case 6:
+                splashsection.style.display = "none";
+                inputnamesection.style.display = "none";
+                explainsection.style.display = "none";
+                tutorialsection.style.display = "none";
+                poopcontentsection.style.display = "none";
+                poopwatingsection.style.display = "none";
+                pooptranslationsection.style.display = "flex";
+                poopsentsection.style.display = "none";
+                poopplaysection.style.display = "none";
+                poopoutputInit();
+
+                break;
+            case 7:
+                splashsection.style.display = "none";
+                inputnamesection.style.display = "none";
+                explainsection.style.display = "none";
+                tutorialsection.style.display = "none";
+                poopcontentsection.style.display = "none";
+                poopwatingsection.style.display = "none";
+                pooptranslationsection.style.display = "none";
+                poopsentsection.style.display = "flex";
+                poopplaysection.style.display = "none";
+                poopsentInit();
+
+                break;
+            
+            case 8:
+                splashsection.style.display = "none";
+                inputnamesection.style.display = "none";
+                explainsection.style.display = "none";
+                tutorialsection.style.display = "none";
+                poopcontentsection.style.display = "none";
+                poopwatingsection.style.display = "none";
+                pooptranslationsection.style.display = "none";
+                poopsentsection.style.display = "none";
+                poopplaysection.style.display = "flex";
+                poopplayInit();
+
+                break;
+            
             default:
                 break;
 
@@ -768,7 +830,7 @@ const controller=(state)=>{
     }
 }
 
-controller(8);
+controller(0);
     
 
 

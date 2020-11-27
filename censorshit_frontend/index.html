@@ -65,7 +65,7 @@
                 </div>
                 <div class="tutorialeach">
                     <div class="tutoriallistp2">
-                        <p>3. คุณมีเวลา 60 วินาที ก่อนข้อความของคุณจะ
+                        <p>3. คุณมีเวลา 30 วินาที ก่อนข้อความของคุณจะ
                             ถูกกำจัด</p>
 
                     </div>
@@ -170,27 +170,27 @@
         <div class="poopcontentsection containerz">
             <div class="titlediv">
                 <div class="backbtn">
-                    <p id="poopcontentsectionback_btn">Back</p>
+                    <!-- <p id="poopcontentsectionback_btn">Back</p> -->
                 </div>
-                <h1>Poop content</h1>
+                <h1>Say what you want</h1>
                 <div class="fwdbtn">
                     <p></p>
                 </div>
             </div>
             <div class="inputarea">
                 <p id="countingword">0/140</p>
-                <textarea data-autoresize rows="15" cols="34" id="inputarea" pattern="[a-zA-Z\s]+"
-                    placeholder="Compose your poop here.." maxlength="140"></textarea>
+                <textarea data-autoresize rows="2" cols="37" id="inputarea" pattern="[a-zA-Z\s]+"
+                    placeholder="Type here (English only)..." maxlength="140"></textarea>
             </div>
             <div class="clickbtndiv">
-                <button id="poopcontentsectionnext_btn" class="clickbtn">Sent</button>
+                <button id="poopcontentsectionnext_btn" class="clickbtn">Enter</button>
             </div>
         </div>
         
         <!-- watingpage wating section -->
         <div class="poopwatingsection containerz">
-            <div class="titlediv2">
-                <h1>Poop is in progress</h1>
+            <div class="titledivprogress">
+                <h1>กรุณารอสักครู่</h1>
             </div>
             <div class="poopprogress">
                 <div class="meter">
@@ -209,13 +209,13 @@
                 <div class="backbtn">
                     <p id="pooptranslationsectionback_btn">Back</p>
                 </div>
-                <h1 id="toggledecode">Poop Result</h1>
+                <h1 id="toggledecode">Your message</h1>
                 <div class="fwdbtn">
                     <p></p>
                 </div>
             </div>
             <div class="outputarea">
-                <textarea data-autoresize  rows="19" cols="34" id="outputarea" maxlength="140"></textarea>
+                <textarea data-autoresize  rows="2" cols="37"  id="outputarea" maxlength="140"></textarea>
             </div>
             <div class="decoderarea">
                 <table id="decodertable" style="width:100%">
@@ -225,8 +225,13 @@
                     </tr>
                 </table>
             </div>
+            <div class="explainback">
+                <p>หากต้องการแก้ไขข้อความต้นฉบับ กด Back
+                ด้านบนเพื่อย้อนกลับ หรือกด Sent เพื่อแสดง
+                ผลงาน Emoji ของคุณบนผนังกันเลย!</p>
+            </div>
             <div class="clickbtndiv2">
-                <button class="clickbtn2" id="pooptranslationsectionnext_btn">Send</button>
+                <button class="clickbtn2" id="pooptranslationsectionnext_btn">Sent</button>
             </div>
             <div class="loader"></div>
         </div>
@@ -235,35 +240,52 @@
         <!-- sixthpage Sents section -->
         <div class="poopsentsection containerz">
             <div class="titlediv2">
-                <h1>Poop Sents</h1>
+                <!-- <h1>Poop Sents</h1> -->
+                <h1></h1>
             </div>
             <div class="poopsentdetail">
-                <div class="imgcorrect"><img src="img/correct.png"></div>
+                <div class="imgcorrect"><img src="img/waitpage/correct.png"></div>
+                <h3>
+                    การส่งข้อความเสร็จสิ้น
+                </h3>
                 <div class="textdetail">
-                    <p>
-                        You’ve successfully sent your poop.
-                        Please look at the building
-                    </p>
-                    <p id="timertext">you will be redirect in 10 sec</p>
+                    
+                    <p id="timertext">ข้อความของคุณจะปรากฏบนผนัง
+                    ในอีก</p>
+                </div>
+                <div class="warningtext2">
+                    <p>เพื่อให้คุณติดตามเวลาได้ กรุณาอย่ากด
+                    Quit browser (คุณยังสามารถใช้โทรศัพท์มือถือได้ตามปกติ)</p>
                 </div>
             </div>
-            <div class="clickbtndiv2">
+            <!-- <div class="clickbtndiv2">
                 <button class="clickbtn2" id="poopsentsectionback_btn">Back</button>
-            </div>
+            </div> -->
         </div>
 
         <!-- sevenpage Play section -->
         <div class="poopplaysection containerz">
-            <div class="titlediv2">
-                    <h3 id="warningmassage">fd</h3>
-            </div>
-            <div class="titlediv2">
-                    <h2 id="whosaid">fdd</h2>
-            </div>
+            <div class="contentwrap">
+                <div class="imgwrap">
+                    <div class="arrowup">
+                        <img src="img/nowshowpage/arrowup.png">
+                    </div>
+                    <div class="eye">
+                        <img src="img/nowshowpage/eye.png">
+                    </div>
+                </div>
+                <div class="titlediv2">
+                    <h2 id="whosaid">ผลงานของคุณได้จัดแสดงแล้ว มองไปที่กำแพง ด้านบนได้เลย!</h2>
+                </div>
+                <div class="titlediv2">
+                    <h3 id="warningmassage"></h3>
+                </div>
                 
-            
-            <div class="outputarea">
-                <textarea readonly rows="19" cols="34" id="outputarea2" maxlength="140"></textarea>
+                
+                
+            </div>
+            <div class="outputarea decoderarea">
+                <textarea readonly rows="2" cols="37" id="outputarea2" maxlength="140"></textarea>
             </div>
             <div class="decoderarea">
                 <table id="decodertable2" style="width:100%">
@@ -273,8 +295,22 @@
                     </tr>
                 </table>
             </div>
+            <div class="endgame">
+                <div>
+                    <h1>หมดเวลา</h1>
+                </div>
+
+                <div>
+                    <h2>Thank you for coming</h2>
+                </div>
+                
+            </div>
+            
             <div class="clickbtndiv2">
-                <button class="clickbtn2" id="poopdownloadkey_btn"></button>
+                <button class="clickbtn2disable" id="poopdownloademoji_btn"></button>
+            </div>
+            <div class="clickbtndiv2 addmargin">
+                <button class="clickbtn2disable" id="poopdownloadkey_btn"></button>
             </div>
         </div>
 
