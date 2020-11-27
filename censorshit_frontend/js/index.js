@@ -741,7 +741,7 @@ const controller=(state)=>{
     }
 }
 
-controller(2);
+controller(1);
     
 
 

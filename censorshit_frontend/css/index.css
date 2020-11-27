@@ -76,7 +76,19 @@ body {
     left: -23px;
     width: 90%;
     margin-top: 10px;
-    margin-bottom: 180px;
+    margin-bottom: 30px;
+    margin-top: 70px;
+}
+
+.nameinputdiv p{
+    position: relative;
+    left: 4px;
+}
+
+.clickbtndivinputname{
+    position: relative;
+    left: -2px;
+    width: 105%;
 }
 
 .nameinput{
@@ -125,6 +137,11 @@ body {
     padding: 15px 14px; 
     border-radius: 42px;
     border-width: 0px; 
+}
+
+.warningtext{
+    color: red;
+    font-size: 0.9rem;
 }
 
 #countingword{
