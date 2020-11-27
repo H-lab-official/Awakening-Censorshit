@@ -284,6 +284,7 @@ const censorFunckingthings = (fuckingwords)=>{
 
 // main();
 
+let splashsection = document.querySelector('.splashsection');
 
 let inputnamesection = document.querySelector('.inputnamesection');
 let tutorialsection = document.querySelector('.tutorialsection');
@@ -319,6 +320,14 @@ let state = 1;
 // }
 
 
+//----------------splash page----------------
+const splashInit=()=>{
+    let splashstart_btn = document.querySelector('#splashstart_btn');
+    
+    splashstart_btn.onclick = ()=>{
+        controller(1);
+    }
+}
 
 
 //----------------inputname page----------------
@@ -631,7 +640,21 @@ const poopplayInit=()=>{
 
 const controller=(state)=>{
     switch (state) {
+            case 0:
+                splashsection.style.display = "flex";
+                inputnamesection.style.display = "none";
+                tutorialsection.style.display = "none";
+                poopcontentsection.style.display = "none";
+                poopwatingsection.style.display = "none";
+                pooptranslationsection.style.display = "none";
+                poopsentsection.style.display = "none";
+                poopplaysection.style.display = "none";
+                splashInit();
+
+                break;
+
             case 1:
+                splashsection.style.display = "none";
                 inputnamesection.style.display = "flex";
                 tutorialsection.style.display = "none";
                 poopcontentsection.style.display = "none";
@@ -643,6 +666,7 @@ const controller=(state)=>{
 
                 break;
             case 2:
+                splashsection.style.display = "none";
                 inputnamesection.style.display = "none";
                 tutorialsection.style.display = "flex";
                 poopcontentsection.style.display = "none";
@@ -654,6 +678,7 @@ const controller=(state)=>{
 
                 break;
             case 3:
+                splashsection.style.display = "none";
                 inputnamesection.style.display = "none";
                 tutorialsection.style.display = "none";
                 poopcontentsection.style.display = "flex";
@@ -665,6 +690,7 @@ const controller=(state)=>{
 
                 break;
             case 4:
+                splashsection.style.display = "none";
             inputnamesection.style.display = "none";
             tutorialsection.style.display = "none";
             poopcontentsection.style.display = "none";
@@ -676,6 +702,7 @@ const controller=(state)=>{
 
             break;
             case 5:
+                splashsection.style.display = "none";
                 inputnamesection.style.display = "none";
                 tutorialsection.style.display = "none";
                 poopcontentsection.style.display = "none";
@@ -687,6 +714,7 @@ const controller=(state)=>{
 
                 break;
             case 6:
+                splashsection.style.display = "none";
                 inputnamesection.style.display = "none";
                 tutorialsection.style.display = "none";
                 poopcontentsection.style.display = "none";
@@ -699,6 +727,7 @@ const controller=(state)=>{
                 break;
             
             case 7:
+                splashsection.style.display = "none";
                 inputnamesection.style.display = "none";
                 tutorialsection.style.display = "none";
                 poopcontentsection.style.display = "none";
@@ -712,7 +741,7 @@ const controller=(state)=>{
     }
 }
 
-controller(3);
+controller(2);
     
 
 

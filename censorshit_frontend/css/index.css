@@ -12,6 +12,41 @@ body {
     padding: 0 5% 0 5%;
 }
 
+/* zeropage splash section*/
+.wrapshitandstartbtn{
+    position: fixed; /* or absolute */
+    top: 30%;
+    bottom: 50%;
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+     justify-content: center;
+}
+
+.shitlogo{
+    margin-bottom: 15px;
+}
+
+
+.shitlogo img{
+    width: 17rem;
+}
+
+.startbtn{
+    width: 70%;
+}
+
+
+.hlablogo{
+    position: absolute;
+    bottom: 10px;
+}
+
+.hlablogo img{
+    width: 6rem;
+    
+}
+
 
 /* titlediv */
 .titlediv{
@@ -97,11 +132,94 @@ body {
     text-align: right;
 }
 
-/* secondpage inputname section */
+/* secondpage tutorial section */
 .tutorialdiv{
+    /* width: 100%; */
+    /* height: 400px; */
+    /* background-color: #C4C4C4; */
+}
+
+.tutorialeach{
+    margin-bottom: 30px;
+}
+
+#tutorialsectionback_btn{
+    color: white;
+}
+
+.tutoriallistp2 p{
+    margin-bottom: 0px;
+}
+
+.tutoriallistimg{
     width: 100%;
-    height: 400px;
-    background-color: #C4C4C4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tutoriallistimg img{
+    width: 3rem;
+}
+
+.tutoriallistimg2{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tutoriallistimg2 p{
+    margin-bottom: 0px;
+}
+
+.tutoriallistimg2 #messagegroupimg{
+    width: 3.2rem;
+}
+
+.tutoriallistimg2 #arrowimg{
+    width: 1.3rem;
+}
+
+.tutoriallistimg2 #emojigroupimg{
+    width: 7rem;
+}
+
+.tutoriallistimg3{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tutoriallistimg3 span{  
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#laugspan{
+    position: relative;
+    top: 11px;
+}
+
+.tutoriallistimg3 p{  
+    text-align: center;
+}
+
+.tutoriallistimg3 img{
+    width: 3rem;
+}
+
+
+
+#instructtitle {
+    font-size: 1.5rem;
 }
 
 .nextbtn{
