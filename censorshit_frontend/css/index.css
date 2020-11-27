@@ -38,7 +38,7 @@ body {
 
 
 .hlablogo{
-    position: absolute;
+    position: fixed;
     bottom: 10px;
 }
 
