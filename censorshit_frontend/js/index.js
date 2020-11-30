@@ -468,7 +468,7 @@ const popproogressInit=()=>{
         setTimeout(function timer() {
             smallspan.style.width = `${i-2}%`;
             bigspan.style.width = `${i}%`;
-            showpercent.innerHTML = `${i}%`
+            // showpercent.innerHTML = `${i}%`
             if(i==100){
                 controller(6);
             }
@@ -695,14 +695,24 @@ const controller=(state)=>{
     switch (state) {
             case 0:
                 splashsection.style.display = "flex";
-                inputnamesection.style.display = "none";
-                explainsection.style.display = "none";
-                tutorialsection.style.display = "none";
-                poopcontentsection.style.display = "none";
-                poopwatingsection.style.display = "none";
-                pooptranslationsection.style.display = "none";
-                poopsentsection.style.display = "none";
-                poopplaysection.style.display = "none";
+                inputnamesection.style.visibility = "hidden";
+                explainsection.style.visibility = "hidden";
+                tutorialsection.style.visibility = "hidden";
+                poopcontentsection.style.visibility = "hidden";
+                poopwatingsection.style.visibility = "hidden";
+                pooptranslationsection.style.visibility = "hidden";
+                poopsentsection.style.visibility = "hidden";
+                poopplaysection.style.visibility = "hidden";
+
+
+                // inputnamesection.style.visibility = "none";
+                // explainsection.style.visibility = "none";
+                // tutorialsection.style.visibility = "none";
+                // poopcontentsection.style.visibility = "none";
+                // poopwatingsection.style.visibility = "none";
+                // pooptranslationsection.style.visibility = "none";
+                // poopsentsection.style.visibility = "none";
+                // poopplaysection.style.visibility = "none";
                 splashInit();
 
                 break;
@@ -718,6 +728,15 @@ const controller=(state)=>{
                 pooptranslationsection.style.display = "none";
                 poopsentsection.style.display = "none";
                 poopplaysection.style.display = "none";
+
+                inputnamesection.style.visibility = "visible";
+                explainsection.style.visibility = "visible";
+                tutorialsection.style.visibility = "visible";
+                poopcontentsection.style.visibility = "visible";
+                poopwatingsection.style.visibility = "visible";
+                pooptranslationsection.style.visibility = "visible";
+                poopsentsection.style.visibility = "visible";
+                poopplaysection.style.visibility = "visible";
                 instructionInit();
 
                 
