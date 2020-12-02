@@ -3,17 +3,18 @@ const characters = [
     'n','o','p','q','r','s','t','u','v','w','x','y','z',' ',
     'ก'
 ]
-const charactersz = [
-"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"," ",
-"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-"~", "`", "!", "@", "#", "£", "€", "$", "¥", "%",
-"°", "^", "&", "*", "(", ")", "-", "_", "+", "=",
-"{", "}", "[", "]", "|", "\\", "/", ":", ";", "\"",
-"\'", "<", ">", ",", ".", "?", "...", "¢", "§"
-]
+// const charactersz = [
+// "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+// "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"," ",
+// "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+// "~", "`", "!", "@", "#", "£", "€", "$", "¥", "%",
+// "°", "^", "&", "*", "(", ")", "-", "_", "+", "=",
+// "{", "}", "[", "]", "|", "\\", "/", ":", ";", "\"",
+// "\'", "<", ">", ",", ".", "?", "¢", "§"
+// ]
 
-const funckingthings = ["prayut","vachiralongkorn"];
+// const funckingthings = ["prayut","vachiralongkorn"];
+const funckingthings = [];
 
 
 
@@ -55,8 +56,8 @@ const getCountQ = async ()=>{
     return value;
 }
 
-const setCountQ = async (countq) =>{
-    await firebase.database().ref("Emojis/countQ").set({
+const setCountQ = (countq) =>{
+    firebase.database().ref("Emojis/countQ").set({
              "val" : countq
     });
 }
@@ -69,8 +70,8 @@ const gethaveQ = async () =>{
 }
 
 
-const sethaveQ = async (haveQ) =>{
-    await firebase.database().ref("Emojis/haveQ").set({
+const sethaveQ =  (haveQ) =>{
+     firebase.database().ref("Emojis/haveQ").set({
              "val" : haveQ
     });
 }
@@ -120,14 +121,17 @@ const pushPlayer = async (username,content)=>{
 const InsertQ = async (username,content)=>{
     console.log("USERNAME = "+username);
     let insert = await pushPlayer(username,content);
-    let haveQ = await gethaveQ();
+    
     let countQ = await getCountQ();
     
     let countPlayer = await getCountPlayer();
     countPlayer = countPlayer+1;
     setCountPlayer(countPlayer);
+
+    let haveQ = await gethaveQ();
+
     if(haveQ==0){
-        await sethaveQ(1);
+        sethaveQ(1);
         countQ = countQ+1;
         await setCountQ(countQ);
         let lastID = await getFirstID();
@@ -386,8 +390,8 @@ const poopcontentInit = () =>{
     textarea.onkeyup = (event)=>{
         // console.log("Countext = "+event.target.value);
         let input_area = event.target.value;
-    
-    
+        let newLines = input_area.split("\n").length;
+        console.log("newLines = "+newLines);
         // var wordsCount = event.target.value.match(/\S+/g).length;
         var wordsCount = input_area.length;
         var wordRest = 140-wordsCount;
@@ -402,6 +406,12 @@ const poopcontentInit = () =>{
         let textarea = document.querySelector('#inputarea');
         var pattern = new RegExp('^' + textarea.getAttribute('pattern') + '$');
         var phoneResult = pattern.test(input_area);
+        if(newLines>1){
+            let new_textarea = textarea.value.substr(0,textarea.value.length-1);
+            textarea.value = new_textarea;
+            alert("Please do not Enter")
+            return false;
+        }
         if(phoneResult==false){
             let new_textarea = textarea.value.substr(0,textarea.value.length-1);
             textarea.value = new_textarea;
@@ -452,7 +462,7 @@ const poopcontentInit = () =>{
                 // output_string = output_string + input_area[index].toLowerCase();
             }
             console.log("output_string = "+output_string);
-            textarea.value = "";
+            // textarea.value = "";
             // alert(output_string)
             controller(5);
         }
@@ -493,7 +503,7 @@ const poopoutputInit=()=>{
     if(output_height>300){
         output_height = output_height+100;
     }
-    outputarea.style.height = output_height+'px';
+    // outputarea.style.height = output_height+'px';
     console.log("output_height   =  "+output_height);
     outputarea.value = output_string;
     // output_height=output_height;
