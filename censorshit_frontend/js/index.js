@@ -40,8 +40,6 @@ let decoder_emoji = {};
 
 let output_string = "";
 
-let countQpublic = 0;
-
 
 //------------START FIREBASE FUNCTION------------//
 const getNowSecond = async () =>{
@@ -58,20 +56,10 @@ const getCountQ = async ()=>{
     return value;
 }
 
-const setCountQ = async () =>{
-    // firebase.database().ref("Emojis/countQ").set({
-    //          "val" : countq
-    // });
-    let countQ=0;
-    var ref = firebase.database().ref('Emojis/countQ/val');
-      let transaction =  await ref.transaction(function(currentCountQ) {
-            countQpublic = currentCountQ+1;
-            countQ = currentCountQ+1;
-            console.log("currentCountQ = "+currentCountQ);
-  // If node/clicks has never been set, currentRank will be `null`.
-            return (currentCountQ || 0) + 1;
+const setCountQ = (countq) =>{
+    firebase.database().ref("Emojis/countQ").set({
+             "val" : countq
     });
-    return countQ;
 }
 
 const gethaveQ = async () =>{
@@ -96,13 +84,9 @@ const getCountPlayer = async ()=>{
     return value;
 }
 
-const setCountPlayer = async () =>{
-
-    var ref = firebase.database().ref('Emojis/countPlayer/val');
-        ref.transaction(function(currentCountPlayer) {
-            console.log("currentCountPlayer = "+currentCountPlayer);
-  // If node/clicks has never been set, currentRank will be `null`.
-            return (currentCountPlayer || 0) + 1;
+const setCountPlayer = async (countq) =>{
+    await firebase.database().ref("Emojis/countPlayer").set({
+             "val" : countq
     });
 }
 
@@ -111,12 +95,6 @@ const getFirstID = async ()=>{
     const snapshot = await eventref.limitToFirst(1).once('value');
     const value = snapshot.val();
     return value;
-}
-
-const checkFirstIDExist = async ()=>{
-    const eventref = firebase.database().ref('Emojis/playerList');
-    const snapshot = await eventref.limitToFirst(1).once('value');
-    return snapshot.exists();
 }
 
 const setnowPlayer = async (keyID)=>{
@@ -138,85 +116,37 @@ const pushPlayer = async (username,content)=>{
              "name" : username,
     });
     
-    return playerRef.key;
-}
-
-function delay(delayInms) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(2);
-    }, delayInms);
-  });
 }
 
 const InsertQ = async (username,content)=>{
     console.log("USERNAME = "+username);
+    let insert = await pushPlayer(username,content);
     
-    let insertplayerQ = await pushPlayer(username,content);
+    let countQ = await getCountQ();
     
-    let delayres = await delay(1000);
-    let firstID = await getFirstID();
-    let dubuglog = `QueryContent=${Object.keys(firstID)} , Content=${insertplayerQ}`
-    
-    console.log(dubuglog);
-    if(Object.keys(firstID)==insertplayerQ){
-        console.log("sameCONTENT");
-    }else{
-        console.log("conflictCONTENT");
-    }
+    let countPlayer = await getCountPlayer();
+    countPlayer = countPlayer+1;
+    setCountPlayer(countPlayer);
 
-    // let countQ = await getCountQ();
-    // console.log("countQBefore = "+countQ);
-    
-    let countQ = await setCountQ();
-    setCountPlayer();
-    
+    let haveQ = await gethaveQ();
 
-    if(Object.keys(firstID)==insertplayerQ){
+    if(haveQ==0){
         sethaveQ(1);
-        
-        // countQ = countQ+1;
-        
-        let delayres = await delay(500);
+        countQ = countQ+1;
+        await setCountQ(countQ);
         let lastID = await getFirstID();
         lastID = ""+Object.keys(lastID);
-        console.log("lastID = "+lastID);
-        // let countQ = await getCountQ();
         setnowPlayer(lastID);
-        // alert(`correct, countq =${countQ}, insertplayerQ = ${insertplayerQ}, firstID=${Object.keys(firstID)}`);
         //goto state 7
-        controller(8); 
+        controller(8);
     }
     else{
-        // countQ = countQ+1;
-        // let delayres = await delay(1000);
-        
-        
-        // countQpublic = countQ;
-        let nowSecond = 0;
-        let setSecondRef = firebase.database().ref(`Emojis/nowSecond/val`);
-        setSecondRef.on('value',(dataSnapshot)=> {
-            nowSecond= dataSnapshot.val();
-            console.log("nowSecond = "+nowSecond);
-            // debugDiv.innerHTML = dubuglog+"  ,nowSecond = "+nowSecond;
-            
-            console.log(`incorrect, countq =${countQ}, insertplayerQ = ${insertplayerQ}, firstID=${Object.keys(firstID)} ,nowSecond=${nowSecond}`);
-            // alert(`incorrect, countq =${countQ}, insertplayerQ = ${insertplayerQ}, firstID=${Object.keys(firstID)} ,nowSecond=${nowSecond}`);
-            if(nowSecond>0){
-                remainTime = nowSecond + ((countQ-2)*30);
-                setSecondRef.off();
-                // alert("countQ ="+countQ);
-                controller(7);
-            }
-        });
-        // // let nowSecond = await getNowSecond();
-        // console.log("nowSecond = "+nowSecond);
-        // debugDiv.innerHTML = dubuglog+"  ,nowSecond = "+nowSecond;
-        // remainTime = nowSecond + ((countQ-2)*30);
-        // //goto state 6
-        
-        // alert(`incorrect, countq =${countQ}, insertplayerQ = ${insertplayerQ}, firstID=${Object.keys(firstID)}`);
-        // // controller(7);
+        countQ = countQ+1;
+        let nowSecond = await getNowSecond();
+        remainTime = nowSecond + ((countQ-2)*30);
+        //goto state 6
+        setCountQ(countQ);
+        controller(7);
     }
 } 
 //------------END FIREBASE FUNCTION------------//
@@ -644,8 +574,6 @@ const poopsentInit=()=>{
 
     // let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
     let timertext = document.querySelector('#timertext');
-    let debugDiv = document.querySelector("#debug"); 
-    debugDiv.innerHTML = "countQpublic = "+countQpublic;
     console.log("remainTIme0 = "+remainTime);
     timertext.innerHTML =`ข้อความของคุณจะปรากฏบนผนังในอีก ${remainTime} วินาที`;
     let countTime = remainTime;
