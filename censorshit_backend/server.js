@@ -24,7 +24,7 @@ const checkNowplayerchange = async ()=>{
             let timer = 30000;
             setTimeout(()=>
                 { 
-                    setallowTransaction(0);
+                    
                     console.log("Hello");
                     runQ(nowplayer);
                     //remove first playerlist
@@ -37,6 +37,10 @@ const checkNowplayerchange = async ()=>{
             let sec = timer/1000;
             console.log("SECOND = "+sec);
             setNowSecond(sec);
+            if(sec==3){
+                console.log("lock");
+                setallowTransaction(0);
+            }
             if(timer<=0){
                 clearInterval(timerServer);
             }
