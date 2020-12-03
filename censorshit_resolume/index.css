@@ -128,24 +128,15 @@ body{
 
 #outputarea{
     background-color: transparent;
-    /* padding: 5px 5px; */
-    /* font-size: 1.5rem; */
     font-size: 2rem; /*14*/
     height: 409px;
     border-width: 0px; 
     color: #969696;
-    /* margin-top: 20px; */
-/* 
-    resize: none;
-    overflow: hidden;
-    min-height: 50px;
-    max-height: 100px; */
     resize: none; 
-    /* height: 100px; */
-   width: 100%;
-   padding:1%;
-   border:none;
-   overflow: hidden;
+    width: 100%;
+    padding:1%;
+    border:none;
+    overflow: hidden;
 }
 
 
