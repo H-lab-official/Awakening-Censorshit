@@ -62,16 +62,59 @@ const setCountQ = async () =>{
     // firebase.database().ref("Emojis/countQ").set({
     //          "val" : countq
     // });
-    let countQ=0;
-    var ref = firebase.database().ref('Emojis/countQ/val');
-      let transaction =  await ref.transaction(function(currentCountQ) {
+        let countQ=0;
+        var ref = firebase.database().ref('Emojis/countQ/val');
+        let transaction =  await ref.transaction(function(currentCountQ) {
             countQpublic = currentCountQ+1;
             countQ = currentCountQ+1;
             console.log("currentCountQ = "+currentCountQ);
-  // If node/clicks has never been set, currentRank will be `null`.
+            // If node/clicks has never been set, currentRank will be `null`.
             return (currentCountQ || 0) + 1;
+        });
+        return countQ;
+}
+
+const checkAllow = async () =>{
+    // firebase.database().ref("Emojis/countQ").set({
+    //          "val" : countq
+    // });
+    let getallowRef = firebase.database().ref(`Emojis/allowTransaction/val`);
+    getallowRef.on('value',async (dataSnapshot)=> {
+        let allow = dataSnapshot.val();
+        console.log("AllowTransaction = "+dataSnapshot.val());
+        if(allow==1){
+                let countQ = await setCountQ();
+                if(countQ==1){
+                    sethaveQ(1);
+                    let delayres = await delay(500);
+                    let lastID = await getFirstID();
+                    lastID = ""+Object.keys(lastID);
+                    console.log("lastID = "+lastID);
+                    setnowPlayer(lastID);
+                    getallowRef.off();
+                    controller(8); 
+                }else{
+                    console.log("COUNTQ iNCorrect = "+countQ);
+                    let nowSecond = 0;
+                    let setSecondRef = firebase.database().ref(`Emojis/nowSecond/val`);
+                    setSecondRef.on('value',async (dataSnapshot)=> {
+                        nowSecond= dataSnapshot.val();
+                        console.log("nowSecond = "+nowSecond);
+                        if(nowSecond>0){
+                            remainTime = nowSecond + ((countQ-2)*30);
+                            setSecondRef.off();
+                            getallowRef.off();
+                            // alert("countQ ="+countQ);
+                            controller(7);
+                        }
+                    });
+                }
+        }else if(allow==0){
+
+        }
+        
     });
-    return countQ;
+
 }
 
 const gethaveQ = async () =>{
@@ -133,12 +176,17 @@ const pushPlayer = async (username,content)=>{
              "name" : username,
              "content" : content
     });
-    
-    firebase.database().ref("Emojis/playerList/"+playerRef.key).set({
+
+        let playerRef2 = await firebase.database().ref("Emojis/playerList").push({
              "name" : username,
+             "content" : content
     });
     
-    return playerRef.key;
+    // firebase.database().ref("Emojis/playerList/"+playerRef.key).set({
+    //          "name" : username,
+    // });
+    
+    // return playerRef.key;
 }
 
 function delay(delayInms) {
@@ -151,73 +199,11 @@ function delay(delayInms) {
 
 const InsertQ = async (username,content)=>{
     console.log("USERNAME = "+username);
-    
-    let insertplayerQ = await pushPlayer(username,content);
-    
-    let delayres = await delay(1000);
-    let firstID = await getFirstID();
-    let dubuglog = `QueryContent=${Object.keys(firstID)} , Content=${insertplayerQ}`
-    
-    console.log(dubuglog);
-    if(Object.keys(firstID)==insertplayerQ){
-        console.log("sameCONTENT");
-    }else{
-        console.log("conflictCONTENT");
-    }
-
-    // let countQ = await getCountQ();
-    // console.log("countQBefore = "+countQ);
-    
-    let countQ = await setCountQ();
+    pushPlayer(username,content);
+    // let countQ = await setCountQ();
     setCountPlayer();
-    
-
-    if(Object.keys(firstID)==insertplayerQ){
-        sethaveQ(1);
-        
-        // countQ = countQ+1;
-        
-        let delayres = await delay(500);
-        let lastID = await getFirstID();
-        lastID = ""+Object.keys(lastID);
-        console.log("lastID = "+lastID);
-        // let countQ = await getCountQ();
-        setnowPlayer(lastID);
-        // alert(`correct, countq =${countQ}, insertplayerQ = ${insertplayerQ}, firstID=${Object.keys(firstID)}`);
-        //goto state 7
-        controller(8); 
-    }
-    else{
-        // countQ = countQ+1;
-        // let delayres = await delay(1000);
-        
-        
-        // countQpublic = countQ;
-        let nowSecond = 0;
-        let setSecondRef = firebase.database().ref(`Emojis/nowSecond/val`);
-        setSecondRef.on('value',(dataSnapshot)=> {
-            nowSecond= dataSnapshot.val();
-            console.log("nowSecond = "+nowSecond);
-            // debugDiv.innerHTML = dubuglog+"  ,nowSecond = "+nowSecond;
-            
-            console.log(`incorrect, countq =${countQ}, insertplayerQ = ${insertplayerQ}, firstID=${Object.keys(firstID)} ,nowSecond=${nowSecond}`);
-            // alert(`incorrect, countq =${countQ}, insertplayerQ = ${insertplayerQ}, firstID=${Object.keys(firstID)} ,nowSecond=${nowSecond}`);
-            if(nowSecond>0){
-                remainTime = nowSecond + ((countQ-2)*30);
-                setSecondRef.off();
-                // alert("countQ ="+countQ);
-                controller(7);
-            }
-        });
-        // // let nowSecond = await getNowSecond();
-        // console.log("nowSecond = "+nowSecond);
-        // debugDiv.innerHTML = dubuglog+"  ,nowSecond = "+nowSecond;
-        // remainTime = nowSecond + ((countQ-2)*30);
-        // //goto state 6
-        
-        // alert(`incorrect, countq =${countQ}, insertplayerQ = ${insertplayerQ}, firstID=${Object.keys(firstID)}`);
-        // // controller(7);
-    }
+    checkAllow();
+    // countQpublic
 } 
 //------------END FIREBASE FUNCTION------------//
 const addAutoResize=()=>{
