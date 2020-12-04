@@ -40,8 +40,6 @@ let decoder_emoji = {};
 
 let output_string = "";
 
-let countQpublic = 0;
-
 
 //------------START FIREBASE FUNCTION------------//
 const getNowSecond = async () =>{
@@ -57,6 +55,7 @@ const getCountQ = async ()=>{
     const value = snapshot.val();
     return value;
 }
+
 
 const setCountQ = async () =>{
     // firebase.database().ref("Emojis/countQ").set({
@@ -115,7 +114,8 @@ const checkAllow = async () =>{
         
     });
 
-}
+
+
 
 const gethaveQ = async () =>{
     const eventref = firebase.database().ref('Emojis/haveQ/val');
@@ -139,13 +139,9 @@ const getCountPlayer = async ()=>{
     return value;
 }
 
-const setCountPlayer = async () =>{
-
-    var ref = firebase.database().ref('Emojis/countPlayer/val');
-        ref.transaction(function(currentCountPlayer) {
-            console.log("currentCountPlayer = "+currentCountPlayer);
-  // If node/clicks has never been set, currentRank will be `null`.
-            return (currentCountPlayer || 0) + 1;
+const setCountPlayer = async (countq) =>{
+    await firebase.database().ref("Emojis/countPlayer").set({
+             "val" : countq
     });
 }
 
@@ -154,12 +150,6 @@ const getFirstID = async ()=>{
     const snapshot = await eventref.limitToFirst(1).once('value');
     const value = snapshot.val();
     return value;
-}
-
-const checkFirstIDExist = async ()=>{
-    const eventref = firebase.database().ref('Emojis/playerList');
-    const snapshot = await eventref.limitToFirst(1).once('value');
-    return snapshot.exists();
 }
 
 const setnowPlayer = async (keyID)=>{
@@ -182,6 +172,7 @@ const pushPlayer = async (username,content)=>{
              "content" : content
     });
     
+
     // firebase.database().ref("Emojis/playerList/"+playerRef.key).set({
     //          "name" : username,
     // });
@@ -195,6 +186,7 @@ function delay(delayInms) {
       resolve(2);
     }, delayInms);
   });
+
 }
 
 const InsertQ = async (username,content)=>{
@@ -204,6 +196,7 @@ const InsertQ = async (username,content)=>{
     setCountPlayer();
     checkAllow();
     // countQpublic
+
 } 
 //------------END FIREBASE FUNCTION------------//
 const addAutoResize=()=>{
@@ -630,8 +623,6 @@ const poopsentInit=()=>{
 
     // let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
     let timertext = document.querySelector('#timertext');
-    let debugDiv = document.querySelector("#debug"); 
-    debugDiv.innerHTML = "countQpublic = "+countQpublic;
     console.log("remainTIme0 = "+remainTime);
     timertext.innerHTML =`ข้อความของคุณจะปรากฏบนผนังในอีก ${remainTime} วินาที`;
     let countTime = remainTime;
