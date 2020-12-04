@@ -32,11 +32,15 @@ const checkNowplayerchange = async ()=>{
                 }
             , 30000);
             
-            let timerServer = setInterval(() => {
+        let timerServer = setInterval(() => {
             timer = timer-1000;
             let sec = timer/1000;
             console.log("SECOND = "+sec);
             setNowSecond(sec);
+            if(sec==3){
+                console.log("lock");
+                setallowTransaction(0);
+            }
             if(timer<=0){
                 clearInterval(timerServer);
             }
@@ -75,15 +79,35 @@ const runQ  = async (keyID)=>{
         console.log("LastID = "+lastID);
         console.log("TypeOfLastID = "+typeof(lastID));
         let setnewID = await setnowPlayer(lastID);
+        
     }
-    let countQ = await getCountQ();
-    countQ = countQ-1;
-    if(countQ<=0){
-        countQ = 0;
-    }else{
+
+
+    var ref = firebase.database().ref('Emojis/countQ/val');
+    let transaction =  await ref.transaction(function(currentCountQ) {
+            let newval = (currentCountQ || 0) - 1;
+            if(newval<=0){
+                newval = 0;
+                console.log("newval = "+newval);
+                console.log("newvalcurrentCountQ = "+currentCountQ);
+                return newval
+            }else{
+                
+                return newval
+            }
+    });
+    setallowTransaction(1);
+
+
+
+    // let countQ = await getCountQ();
+    // countQ = countQ-1;
+    // if(countQ<=0){
+    //     countQ = 0;
+    // }else{
             
-    }
-    let setcountQ = await setCountQ(countQ);
+    // }
+    // let setcountQ = await setCountQ(countQ);
     console.log('-------end-----');
 }
 
@@ -96,8 +120,19 @@ const getCountQ = async ()=>{
 }
 
 const setCountQ = async (countq) =>{
-    await firebase.database().ref("Emojis/countQ").set({
-             "val" : countq
+    // await firebase.database().ref("Emojis/countQ").set({
+    //          "val" : countq
+    // });
+
+    var ref = firebase.database().ref('Emojis/countQ/val');
+    let transaction =  await ref.transaction(function(currentCountQ) {
+            let newval = (currentCountQ || 0) - 1;
+            if(newval<=0){
+                newval = 0;
+                return newval
+            }else{
+                return newval
+            }
     });
 }
 
@@ -107,6 +142,11 @@ const sethaveQ = async (haveQ) =>{
     });
 }
 
+const setallowTransaction = async (allow) =>{
+    await firebase.database().ref("Emojis/allowTransaction").set({
+             "val" : allow
+    });
+}
 
 const getCountPlayer = async ()=>{
     const eventref = firebase.database().ref('Emojis/countPlayer/val');
@@ -130,8 +170,15 @@ const getFirstID = async ()=>{
     return value;
 }
 
+const getLastID = async ()=>{
+    const eventref = firebase.database().ref('Emojis/player');
+    const snapshot = await eventref.limitToLast(1).once('value');
+    const value = snapshot.val();
+    return value;
+}
+
 const getPlayerContent = async (keyID)=>{
-    const eventref = firebase.database().ref('Emojis/player/'+keyID);
+    const eventref = firebase.database().ref('Emojis/playerList/'+keyID);
     const snapshot = await eventref.once('value');
     const value = snapshot.val();
     // let outputdiv = document.querySelector('#outputarea');
@@ -207,7 +254,11 @@ const mockup = async() =>{
 
 
 const resetVal = async()=>{
-    setCountQ(0);
+    setallowTransaction(1);
+    // setCountQ(0);
+    await firebase.database().ref("Emojis/countQ").set({
+             "val" : 0
+    });
     setCountPlayer(0);
     sethaveQ(0);
     setnowPlayer("");

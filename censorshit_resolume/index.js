@@ -2,32 +2,39 @@ var ul = document.querySelector("#listqname");
 var timertext = document.querySelector("#timer");
 
 const getPlayerContent = async (keyID)=>{
-    const eventref = firebase.database().ref('Emojis/player/'+keyID);
+    // const eventref = firebase.database().ref('Emojis/player/'+keyID);
+    const eventref = firebase.database().ref('Emojis/playerList/'+keyID);
     const snapshot = await eventref.once('value');
     const value = snapshot.val();
-    let outputdiv = document.querySelector('#outputarea');
-    let whosaiddiv = document.querySelector('.whosay');
-    whosaiddiv.innerHTML = `${value['name']} said:`;
-    outputdiv.value = value['content'];
-    console.log(JSON.stringify(value));
-    
-    let countTime = 30;
+    console.log("snapshotval = "+value);
+    if(value===null){
+        
+    }else{
+        let outputdiv = document.querySelector('#outputarea');
+        let whosaiddiv = document.querySelector('.whosay');
+        whosaiddiv.innerHTML = `${value['name']} said:`;
+        outputdiv.value = value['content'];
+        console.log(JSON.stringify(value));
+        
+        let countTime = 30;
 
-    console.log("remainTIme = "+countTime);
-        let timer = setInterval(() => {
-        --countTime;
-        timertext.innerHTML =`${countTime} seconds.`;
-        if(countTime<=0){
-            // ul.innerHTML="";
-            clearInterval(timer);
-        }
-    }, 1000);
-    return value;
+        console.log("remainTIme = "+countTime);
+            let timer = setInterval(() => {
+            --countTime;
+            timertext.innerHTML =`${countTime} seconds.`;
+            if(countTime<=0){
+                // ul.innerHTML="";
+                clearInterval(timer);
+            }
+        }, 1000);
+        return value;
+    }
+    
 }
 
 const listwatingpeople = async ()=>{
-    const eventref = firebase.database().ref('Emojis/player');
-    // const eventref = firebase.database().ref('Emojis/playerList');
+    // const eventref = firebase.database().ref('Emojis/player');
+    const eventref = firebase.database().ref('Emojis/playerList');
     const snapshot = await eventref.limitToFirst(16).once('value');
     const value = snapshot.val();
     ul.innerHTML="";
@@ -61,7 +68,7 @@ const checkNowplayerchange = async ()=>{
         console.log("nowplayer = "+nowplayer);
         if(nowplayer!=""){
             getPlayerContent(nowplayer);
-            listwatingpeople();
+            // listwatingpeople();
         }
     });
 }
