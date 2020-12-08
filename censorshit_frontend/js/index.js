@@ -1,8 +1,8 @@
-const characters = [
-    'a','b','c','d','e','f','g','h','i','j','k','l','m',
-    'n','o','p','q','r','s','t','u','v','w','x','y','z',' ',
-    'ก'
-]
+// const characters = [
+//     'a','b','c','d','e','f','g','h','i','j','k','l','m',
+//     'n','o','p','q','r','s','t','u','v','w','x','y','z',' ',
+//     'ก'
+// ]
 // const charactersz = [
 // "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 // "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"," ",
@@ -13,6 +13,16 @@ const characters = [
 // "\'", "<", ">", ",", ".", "?", "¢", "§"
 // ]
 
+const characters = [
+"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"," ",
+"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+".", ",", "\"","\'", "~", "•", "@", "#", "%", "^",
+"&", "_", "-", "*", "+", "=", "<", ">", "(", ")",
+"{", "}", "[", "]", "|", "\\", "/", ":", ";", "?",
+"!", "¢", "£", "€", "$", "¥"
+]
+
 // const funckingthings = ["prayut","vachiralongkorn"];
 const funckingthings = [];
 
@@ -20,7 +30,15 @@ const funckingthings = [];
 
 const emojis = [
     0x1F600,0x1F603,0x1F604,0x1F601,0x1F606,0x1F605,0x1F923,0x1F602,0x1F642,0x1F643,0x1F609,0x1F60A,0x1F607,
-    0x1F970,0x1F60D,0x1F929,0x1F618,0x1F617,0x1F61A,0x1F60B,0x1F61B,0x1F61C,0x1F92A,0x1F61D,0x1F911,0x1F917,0x1F92D
+    0x1F970,0x1F60D,0x1F929,0x1F618,0x1F617,0x1F61A,0x1F60B,0x1F61B,0x1F61C,0x1F92A,0x1F61D,0x1F911,0x1F917,0x1F92D,
+
+
+    0x1F600,0x1F603,0x1F604,0x1F601,0x1F606,0x1F605,0x1F923,0x1F602,0x1F642,0x1F643,
+
+    0x1F600,0x1F603,0x1F604,0x1F601,0x1F606,0x1F605,0x1F923,0x1F602,0x1F642,0x1F643,
+    0x1F600,0x1F603,0x1F604,0x1F601,0x1F606,0x1F605,0x1F923,0x1F602,0x1F642,0x1F643,
+    0x1F600,0x1F603,0x1F604,0x1F601,0x1F606,0x1F605,0x1F923,0x1F602,0x1F642,0x1F643,
+    0x1F600,0x1F603,0x1F604,0x1F601,0x1F606,0x1F605
 ]
 
 const censorCharacter ='ก';
@@ -223,7 +241,7 @@ const randommapping = (emojis_arr) =>{
     for (let index = 0; index < emojis.length; index++) {
         decoder_emoji[characters[index]] = String.fromCodePoint(randomEmoji[index]);
     }
-    decoder_emoji[censorCharacter] = String.fromCodePoint(censorEmoji);
+    // decoder_emoji[censorCharacter] = String.fromCodePoint(censorEmoji);
     console.log(JSON.stringify(decoder_emoji));
 }
 
@@ -293,50 +311,6 @@ const censorFunckingthings = (fuckingwords)=>{
     return fuckingwords;
 }
 
-// const main=()=>{
-    
-//     // alert(pattern)
-//         // check 
-//         // ^[a-z]{1,30}(,[a-z]{1,30})+
-//         // ^[a-zA-Z\s]+$
-
-//     randommapping(emojis);
-//     for (let index = 0; index < emojis.length; index++) {
-//         let decoderDiv = document.querySelector('.decoder');
-//         let divP = document.createElement('p');
-//         divP.innerHTML = `${characters[index]} = ${String.fromCodePoint(randomEmoji[index])}`
-//         decoderDiv.appendChild(divP);
-//     }
-//     let divInputarea = document.querySelector('#inputarea');
-//     divInputarea.onkeyup = getInput;
-
-//     let divSubmitBtn = document.querySelector('#submitBtn');
-//     // divSubmitBtn.onclick = mappingEmoji;
-
-//     // var downloadBtn = document.querySelector('#btn-download');
-//     // downloadBtn.onclick = downloadDecoder;
-//     // downloadBtn.addEventListener('click', function (e) {
-//     //     var dataURL = canvas.toDataURL('image/png');
-//     //     downloadBtn.href = dataURL;
-//     // });
-//     var button = document.getElementById('btn-download');
-// button.addEventListener('click', function (e) {
-//     html2canvas(document.querySelector(".decoder")).then(function(canvas) {
-//         console.log(canvas);
-//         var dataURL = canvas.toDataURL('image/png');
-//         console.log(dataURL);
-//         this.href = dataURL;
-//         var dataURL = canvas.toDataURL('image/png');
-//     button.href = dataURL;
-//         // document.body.appendChild(canvas);
-//     });
-    
-// });
-    
-// }
-
-
-// main();
 
 let splashsection = document.querySelector('.splashsection');
 let explainsection = document.querySelector('.explainsection');
@@ -378,6 +352,12 @@ let state = 1;
 //----------------splash page----------------
 const splashInit=()=>{
     let splashstart_btn = document.querySelector('#splashstart_btn');
+    let shitlogoDiv =document.querySelector('.shitlogo');
+    let startbtnDiv =document.querySelector('.startbtn');
+    let hlablogoDiv =document.querySelector('.hlablogo');
+    
+
+    
     
     splashstart_btn.onclick = ()=>{
         controller(1);
@@ -388,6 +368,8 @@ const splashInit=()=>{
 const instructionInit = () =>{
     let tutorialsectionback_btn = document.querySelector('#tutorialsectionback_btn');
     let tutorialsectionnext_btn = document.querySelector('#tutorialsectionback_next');
+    let tutorialsectionDiv = document.querySelector('.tutorialsection');
+    tutorialsectionDiv.classList.add('animate__animated','animate__fadeInUp','animate__slow')
     tutorialsectionback_btn.onclick = () =>{
         // controller(1);
     }
@@ -403,6 +385,8 @@ const inputnameInit=()=>{
     let submit_btn = document.querySelector('#inputnamesubmit_btn');
     let nameinput = document.querySelector('.nameinput');
     let countingword = document.querySelector('#countingword');
+    let inputnamesectionDiv = document.querySelector('.inputnamesection');
+    inputnamesectionDiv.classList.add('animate__animated','animate__fadeInUp','animate__slow')
     output_string = "";
     nameinput.value = "";
     submit_btn.onclick = () =>{
@@ -432,9 +416,12 @@ explainInit=()=>{
 //----------------poop add content page----------------
 const poopcontentInit = () =>{
     // addAutoResize();
+    let titlezdiv = document.querySelector('#poopcontenttitle');
+    titlezdiv.classList.add('animate__animated','animate__fadeIn','animate__slow')
     let poopcontentsectionback_btn = document.querySelector('#poopcontentsectionback_btn');
     let convert_btn = document.querySelector('#poopcontentsectionnext_btn');
     let textarea = document.querySelector('#inputarea');
+    textarea.classList.add('animate__animated','animate__fadeIn','animate__slow')
     let clickbtndiv = document.querySelector('.clickbtndiv');
     let offset = textarea.offsetHeight - textarea.clientHeight;
     textarea.onkeyup = (event)=>{
@@ -453,6 +440,7 @@ const poopcontentInit = () =>{
         countingword.innerHTML=wordsCount+"/140";
         console.log('wordsCount = '+ wordsCount);
         console.log('wordsRest = '+ wordRest);
+        console.log("words = "+input_area);
         let textarea = document.querySelector('#inputarea');
         var pattern = new RegExp('^' + textarea.getAttribute('pattern') + '$');
         var phoneResult = pattern.test(input_area);
@@ -463,10 +451,15 @@ const poopcontentInit = () =>{
             return false;
         }
         if(phoneResult==false){
-            let new_textarea = textarea.value.substr(0,textarea.value.length-1);
-            textarea.value = new_textarea;
-            alert("Support English only")
-            return false;
+            if(input_area!=""){
+                let new_textarea = textarea.value.substr(0,textarea.value.length-1);
+                textarea.value = new_textarea;
+                alert("Support English only")
+                return false;
+            }else{
+                return false;
+            }
+            
         }
         event.target.style.height = 'auto';
         event.target.style.height = event.target.scrollHeight + offset + 'px';
@@ -502,9 +495,19 @@ const poopcontentInit = () =>{
             
             for (let index = 0; index < censor_input_area.length; index++) {
                 console.log(censor_input_area[index]=="\n");
-                if(censor_input_area[index]=="\n"){
-                    output_string = output_string + "\n";
-                }else{
+                // if(censor_input_area[index]=="\n"){
+                //     output_string = output_string + "\n";
+                // }else{
+                //     output_string = output_string + decoder_emoji[censor_input_area[index].toLowerCase()];
+                // }
+
+                if(censor_input_area[index]=="\“" || censor_input_area[index]=="\”"){
+                    output_string = output_string + decoder_emoji["\""];
+                }
+                else if(censor_input_area[index]=="\‘" || censor_input_area[index]=="\’"){
+                    output_string = output_string + decoder_emoji["\'"];
+                }
+                else{
                     output_string = output_string + decoder_emoji[censor_input_area[index].toLowerCase()];
                 }
                 // console.log("newline = "+(censor_input_area.match(/\n/g)||[]).length);
@@ -573,6 +576,49 @@ const poopoutputInit=()=>{
         // cell2.innerHTML = String.fromCodePoint(randomEmoji[index]);
         cell2.innerHTML = String.fromCodePoint(emojis[index]);
     }
+    let decoderheader = document.querySelector('#decoderheader');
+    let griddecoderA = document.querySelector('.decoderareaA');
+    let griddecoderB = document.querySelector('.decoderareaB');
+    let griddecoderC = document.querySelector('.decoderareaC');
+    decoderheader.innerHTML = `${username}'s key`;
+    for (let index = 0; index < 27; index++) {
+        let label = characters[index].toUpperCase();
+        let emoji = String.fromCodePoint(randomEmoji[index]);
+        
+        let divchild = document.createElement('div');
+        if(index==26){
+            divchild.setAttribute("id","gridspace");
+            label = "SpaceBar"
+        }
+        let labelemoji = `${emoji}${label}`;
+        divchild.innerHTML = labelemoji;
+        griddecoderA.appendChild(divchild);
+    }
+
+    for (let index = 27; index < 37; index++)
+    {
+        let label = characters[index];
+        let emoji = String.fromCodePoint(randomEmoji[index]);
+        
+        let divchild = document.createElement('div');
+        if(index==36){
+            divchild.setAttribute("id","gridspace2");
+        }
+        let labelemoji = `${emoji}${label}`;
+        divchild.innerHTML = labelemoji;
+        griddecoderB.appendChild(divchild);
+    }
+
+    for (let index = 37; index < 73; index++)
+    {
+        let label = characters[index];
+        let emoji = String.fromCodePoint(randomEmoji[index]);
+        let divchild = document.createElement('div');
+        let labelemoji = `${emoji}${label}`;
+        divchild.innerHTML = labelemoji;
+        griddecoderC.appendChild(divchild);
+    }
+
 
     pooptranslationsectionback_btn.onclick = () =>{
         // document.querySelector('#downloadoutput').remove();
@@ -649,13 +695,13 @@ const poopplayInit=()=>{
     let whosaid = document.querySelector('#whosaid');
     let outputarea2 = document.querySelector('#outputarea2');
     let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
-    let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
+    // let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
     let contentwrap = document.querySelector('.contentwrap');
     let endgame = document.querySelector('.endgame');
     contentwrap.style.display = "flex";
     endgame.style.display = "none";
 
-    poopdownloademoji_btn.innerHTML = "Download Your Emojis";
+    // poopdownloademoji_btn.innerHTML = "Download Your Emojis";
     poopdownloadkey_btn.innerHTML = "Download Your Key";
     console.log("OUTPUT_string = "+output_string);
     outputarea2.value = output_string; 
@@ -670,13 +716,13 @@ const poopplayInit=()=>{
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         if(characters[index]==" "){
-            cell1.innerHTML = "space";
+            cell2.innerHTML = "space";
         }else{
-            cell1.innerHTML = characters[index];
+            cell2.innerHTML = characters[index];
         }
         
         // cell2.innerHTML = String.fromCodePoint(randomEmoji[index]);
-        cell2.innerHTML = String.fromCodePoint(emojis[index]);
+        cell1.innerHTML = String.fromCodePoint(emojis[index]);
     }
     
 
@@ -684,8 +730,50 @@ const poopplayInit=()=>{
         // console.log("img = "+img);
         // location.href = imgpath;
     }
+    // html2canvas(document.querySelector('#outputarea2')).then(function(canvas) {
+    //         canvas.setAttribute("id", "canvasdiv");
+    //         // canvas_div.appendChild(canvas);
+    //         let img = canvas.toDataURL("image/png");
+    //         // console.log("img = "+img);
+            
+    //         // let canvas_img= document.createElement('img');
+    //         let link = document.createElement('a');
+    //         link.setAttribute("id","downloadoutput");
+    //         link.download = 'emojis.png';
+    //         link.setAttribute('href',img);
+    //         link.href = canvas.toDataURL();
+    //         link.innerHTML = "Download Your Emojis";
+    //         // canvas_img.setAttribute('src',img);
+            
+    //         poopdownloademoji_btn.appendChild(link);
+    //         // <a href="/images/myw3schoolsimage.jpg" download></a>
+    //         // document.write('<img src="'+img+'"/>');
+    //         // console.log("img_canvas = "+img);
+    //     });
+        let link = document.createElement('a');
+        html2canvas(document.querySelector('.decoderpage')).then(function(canvas) {
+            canvas.setAttribute("id", "canvasdiv");
+            // canvas_div.appendChild(canvas);
+            let img = canvas.toDataURL("image/png");
+            // console.log("img = "+img);
+            
+            // let canvas_img= document.createElement('img');
+            
+            link.setAttribute("id","downloadoutput");
+            link.download = 'emojis.png';
+            link.setAttribute('href',img);
+            link.href = canvas.toDataURL();
+            link.innerHTML = "Download Your Key";
+            // canvas_img.setAttribute('src',img);
+            
+            
+            // <a href="/images/myw3schoolsimage.jpg" download></a>
+            // document.write('<img src="'+img+'"/>');
+            // console.log("img_canvas = "+img);
+        });
+
     whosaid.innerHTML = `ผลงานของคุณ${username}ได้จัดแสดงแล้ว<br>มองไปที่กำแพง ด้านบนได้เลย!`;
-    let countTime = 30;
+    let countTime = 3;
     
     warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
     let timerwarningmassage = setInterval(() => {
@@ -696,54 +784,16 @@ const poopplayInit=()=>{
             clearInterval(timerwarningmassage);
             // controller(7);
 
-
+            
             contentwrap.style.display = "none";
             endgame.style.display = "flex";
-            poopdownloademoji_btn.innerHTML="";
+            // poopdownloademoji_btn.innerHTML="";
             poopdownloadkey_btn.innerHTML="";
-            poopdownloademoji_btn.classList.add("clickbtn2");
+            // poopdownloademoji_btn.classList.add("clickbtn2");
             poopdownloadkey_btn.classList.add("clickbtn2");
-            html2canvas(document.querySelector('#outputarea2')).then(function(canvas) {
-            canvas.setAttribute("id", "canvasdiv");
-            // canvas_div.appendChild(canvas);
-            let img = canvas.toDataURL("image/png");
-            // console.log("img = "+img);
-            
-            // let canvas_img= document.createElement('img');
-            let link = document.createElement('a');
-            link.setAttribute("id","downloadoutput");
-            link.download = 'emojis.png';
-            link.setAttribute('href',img);
-            link.href = canvas.toDataURL();
-            link.innerHTML = "Download Your Emojis";
-            // canvas_img.setAttribute('src',img);
-            
-            poopdownloademoji_btn.appendChild(link);
-            // <a href="/images/myw3schoolsimage.jpg" download></a>
-            // document.write('<img src="'+img+'"/>');
-            // console.log("img_canvas = "+img);
-        });
-
-        html2canvas(document.querySelector('#decodertable2')).then(function(canvas) {
-            canvas.setAttribute("id", "canvasdiv");
-            // canvas_div.appendChild(canvas);
-            let img = canvas.toDataURL("image/png");
-            // console.log("img = "+img);
-            
-            // let canvas_img= document.createElement('img');
-            let link = document.createElement('a');
-            link.setAttribute("id","downloadoutput");
-            link.download = 'emojis.png';
-            link.setAttribute('href',img);
-            link.href = canvas.toDataURL();
-            link.innerHTML = "Download Your Key";
-            // canvas_img.setAttribute('src',img);
-            
             poopdownloadkey_btn.appendChild(link);
-            // <a href="/images/myw3schoolsimage.jpg" download></a>
-            // document.write('<img src="'+img+'"/>');
-            // console.log("img_canvas = "+img);
-        });
+
+        
 
 
         }

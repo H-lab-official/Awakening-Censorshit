@@ -14,6 +14,8 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;500&family=Roboto:wght@300;500&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
@@ -27,16 +29,16 @@
         <!-- zeropage splash section -->
         <div class="splashsection containerz">
             <div class="wrapshitandstartbtn">
-                <div class="shitlogo">
+                <div class="shitlogo animate__animated animate__pulse animate__slower">
                     <img src="img/splashpage/logoshit.png">
                 </div>
 
-                <div class="startbtn">
+                <div class="startbtn animate__animated animate__fadeIn animate__delay-2s animate__slower">
                     <button class="clickbtn2" id="splashstart_btn">Tap here to start</button>
                 </div>
             </div>
 
-            <div class="hlablogo">
+            <div class="hlablogo animate__animated animate__fadeInUp animate__delay-2s animate__slow">
                 <img src="img/splashpage/logohlab.png">
             </div>
 
@@ -142,7 +144,7 @@
         <!-- page explain section -->
         <div class="explainsection containerz">
             <div class="explainwrap">
-                <div class="explaindetail">
+                <div class="explaindetail" >
                     <h2>คุณเคยมีอะไรที่อยากจะพูด แต่พูดออกมาไม่ได้หรือไม่?</h2>
                 </div>
                 <div class="explaindot">
@@ -154,24 +156,26 @@
                 <div class="explaindot">
                     <h2>.</h2>
                 </div>
-                <div class="explaindetail">
+                <div class="explaindetail" data-aos="fade-up" data-aos-duration="3000">
                     <h2>ถ้าใช่ เราอยากให้คุณลองหลับตา แล้วนึกถึงสิ่งที่คุณอยากพูด บางเรื่องที่อยู่ในใจ</h2>
                 </div>
-                <div class="explaindetail">
+                <div class="explaindetail" data-aos="fade-up" data-aos-duration="3000">
                     <h2>.</h2>
                 </div>
-                <div class="explaindetail">
+                <div class="explaindetail" data-aos="fade-up" data-aos-duration="3000">
                     <h2>ถ้าพร้อมแล้ว กดปุ่มที่ด้านล่างได้เลย</h2>
                 </div>
             </div>
 
-            <div class="clickbtndivinputname">
+            <div class="clickbtndivinputname animate__animated animate__fadeIn animate__delay-1s" >
                 <button class="clickbtn2" id="explainsubmit_btn">Enter</button>
             </div>
 
         </div>
 
-        <!-- ~`!@#£€$¥%°^&*()-_+={}[]|\/:;"'<>,.?¢§ -->
+        <!--  -->
+        <!-- ~`!@#£€$¥%°^&*()-_+={}[]|\~`!@#£€$¥%^&*()-_+={}[]|\/:;"'<>,.?¢/:;"'<>,.?¢§ ‘ “-->
+                <!-- ~`!@#£€$¥%^&*()-_+={}[]|\~`!@#£€$¥%^&*()-_+={}[]|\/:;"'<>,.?¢/:;"'<>,.?¢‘ “-->
 
         <!-- thirdpage poopcontent section -->
         <div class="poopcontentsection containerz">
@@ -179,17 +183,18 @@
                 <div class="backbtn">
                     <!-- <p id="poopcontentsectionback_btn">Back</p> -->
                 </div>
-                <h1>Say what you want</h1>
+                <h1 id="poopcontenttitle">Say what you want</h1>
                 <div class="fwdbtn">
                     <p></p>
                 </div>
             </div>
             <div class="inputarea">
                 <p id="countingword">0/140</p>
-                <textarea data-autoresize rows="2" cols="37" id="inputarea" pattern="[a-zA-Z\s]+"
-                    placeholder="Type here (English only)..." maxlength="140"></textarea>
-                <!-- <textarea data-autoresize rows="2" cols="37" id="inputarea" pattern="[a-zA-Z0-9\s~`!@#£€$¥%°^&*()-_+=\{\}\[\]|\\/:;\x22\x27<>,.?¢§]+"
+                <!-- <textarea data-autoresize rows="2" cols="37" id="inputarea" pattern="[a-zA-Z\s]+"
                     placeholder="Type here (English only)..." maxlength="140"></textarea> -->
+                <!-- <textarea data-autoresize rows="2" cols="37" id="inputarea" pattern="[a-zA-Z0-9\s~•!@#£€$¥%°^&*()-_+=\{\}\[\]|\\/:;\x22\x27<>,.?¢§]+"-->
+                    <textarea data-autoresize rows="2" cols="37" id="inputarea" pattern="[a-zA-Z0-9\s~\u2022!@#£€$¥%^&*()-_+=\{\}\[\]|\\/:;\x22\x27\u201c\u201d\u2018\u2019<>,.?¢]+"
+                    placeholder="Type here (English only)..." maxlength="140"></textarea>
             </div>
             <div class="clickbtndiv">
                 <button id="poopcontentsectionnext_btn" class="clickbtn">Enter</button>
@@ -299,11 +304,122 @@
             <div class="decoderarea">
                 <table id="decodertable2" style="width:100%">
                     <tr>
-                        <th>Characters</th>
+                        <th>Characterss</th>
                         <th>Emojis</th>
                     </tr>
                 </table>
             </div>
+            <div class="decoderpage">
+                <div class="decoderheader">
+                    <h3 id="decoderheader">Annop's key</h3>
+                    <span><img src="img/decoder/key_icon.png"></span>
+                </div>
+                <div class="decoderareawrap">
+                    <div class="decoderareaA">
+                        <!-- <div>😀A</div>
+                        <div>😀B</div>
+                        <div>😀C</div>
+                        <div>😀D</div>
+                        <div>😀E</div>
+                        <div>😀F</div>
+                
+                        <div>😀G</div>
+                        <div>😀H</div>
+                        <div>😀I</div>
+                        <div>😀J</div>
+                        <div>😀K</div>
+                        <div>😀L</div>
+                
+                        <div>😀M</div>
+                        <div>😀N</div>
+                        <div>😀O</div>
+                        <div>😀P</div>
+                        <div>😀Q</div>
+                        <div>😀R</div>
+                
+                        <div>😀S</div>
+                        <div>😀T</div>
+                        <div>😀U</div>
+                        <div>😀V</div>
+                        <div>😀W</div>
+                        <div>😀X</div>
+                
+                        <div>😀Y</div>
+                        <div>😀Z</div>
+                        <div id="gridspace">😀SpaceBar</div> -->
+                    </div>
+                
+                    <div class="decoderareaB">
+                        <!-- <div>😀0</div>
+                        <div>😀1</div>
+                        <div>😀2</div>
+                        <div>😀3</div>
+                        <div>😀4</div>
+                        <div>😀5</div>
+                        <div>😀6</div>
+                        <div>😀7</div>
+                        <div>😀8</div>
+                        <div id="gridspace2">😀9</div> -->
+                    </div>
+                
+                    <div class="decoderareaC">
+                        <!-- <div>😀.</div>
+                        <div>😀,</div>
+                        <div>😀"</div>
+                        <div>😀'</div>
+                        <div>😀~</div>
+                        <div>😀•</div>
+                
+                
+                        <div>😀@</div>
+                        <div>😀#</div>
+                        <div>😀%</div>
+                        <div>😀^</div>
+                        <div>😀&</div>
+                        <div>😀_</div>
+                
+                        <div>😀-</div>
+                        <div>😀*</div>
+                        <div>😀+</div>
+                        <div>😀=</div>
+                        <div>😀<</div>
+                        <div>😀></div>
+        
+                        <div>😀(</div>
+                        <div>😀)</div>
+                        <div>😀{</div>
+                        <div>😀}</div>
+                        <div>😀[</div>
+                        <div>😀]</div>
+        
+                        <div>😀|</div>
+                        <div>😀\</div>
+                        <div>😀/</div>
+                        <div>😀:</div>
+                        <div>😀;</div>
+                        <div>😀?</div>
+        
+                        <div>😀!</div>
+                        <div>😀¢</div>
+                        <div>😀£</div>
+                        <div>😀€</div>
+                        <div>😀$</div>
+                        <div>😀¥</div> -->
+                    </div>
+                    </div>
+                    <div class="decoderhlablogo">
+                        <p><img src="img/decoder/hlab-logo-b.png"></p>
+                    </div>
+                    <div class="decoderbottom">
+                        <div id="bottomP1">
+                            <p>"Messages that anyone can see but no one knows what they mean unless you have the key"</p>
+                        </div>
+                        <div id="bottomP2">
+                            <p>The Immitation Game</p>
+                        </div>
+                    </div>
+            </div>
+            
             <div class="endgame">
                 <div>
                     <h1>หมดเวลา</h1>
@@ -315,9 +431,9 @@
 
             </div>
 
-            <div class="clickbtndiv2">
+            <!-- <div class="clickbtndiv2">
                 <button class="clickbtn2disable" id="poopdownloademoji_btn"></button>
-            </div>
+            </div> -->
             <div class="clickbtndiv2 addmargin">
                 <button class="clickbtn2disable" id="poopdownloadkey_btn"></button>
             </div>
@@ -350,8 +466,9 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
                https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-
+        AOS.init();
         // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyDFSl2QDM96BReRFGR4MwrpbFXwao7NuP0",
@@ -368,6 +485,7 @@
         firebase.analytics();
     </script>
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    
     <script type="text/javascript" src="js/index.js"></script>
     <!-- <script type="text/javascript" type="module" src="test.js"></script> -->
 </body>
