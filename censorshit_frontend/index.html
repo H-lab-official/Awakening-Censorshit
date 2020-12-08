@@ -52,11 +52,11 @@
                 </div>
                 <p id="instructtitle">วิธีการใช้งาน</p>
                 <div class="fwdbtn">
-                    <p id="tutorialsectionback_next">Next</p>
+                    <p id="tutorialsectionback_btn">Next</p>
                 </div>
             </div>
             <div class="tutorialdiv">
-                <div class="tutorialeach">
+                <div class="tutorialeach tutorialrow">
                     <div class="tutoriallistp">
                         <p>1. พิมพ์ข้อความที่คุณต้องการ (English only)</p>
                     </div>
@@ -64,16 +64,12 @@
                         <span><img src="img/tutorialpage/message.png"></span>
                     </div>
                 </div>
-                <div class="tutorialeach">
+                <div class="tutorialeach tutorialrow">
+                    <div class="tutoriallistimg2">
+                        <span><img id="emojigroupimg" src="img/tutorialpage/emojigroup.png"></span>
+                    </div>
                     <div class="tutoriallistp2">
                         <p>2. ข้อความของคุณจะถูกเปลี่ยนเป็น Emoji เพื่อนำไปแสดงบนอาคาร</p>
-                    </div>
-                    <div class="tutoriallistimg2">
-                        <span>
-                            <img id="messagegroupimg" src="img/tutorialpage/messagegroup.png">
-                        </span>
-                        <span><img id="arrowimg" src="img/tutorialpage/arrow.png"></span>
-                        <span><img id="emojigroupimg" src="img/tutorialpage/emojigroup.png"></span>
                     </div>
                 </div>
                 <div class="tutorialeach">
@@ -83,16 +79,16 @@
 
                     </div>
                     <div class="tutoriallistimg3">
+                        <span id="laugspan">
+                            <img src="img/tutorialpage/laugh.png">
+                            <p>Enjoy your emoji</p>
+                        </span>
                         <span>
                             <img src="img/tutorialpage/camera.png">
                             <p>Take a photo</p>
 
                         </span>
-                        <span id="laugspan">
-                            <img src="img/tutorialpage/laugh.png">
-                            <p>Enjoy your emoji</p>
 
-                        </span>
                         <span>
                             <img src="img/tutorialpage/telegram.png">
                             <p>Share it!</p>
@@ -109,6 +105,9 @@
                             <span><img src="img/tutorialpage/key.png"></span>
                         </div>
                     </div>
+                </div>
+                <div class="clickbtndivinputname animate__animated animate__fadeIn animate__delay-1s">
+                    <button class="clickbtn2" id="tutorialsectionback_next">Next</button>
                 </div>
             </div>
         </div>
@@ -156,18 +155,18 @@
                 <div class="explaindot">
                     <h2>.</h2>
                 </div>
-                <div class="explaindetail" data-aos="fade-up" data-aos-duration="3000">
+                <div class="explaindetail">
                     <h2>ถ้าใช่ เราอยากให้คุณลองหลับตา แล้วนึกถึงสิ่งที่คุณอยากพูด บางเรื่องที่อยู่ในใจ</h2>
                 </div>
-                <div class="explaindetail" data-aos="fade-up" data-aos-duration="3000">
+                <div class="explaindetail">
                     <h2>.</h2>
                 </div>
-                <div class="explaindetail" data-aos="fade-up" data-aos-duration="3000">
+                <div class="explaindetail">
                     <h2>ถ้าพร้อมแล้ว กดปุ่มที่ด้านล่างได้เลย</h2>
                 </div>
             </div>
 
-            <div class="clickbtndivinputname animate__animated animate__fadeIn animate__delay-1s" >
+            <div class="clickbtndivinputname" >
                 <button class="clickbtn2" id="explainsubmit_btn">Enter</button>
             </div>
 
@@ -282,10 +281,10 @@
             <div class="contentwrap">
                 <div class="imgwrap">
                     <div class="arrowup">
-                        <img src="img/nowshowpage/arrowup.png">
+                        <img id="arrowz" src="img/nowshowpage/arrowup.png">
                     </div>
                     <div class="eye">
-                        <img src="img/nowshowpage/eye.png">
+                        <img id="eyez" src="img/nowshowpage/eye.png">
                     </div>
                 </div>
                 <div class="titlediv2">
@@ -298,9 +297,9 @@
 
 
             </div>
-            <div class="outputarea decoderarea">
+            <!-- <div class="outputarea decoderarea">
                 <textarea readonly rows="2" cols="37" id="outputarea2" maxlength="140"></textarea>
-            </div>
+            </div> -->
             <div class="decoderarea">
                 <table id="decodertable2" style="width:100%">
                     <tr>
@@ -422,20 +421,31 @@
             
             <div class="endgame">
                 <div>
-                    <h1>หมดเวลา</h1>
+                    <p>“Not secret. That’s the brilliant part. Messages that anyone can see but no one knows what they mean unless you have the key”</p>
                 </div>
-
                 <div>
-                    <h2>Thank you for coming</h2>
+                    <h2>The Immitation Game</h2>
                 </div>
+                <div id="endgamearrowdown">
+                    <img  src="img/nowshowpage/arrow-down.png">
+                </div>
+                
 
             </div>
 
             <!-- <div class="clickbtndiv2">
                 <button class="clickbtn2disable" id="poopdownloademoji_btn"></button>
             </div> -->
-            <div class="clickbtndiv2 addmargin">
+            <div class="clickbtndiv2">
                 <button class="clickbtn2disable" id="poopdownloadkey_btn"></button>
+            </div>
+            <div class="thankyoumassage">
+                <h2>Thank you for comming</h2>
+                <p>หากต้องการบันทึกข้อความ Emoji ต้นฉบับของคุณกรุณาเลื่อนลงด้านล่าง</p>
+            </div>
+            <div class="outputarea">
+                <h2 id="outputareaheader">Your message</h2>
+                <textarea readonly rows="10" cols="29" id="outputarea2" maxlength="140"></textarea>
             </div>
         </div>
 

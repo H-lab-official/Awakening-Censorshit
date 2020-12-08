@@ -159,8 +159,12 @@ const getCountPlayer = async ()=>{
 }
 
 const setCountPlayer = async (countq) =>{
-    await firebase.database().ref("Emojis/countPlayer").set({
-             "val" : countq
+    // await firebase.database().ref("Emojis/countPlayer").set({
+    //          "val" : countq
+    // });
+    var ref = firebase.database().ref('Emojis/countPlayer/val');
+    let transaction =  await ref.transaction(function(currentCountQ) {
+        return (currentCountQ || 0) + 1;
     });
 }
 
@@ -386,7 +390,7 @@ const inputnameInit=()=>{
     let nameinput = document.querySelector('.nameinput');
     let countingword = document.querySelector('#countingword');
     let inputnamesectionDiv = document.querySelector('.inputnamesection');
-    inputnamesectionDiv.classList.add('animate__animated','animate__fadeInUp','animate__slow')
+    inputnamesectionDiv.classList.add('animate__animated','animate__fadeIn','animate__slow')
     output_string = "";
     nameinput.value = "";
     submit_btn.onclick = () =>{
@@ -694,12 +698,18 @@ const poopplayInit=()=>{
     let warningmassage = document.querySelector('#warningmassage');
     let whosaid = document.querySelector('#whosaid');
     let outputarea2 = document.querySelector('#outputarea2');
+    let outputareaheader = document.querySelector('#outputareaheader');
+    let outputareaDiv = document.querySelector('.outputarea');
     let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
+    let arrowz = document.getElementById('arrowz');
+    let eyez = document.getElementById('eyez');
     // let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
     let contentwrap = document.querySelector('.contentwrap');
     let endgame = document.querySelector('.endgame');
+    let thankyoumassage = document.querySelector('.thankyoumassage');
     contentwrap.style.display = "flex";
     endgame.style.display = "none";
+    thankyoumassage.style.display = "none";
 
     // poopdownloademoji_btn.innerHTML = "Download Your Emojis";
     poopdownloadkey_btn.innerHTML = "Download Your Key";
@@ -708,7 +718,10 @@ const poopplayInit=()=>{
     if(output_height>300){
         output_height = output_height+100;
     }
-    outputarea2.style.height = output_height+'px';
+    // outputarea2.style.height = output_height+'px';
+    // outputareaDiv.style.display ="none";
+    outputarea2.style.visibility ="hidden";
+    outputareaheader.style.visibility ="hidden";
     let tabledecoder = document.querySelector('#decodertable2');
     
     for (let index = 0; index < characters.length-1; index++) {
@@ -773,28 +786,41 @@ const poopplayInit=()=>{
         });
 
     whosaid.innerHTML = `ผลงานของคุณ${username}ได้จัดแสดงแล้ว<br>มองไปที่กำแพง ด้านบนได้เลย!`;
-    let countTime = 3;
+    let countTime = 30;
     
     warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
     let timerwarningmassage = setInterval(() => {
         --countTime;
         warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
         if(countTime<=0){
-            warningmassage.innerHTML = `Timeout`;
+            eyez.src="../img/nowshowpage/eye_fade.png";
+            arrowz.src="../img/nowshowpage/arrow-up-fade.png";
+            warningmassage.innerHTML = `หมดเวลา`;
             clearInterval(timerwarningmassage);
+            whosaid.classList.add('whosaidfade');
             // controller(7);
 
             
-            contentwrap.style.display = "none";
-            endgame.style.display = "flex";
+            // contentwrap.style.display = "none";
+            // endgame.style.display = "flex";
             // poopdownloademoji_btn.innerHTML="";
-            poopdownloadkey_btn.innerHTML="";
+            // poopdownloadkey_btn.innerHTML="";
             // poopdownloademoji_btn.classList.add("clickbtn2");
-            poopdownloadkey_btn.classList.add("clickbtn2");
-            poopdownloadkey_btn.appendChild(link);
+            // poopdownloadkey_btn.classList.add("clickbtn2");
+            // poopdownloadkey_btn.appendChild(link);
 
         
-
+            setTimeout(() => {
+                contentwrap.style.display = "none";
+                endgame.style.display = "flex";
+                thankyoumassage.style.display = "inline";
+                poopdownloadkey_btn.classList.add("clickbtn2");
+                poopdownloadkey_btn.innerHTML="";
+                poopdownloadkey_btn.appendChild(link);
+                // outputareaDiv.style.display ="inline";
+                outputarea2.style.visibility ="visible";
+                outputareaheader.style.visibility ="visible";
+            }, 2000);
 
         }
         }, 1000);

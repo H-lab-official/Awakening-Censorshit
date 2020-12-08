@@ -215,6 +215,11 @@ body {
     /* background-color: #C4C4C4; */
 }
 
+.tutorialrow{
+    display: flex;
+    flex-direction: row;
+}
+
 .tutorialeach{
     margin-bottom: 30px;
 }
@@ -241,10 +246,10 @@ body {
 
 .tutoriallistimg2{
     width: 100%;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around; */
 }
 
 .tutoriallistimg2 p{
@@ -296,6 +301,7 @@ body {
 
 #instructtitle {
     font-size: 1.5rem;
+    margin-bottom: 20px;
 }
 
 .nextbtn{
@@ -676,16 +682,30 @@ table, th, td {
     margin-top: 0px;
 }
 
+.whosaidfade{
+    color: #E5E5E5;
+}
+
 #outputarea2{
-    /* padding: 5px 5px; */
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     border-width: 0px; 
     color: #969696;
+    margin-top: 20px;
+    max-width: 100%;
+    height: 310px;
+    /* height: 13rem; */
 /* 
     resize: none;
     overflow: hidden;
     min-height: 50px;
     max-height: 100px; */
+
+
+    resize: none; 
+    /* width: 100%; */
+    padding:1%;
+    border:none;
+    /* overflow: hidden; */
 }
 
 #outputarea2:focus{
@@ -693,6 +713,8 @@ table, th, td {
     border:0px solid #C4C4C4;
     box-shadow: 0 0 10px #719ECE;
 }
+
+
 
 #downloadoutput:link{
     color: rgb(238, 238, 238);
@@ -719,6 +741,13 @@ table, th, td {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height:69vh;
+}
+
+.endgame p{
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 .endgame   h1{
@@ -728,9 +757,20 @@ table, th, td {
 }
 
 .endgame   h2{
-    text-align: center;
+    text-align: right;
     color: black;
-    margin-top: 0px
+    margin-top: 0px;
+    position: relative;
+    right: -40px;
+}
+
+#endgamearrowdown{
+    position: relative;
+    bottom: -25px;
+}
+
+.endgame img{
+    width: 6rem;
 }
 
 .arrowup{
@@ -753,6 +793,10 @@ table, th, td {
     width: 7rem;
 }
 
+.eyefade{
+    width: 7rem;
+}
+
 .addmargin{
     margin-bottom: 80px;
 }
@@ -762,4 +806,35 @@ table, th, td {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.thankyoumassage{
+    margin-bottom: 100px;
+}
+
+.thankyoumassage h2, p{
+    margin: 0px;
+    text-align: center;
+}
+
+.outputarea h2{
+    text-align: center;
+}
+
+@media screen and (max-width: 330px) {
+  .endgame img{
+    width: 5rem;
+}
+
+.endgame p{
+    font-size: 1rem;
+}
+
+.endgame h2{
+    font-size: 1.1rem;
+}
+
+.thankyoumassage h2, p{
+    font-size: 1rem;
+    text-align: center;
+}
 }
