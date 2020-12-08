@@ -514,7 +514,7 @@ table, th, td {
     background-color: white;
     border-radius: 25px;
     border: 2px solid;
-    box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 10px 10px rgba(0, 0, 0, 0.5); */
     margin: 30px;
     margin-bottom: 15px;
     display: flex;
