@@ -51,10 +51,7 @@ body{
 }
 
 .logo{
-    /* width: 37%; */
-    width: 47%;
-    position: relative;
-    left: -25px;
+    width: 37%;
 }
 
 .logo img{
@@ -133,7 +130,7 @@ body{
     background-color: transparent;
     /* padding: 5px 5px; */
     /* font-size: 1.5rem; */
-    font-size: 2.4rem; /*14*/
+    font-size: 2rem; /*14*/
     height: 409px;
     border-width: 0px; 
     color: #969696;
