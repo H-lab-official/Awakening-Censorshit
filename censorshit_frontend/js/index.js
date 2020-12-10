@@ -61,7 +61,7 @@ const emojis = [
     0x1F911,0x1F917,0x1F92D,
 
 
-    0x1F624,0x1F433,0x1F620,0x1F92C,0x1F608,0x1F419,
+    0x1F624,0x1F433,0x1F620,0x1F92C,0x1F425,0x1F419,
     0x1F480,0x1F4A9,0x1F921,0x1F33C,
     
     0x1F47A,0x1F47B,0x1F47D,0x1F335,0x1F916,0x1F63B,
@@ -436,7 +436,7 @@ const splashInit=()=>{
     
     
     splashstart_btn.onclick = ()=>{
-        controller(1);
+        controller(2);
     }
 }
 
@@ -470,7 +470,7 @@ const inputnameInit=()=>{
             // alert("Hello "+nameinput.value+" !!");
             username = nameinput.value;
             randommapping(emojis);
-            controller(4);
+            controller(3);
         }else{
             alert("please input your name!");
         }
@@ -1055,6 +1055,15 @@ const controller=(state)=>{
                 pooptranslationsection.style.display = "none";
                 poopsentsection.style.display = "none";
                 poopplaysection.style.display = "none";
+
+                                inputnamesection.style.visibility = "visible";
+                explainsection.style.visibility = "visible";
+                tutorialsection.style.visibility = "visible";
+                poopcontentsection.style.visibility = "visible";
+                poopwatingsection.style.visibility = "visible";
+                pooptranslationsection.style.visibility = "visible";
+                poopsentsection.style.visibility = "visible";
+                poopplaysection.style.visibility = "visible";
                 inputnameInit();
 
                 break;
