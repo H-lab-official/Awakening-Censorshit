@@ -1075,7 +1075,7 @@ table, th, td {
 #timertext{
     padding-left: 40px;
     padding-right: 40px;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 .imgcorrect img{
@@ -1114,6 +1114,10 @@ table, th, td {
 
 .clickbtn2 a{
     font-size: 0.8rem;
+}
+
+.explainwrap h2{
+    font-size: 1rem;
 }
 
 }

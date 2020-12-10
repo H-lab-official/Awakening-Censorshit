@@ -825,6 +825,9 @@ const poopsentInit=()=>{
             link.setAttribute('href',img);
             link.href = canvas.toDataURL();
             link.innerHTML = "Download Your Key";
+
+            let decoderpagewrap = document.querySelector('.decoderpagewrap');
+            // decoderpagewrap.appendChild(canvas);
             poopdownloadkey_btn.innerHTML="";
                 setTimeout(() => {
                     // window.open(img);
