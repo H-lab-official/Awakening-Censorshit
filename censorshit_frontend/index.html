@@ -126,7 +126,7 @@
 
             <div class="nameinputdiv">
                 <p>พิมพ์ชื่อคุณลงในช่องด้านล่าง</p>
-                <input type="text" class="nameinput" placeholder="Type your name..." maxlength="20">
+                <input type="text" class="nameinput" placeholder="Type your name..." maxlength="14">
             </div>
 
             <div class="clickbtndivinputname">
@@ -143,32 +143,69 @@
         <!-- page explain section -->
         <div class="explainsection containerz">
             <div class="explainwrap">
-                <div class="explaindetail" >
-                    <h2>คุณเคยมีอะไรที่อยากจะพูด แต่พูดออกมาไม่ได้หรือไม่?</h2>
+                <div class="explainggroup" id="explainggroup1">
+                    <div class="explaindetail">
+                        <h2>คุณเคยมีอะไรที่อยากพูด แต่พูดออกมาไม่ได้หรือไม่?</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
                 </div>
-                <div class="explaindot">
-                    <h2>.</h2>
+                
+                <div class="explainggroup" id="explainggroup2">
+                    <div class="explaindetail">
+                        <h2>เราอยากให้คุณลองนึกถึงสิ่งนั้น บางสิ่งที่คุณเก็บไว้ในใจ บางสิ่งที่คุณไม่มีโอกาสได้พูดออกมา</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
                 </div>
-                <div class="explaindot">
-                    <h2>.</h2>
+                
+                <div class="explainggroup" id="explainggroup3">
+                    <div class="explaindetail">
+                        <h2>นี่คือเวลาของคุณแล้ว ที่จะได้เผยมันออกมาให้โลกได้เห็น แต่จะไม่มีใครรู้ความหมาย ยกเว้นตัวคุณเอง</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
+                    <div class="explaindetail">
+                        <h2>หรือคนที่คุณต้องการ</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
+                    <div class="explaindot">
+                        <h2>.</h2>
+                    </div>
+                    <div class="explaindetail">
+                        <h2>ถ้าพร้อมแล้ว กดปุ่มด้านล่างได้เลย</h2>
+                    </div>
+                    <!-- <div class="clickbtndivinputname">
+                        <button class="clickbtn2" id="explainsubmit_btn">Enter</button>
+                    </div> -->
                 </div>
-                <div class="explaindot">
-                    <h2>.</h2>
+                <div class="clickbtndivinputname">
+                    <button class="clickbtn2" id="explainsubmit_btn">Enter</button>
                 </div>
-                <div class="explaindetail">
-                    <h2>ถ้าใช่ เราอยากให้คุณลองหลับตา แล้วนึกถึงสิ่งที่คุณอยากพูด บางเรื่องที่อยู่ในใจ</h2>
-                </div>
-                <div class="explaindetail">
-                    <h2>.</h2>
-                </div>
-                <div class="explaindetail">
-                    <h2>ถ้าพร้อมแล้ว กดปุ่มที่ด้านล่างได้เลย</h2>
-                </div>
+                
             </div>
 
-            <div class="clickbtndivinputname" >
-                <button class="clickbtn2" id="explainsubmit_btn">Enter</button>
-            </div>
+            
 
         </div>
 
@@ -220,15 +257,18 @@
         <div class="pooptranslationsection containerz">
             <div class="titlediv">
                 <div class="backbtn">
-                    <p id="pooptranslationsectionback_btn">Back</p>
+                    <p id=""></p>
                 </div>
-                <h1 id="toggledecode">Your message</h1>
+                <div class="explainback">
+                    <h3>การแปรข้อความสำเร็จ!</h3>
+                    <p>กด Sent เพื่อแสดงผลงาน Emoji ของคุณบนผนังกันเลย!</p>
+                </div>
                 <div class="fwdbtn">
                     <p></p>
                 </div>
             </div>
             <div class="outputarea">
-                <textarea data-autoresize rows="10" cols="29" id="outputarea" maxlength="140"></textarea>
+                <textarea data-autoresize readonly rows="10" cols="29" id="outputarea" maxlength="140"></textarea>
             </div>
             <div class="decoderarea">
                 <table id="decodertable" style="width:100%">
@@ -238,13 +278,10 @@
                     </tr>
                 </table>
             </div>
-            <div class="explainback">
-                <h3>การแปรข้อความสำเร็จ!</h3>
-                <p>กด Sent เพื่อแสดงผลงาน Emoji ของคุณบนผนังกันเลย! หรือหากต้องการแก้ไขข้อความต้นฉบับ กด Back
-                    ด้านบนเพื่อย้อนกลับ</p>
-            </div>
+
             <div class="clickbtndiv2">
                 <button class="clickbtn2" id="pooptranslationsectionnext_btn">Sent</button>
+                <button class="clickbtn2edit" id="pooptranslationsectionback_btn">Edit message</button>
             </div>
             <div class="loader"></div>
         </div>
@@ -252,23 +289,155 @@
 
         <!-- sixthpage Sents section -->
         <div class="poopsentsection containerz">
-            <div class="titlediv2">
-                <!-- <h1>Poop Sents</h1> -->
-                <h1></h1>
+            <div class="navbar">
+                <div class="imgclock"><img src="img/waitpage/access_alarms_24px.png"></div>
+                <h2 id="timertext"></h2>
             </div>
             <div class="poopsentdetail">
                 <div class="imgcorrect"><img src="img/waitpage/correct.png"></div>
                 <h3>
                     การส่งข้อความเสร็จสิ้น
                 </h3>
-                <div class="textdetail">
+                <!-- <div class="textdetail">
 
-                    <p id="timertext">ข้อความของคุณจะปรากฏบนผนัง
-                        ในอีก</p>
-                </div>
+                
+                </div> -->
                 <div class="warningtext2">
                     <p>เพื่อให้คุณติดตามเวลาได้ กรุณาอย่ากด
                         Quit browser (คุณยังสามารถใช้โทรศัพท์มือถือได้ตามปกติ)</p>
+                </div>
+                <div class="imgarrow"><img src="img/nowshowpage/arrow-down.png"></div>
+                <h3 id="pleasescorlldowna">เลื่อนลงด้านล่างเพื่อรับ</h3>
+                <h3 id="pleasescorlldownb">Key และ Emoji message ของคุณ</h3>
+            </div>
+            <div class="decoderpagewrap">
+                <div class="decoderpage">
+                    <div class="decoderheader">
+                        <h3 id="decoderheader">Annop's key</h3>
+                        <span><img src="img/decoder/key_icon.png"></span>
+                    </div>
+                    <div class="decoderareawrap">
+                        <div class="decoderareaA">
+                            <!-- <div>😀A</div>
+                                                    <div>😀B</div>
+                                                    <div>😀C</div>
+                                                    <div>😀D</div>
+                                                    <div>😀E</div>
+                                                    <div>😀F</div>
+                                            
+                                                    <div>😀G</div>
+                                                    <div>😀H</div>
+                                                    <div>😀I</div>
+                                                    <div>😀J</div>
+                                                    <div>😀K</div>
+                                                    <div>😀L</div>
+                                            
+                                                    <div>😀M</div>
+                                                    <div>😀N</div>
+                                                    <div>😀O</div>
+                                                    <div>😀P</div>
+                                                    <div>😀Q</div>
+                                                    <div>😀R</div>
+                                            
+                                                    <div>😀S</div>
+                                                    <div>😀T</div>
+                                                    <div>😀U</div>
+                                                    <div>😀V</div>
+                                                    <div>😀W</div>
+                                                    <div>😀X</div>
+                                            
+                                                    <div>😀Y</div>
+                                                    <div>😀Z</div>
+                                                    <div id="gridspace">😀SpaceBar</div> -->
+                        </div>
+                
+                        <div class="decoderareaB">
+                            <!-- <div>😀0</div>
+                                                    <div>😀1</div>
+                                                    <div>😀2</div>
+                                                    <div>😀3</div>
+                                                    <div>😀4</div>
+                                                    <div>😀5</div>
+                                                    <div>😀6</div>
+                                                    <div>😀7</div>
+                                                    <div>😀8</div>
+                                                    <div id="gridspace2">😀9</div> -->
+                        </div>
+                
+                        <div class="decoderareaC">
+                            <!-- <div>😀.</div>
+                                                    <div>😀,</div>
+                                                    <div>😀"</div>
+                                                    <div>😀'</div>
+                                                    <div>😀~</div>
+                                                    <div>😀•</div>
+                                            
+                                            
+                                                    <div>😀@</div>
+                                                    <div>😀#</div>
+                                                    <div>😀%</div>
+                                                    <div>😀^</div>
+                                                    <div>😀&</div>
+                                                    <div>😀_</div>
+                                            
+                                                    <div>😀-</div>
+                                                    <div>😀*</div>
+                                                    <div>😀+</div>
+                                                    <div>😀=</div>
+                                                    <div>😀<</div>
+                                                    <div>😀></div>
+                                    
+                                                    <div>😀(</div>
+                                                    <div>😀)</div>
+                                                    <div>😀{</div>
+                                                    <div>😀}</div>
+                                                    <div>😀[</div>
+                                                    <div>😀]</div>
+                                    
+                                                    <div>😀|</div>
+                                                    <div>😀\</div>
+                                                    <div>😀/</div>
+                                                    <div>😀:</div>
+                                                    <div>😀;</div>
+                                                    <div>😀?</div>
+                                    
+                                                    <div>😀!</div>
+                                                    <div>😀¢</div>
+                                                    <div>😀£</div>
+                                                    <div>😀€</div>
+                                                    <div>😀$</div>
+                                                    <div>😀¥</div> -->
+                        </div>
+                    </div>
+                    <div class="decoderhlablogo">
+                        <p><img src="img/decoder/hlab-logo-b.png"></p>
+                    </div>
+                    <!-- <div class="decoderbottom">
+                                    <div id="bottomP1">
+                                        <p>"Messages that anyone can see but no one knows what they mean unless you have the key"</p>
+                                    </div>
+                                    <div id="bottomP2">
+                                        <p>The Immitation Game</p>
+                                    </div>
+                                </div> -->
+                </div>
+                <div class="clickbtndiv3">
+                    <button class="clickbtn2" id="poopdownloadkey_btn"><p>Wating ...</p></button>
+                </div>
+                
+            </div>
+            
+            <div class="outputareafinish">
+                <div class="outputareafinishwrap">
+                    <h2 id="youremojimessage">Your emoji message</h2>
+                    <textarea data-autoresize rows="10" cols="29" id="outputarea2" class="outoutareadownload"
+                        maxlength="140"></textarea>
+                    
+                </div>
+                <div class="clickbtndiv4">
+                    <button class="clickbtn2" id="poopdownloademoji_btn">
+                        <p>Download your emoji</p>
+                    </button>
                 </div>
             </div>
             <!-- <div class="clickbtndiv2">
@@ -278,175 +447,7 @@
 
         <!-- sevenpage Play section -->
         <div class="poopplaysection containerz">
-            <div class="contentwrap">
-                <div class="imgwrap">
-                    <div class="arrowup">
-                        <img id="arrowz" src="img/nowshowpage/arrowup.png">
-                    </div>
-                    <div class="eye">
-                        <img id="eyez" src="img/nowshowpage/eye.png">
-                    </div>
-                </div>
-                <div class="titlediv2">
-                    <h2 id="whosaid">ผลงานของคุณได้จัดแสดงแล้ว มองไปที่กำแพง ด้านบนได้เลย!</h2>
-                </div>
-                <div class="titlediv2">
-                    <h3 id="warningmassage"></h3>
-                </div>
-
-
-
-            </div>
-            <!-- <div class="outputarea decoderarea">
-                <textarea readonly rows="2" cols="37" id="outputarea2" maxlength="140"></textarea>
-            </div> -->
-            <div class="decoderarea">
-                <table id="decodertable2" style="width:100%">
-                    <tr>
-                        <th>Characterss</th>
-                        <th>Emojis</th>
-                    </tr>
-                </table>
-            </div>
-            <div class="decoderpage">
-                <div class="decoderheader">
-                    <h3 id="decoderheader">Annop's key</h3>
-                    <span><img src="img/decoder/key_icon.png"></span>
-                </div>
-                <div class="decoderareawrap">
-                    <div class="decoderareaA">
-                        <!-- <div>😀A</div>
-                        <div>😀B</div>
-                        <div>😀C</div>
-                        <div>😀D</div>
-                        <div>😀E</div>
-                        <div>😀F</div>
-                
-                        <div>😀G</div>
-                        <div>😀H</div>
-                        <div>😀I</div>
-                        <div>😀J</div>
-                        <div>😀K</div>
-                        <div>😀L</div>
-                
-                        <div>😀M</div>
-                        <div>😀N</div>
-                        <div>😀O</div>
-                        <div>😀P</div>
-                        <div>😀Q</div>
-                        <div>😀R</div>
-                
-                        <div>😀S</div>
-                        <div>😀T</div>
-                        <div>😀U</div>
-                        <div>😀V</div>
-                        <div>😀W</div>
-                        <div>😀X</div>
-                
-                        <div>😀Y</div>
-                        <div>😀Z</div>
-                        <div id="gridspace">😀SpaceBar</div> -->
-                    </div>
-                
-                    <div class="decoderareaB">
-                        <!-- <div>😀0</div>
-                        <div>😀1</div>
-                        <div>😀2</div>
-                        <div>😀3</div>
-                        <div>😀4</div>
-                        <div>😀5</div>
-                        <div>😀6</div>
-                        <div>😀7</div>
-                        <div>😀8</div>
-                        <div id="gridspace2">😀9</div> -->
-                    </div>
-                
-                    <div class="decoderareaC">
-                        <!-- <div>😀.</div>
-                        <div>😀,</div>
-                        <div>😀"</div>
-                        <div>😀'</div>
-                        <div>😀~</div>
-                        <div>😀•</div>
-                
-                
-                        <div>😀@</div>
-                        <div>😀#</div>
-                        <div>😀%</div>
-                        <div>😀^</div>
-                        <div>😀&</div>
-                        <div>😀_</div>
-                
-                        <div>😀-</div>
-                        <div>😀*</div>
-                        <div>😀+</div>
-                        <div>😀=</div>
-                        <div>😀<</div>
-                        <div>😀></div>
-        
-                        <div>😀(</div>
-                        <div>😀)</div>
-                        <div>😀{</div>
-                        <div>😀}</div>
-                        <div>😀[</div>
-                        <div>😀]</div>
-        
-                        <div>😀|</div>
-                        <div>😀\</div>
-                        <div>😀/</div>
-                        <div>😀:</div>
-                        <div>😀;</div>
-                        <div>😀?</div>
-        
-                        <div>😀!</div>
-                        <div>😀¢</div>
-                        <div>😀£</div>
-                        <div>😀€</div>
-                        <div>😀$</div>
-                        <div>😀¥</div> -->
-                    </div>
-                    </div>
-                    <div class="decoderhlablogo">
-                        <p><img src="img/decoder/hlab-logo-b.png"></p>
-                    </div>
-                    <div class="decoderbottom">
-                        <div id="bottomP1">
-                            <p>"Messages that anyone can see but no one knows what they mean unless you have the key"</p>
-                        </div>
-                        <div id="bottomP2">
-                            <p>The Immitation Game</p>
-                        </div>
-                    </div>
-            </div>
             
-            <div class="endgame">
-                <div>
-                    <p>“Not secret. That’s the brilliant part. Messages that anyone can see but no one knows what they mean unless you have the key”</p>
-                </div>
-                <div>
-                    <h2>The Immitation Game</h2>
-                </div>
-                <div id="endgamearrowdown">
-                    <img  src="img/nowshowpage/arrow-down.png">
-                </div>
-                
-
-            </div>
-
-            <!-- <div class="clickbtndiv2">
-                <button class="clickbtn2disable" id="poopdownloademoji_btn"></button>
-            </div> -->
-            <div class="clickbtndiv2">
-                <button class="clickbtn2disable" id="poopdownloadkey_btn"></button>
-            </div>
-            <div class="thankyoumassage">
-                <h2>Thank you for comming</h2>
-                <p>หากต้องการบันทึกข้อความ Emoji ต้นฉบับของคุณกรุณาเลื่อนลงด้านล่าง</p>
-            </div>
-            <div class="outputarea">
-                <h2 id="outputareaheader">Your message</h2>
-                <textarea readonly rows="10" cols="29" id="outputarea2" maxlength="140"></textarea>
-            </div>
         </div>
 
         <!-- eightpage End section -->

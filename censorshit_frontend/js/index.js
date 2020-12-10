@@ -70,6 +70,8 @@ let decoder_emoji = {};
 
 let output_string = "";
 
+let counqmorethan = 2;
+
 
 //------------START FIREBASE FUNCTION------------//
 const getNowSecond = async () =>{
@@ -113,31 +115,70 @@ const checkAllow = async () =>{
         console.log("AllowTransaction = "+dataSnapshot.val());
         if(allow==1){
                 let countQ = await setCountQ();
+                // if(countQ==1){
+                //     sethaveQ(1);
+                //     let delayres = await delay(500);
+                //     let lastID = await getFirstID();
+                //     lastID = ""+Object.keys(lastID);
+                //     console.log("lastID = "+lastID);
+                //     setnowPlayer(lastID);
+                //     getallowRef.off();
+                //     controller(7); 
+                // }else{
+                //     console.log("COUNTQ iNCorrect = "+countQ);
+                //     let nowSecond = 0;
+                //     let setSecondRef = firebase.database().ref(`Emojis/nowSecond/val`);
+                //     setSecondRef.on('value',async (dataSnapshot)=> {
+                //         nowSecond= dataSnapshot.val();
+                //         console.log("nowSecond = "+nowSecond);
+                //         if(nowSecond>0){
+                //             remainTime = nowSecond + ((countQ-2)*30);
+                //             setSecondRef.off();
+                //             getallowRef.off();
+                //             // alert("countQ ="+countQ);
+                //             controller(7);
+                //         }
+                //     });
+                // }
+                
                 if(countQ==1){
                     sethaveQ(1);
                     let delayres = await delay(500);
                     let lastID = await getFirstID();
                     lastID = ""+Object.keys(lastID);
-                    console.log("lastID = "+lastID);
+                    remainTime = 0;
                     setnowPlayer(lastID);
                     getallowRef.off();
-                    controller(8); 
+                    counqmorethan = 0;
+                    // alert("COUNTQ==1")
+                    if(counqmorethan==0){
+                        controller(7);
+                    }
+                    
                 }else{
                     console.log("COUNTQ iNCorrect = "+countQ);
                     let nowSecond = 0;
+                    
                     let setSecondRef = firebase.database().ref(`Emojis/nowSecond/val`);
                     setSecondRef.on('value',async (dataSnapshot)=> {
-                        nowSecond= dataSnapshot.val();
-                        console.log("nowSecond = "+nowSecond);
-                        if(nowSecond>0){
-                            remainTime = nowSecond + ((countQ-2)*30);
-                            setSecondRef.off();
-                            getallowRef.off();
-                            // alert("countQ ="+countQ);
-                            controller(7);
-                        }
+                            nowSecond= dataSnapshot.val();
+                            console.log("nowSecond = "+nowSecond);
+                            if(nowSecond>0){
+                                remainTime = nowSecond + ((countQ-2)*30);
+                                setSecondRef.off();
+                                getallowRef.off();
+                                // alert("countQ ="+countQ);
+                                counqmorethan = 1;
+                                // alert("COUNTQ>1")
+                                if(counqmorethan==1){
+                                    controller(7);
+                                }
+                                
+                                
+                            }
                     });
                 }
+                
         }else if(allow==0){
 
         }
@@ -385,7 +426,7 @@ const instructionInit = () =>{
     let tutorialsectionback_btn = document.querySelector('#tutorialsectionback_btn');
     let tutorialsectionnext_btn = document.querySelector('#tutorialsectionback_next');
     let tutorialsectionDiv = document.querySelector('.tutorialsection');
-    tutorialsectionDiv.classList.add('animate__animated','animate__fadeInUp','animate__slow')
+    tutorialsectionDiv.classList.add('animate__animated','animate__fadeIn','animate__slow')
     tutorialsectionback_btn.onclick = () =>{
         // controller(1);
     }
@@ -410,7 +451,7 @@ const inputnameInit=()=>{
             // alert("Hello "+nameinput.value+" !!");
             username = nameinput.value;
             randommapping(emojis);
-            controller(3);
+            controller(4);
         }else{
             alert("please input your name!");
         }
@@ -421,7 +462,20 @@ const inputnameInit=()=>{
 //----------------explain page----------------
 explainInit=()=>{
     let explainsubmit_btn = document.querySelector('#explainsubmit_btn');
-
+    let explainggroup1 = document.querySelector('#explainggroup1');
+    let explainggroup2 = document.querySelector('#explainggroup2');
+    let explainggroup3 = document.querySelector('#explainggroup3');
+    explainggroup1.classList.add('fadeinout');
+    setTimeout(() => {
+        explainggroup1.style.display = "none";
+        explainggroup2.style.display = "flex";
+        explainggroup2.classList.add('fadeinout');
+        setTimeout(() => {
+            explainggroup2.style.display = "none";
+            explainggroup3.style.display = "flex";
+            explainggroup3.classList.add('fadein');
+        }, 8000);
+    }, 8000);
     explainsubmit_btn.onclick =()=>{
         controller(4);
     }
@@ -575,23 +629,70 @@ const poopoutputInit=()=>{
     // outputarea.style.height = output_height+'px';
     console.log("output_height   =  "+output_height);
     outputarea.value = output_string;
-    // output_height=output_height;
-    
-    let tabledecoder = document.querySelector('#decodertable');
-    
-    for (let index = 0; index < characters.length-1; index++) {
-        var row = tabledecoder.insertRow(-1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        if(characters[index]==" "){
-            cell1.innerHTML = "space";
-        }else{
-            cell1.innerHTML = characters[index];
-        }
-        
-        // cell2.innerHTML = String.fromCodePoint(randomEmoji[index]);
-        cell2.innerHTML = String.fromCodePoint(emojis[index]);
+
+
+    pooptranslationsectionback_btn.onclick = () =>{
+        // document.querySelect or('#downloadoutput').remove();
+        output_string ="";
+        // for (let index = 0; index < characters.length-1; index++) {
+        //      tabledecoder.deleteRow(-1);
+        // }
+        controller(4);
     }
+    
+    pooptranslationsectionnext_btn.onclick = () =>{
+        // document.querySelector('#downloadoutput').remove();
+        
+        //insert
+        //username
+        //output_string;
+        pooptranslationsectionnext_btn.style.display = "none"
+        pooptranslationsectionback_btn.style.display = "none"
+        loader.style.display = "inline-block"
+        InsertQ(username,output_string);
+
+        
+     
+
+        // controller(7);
+    }
+    
+    let clickbtndiv = document.querySelector('.clickbtndiv2');
+    
+    // let toggledecode = document.querySelector('#toggledecode');
+    // toggledecode.onclick =()=>{
+    //     if(toggle_state == false){
+    //         decoderarea.style.display = "flex";
+    //         outputarea.style.display = "none";
+    //         toggle_state = true;
+    //     }else{
+    //         outputarea.style.display = "flex";
+    //         decoderarea.style.display = "none";
+    //         toggle_state = false;
+    //     }
+    // }
+    
+    decoderarea.style.display = "none";
+}   
+
+
+const poopsentInit=()=>{
+    let bodytag = document.querySelector('body');
+    bodytag.style.position = "fixed";
+    // let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
+    
+    
+    let youremojimessagename = document.querySelector('#youremojimessage');
+    let imgarrow = document.querySelector('.imgarrow');
+    
+    let outputarea2 = document.querySelector('#outputarea2');
+    outputarea2.value = output_string;
+    let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
+    let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
+    // youremojimessagename.innerHTML = `asdasdasfasdf's emoji message`
+    // youremojimessagename.innerHTML = `${username}'s emoji message`
+    console.log("remainTIme0 = "+remainTime);
+    
     let decoderheader = document.querySelector('#decoderheader');
     let griddecoderA = document.querySelector('.decoderareaA');
     let griddecoderB = document.querySelector('.decoderareaB');
@@ -600,6 +701,7 @@ const poopoutputInit=()=>{
     for (let index = 0; index < 27; index++) {
         let label = characters[index].toUpperCase();
         let emoji = String.fromCodePoint(randomEmoji[index]);
+        // let emoji = String.fromCodePoint(emojis[index]);
         
         let divchild = document.createElement('div');
         if(index==26){
@@ -615,6 +717,7 @@ const poopoutputInit=()=>{
     {
         let label = characters[index];
         let emoji = String.fromCodePoint(randomEmoji[index]);
+        // let emoji = String.fromCodePoint(emojis[index]);
         
         let divchild = document.createElement('div');
         if(index==36){
@@ -629,6 +732,7 @@ const poopoutputInit=()=>{
     {
         let label = characters[index];
         let emoji = String.fromCodePoint(randomEmoji[index]);
+        // let emoji = String.fromCodePoint(emojis[index]);
         let divchild = document.createElement('div');
         let labelemoji = `${emoji}${label}`;
         divchild.innerHTML = labelemoji;
@@ -636,206 +740,238 @@ const poopoutputInit=()=>{
     }
 
 
-    pooptranslationsectionback_btn.onclick = () =>{
-        // document.querySelector('#downloadoutput').remove();
-        output_string ="";
-        for (let index = 0; index < characters.length-1; index++) {
-             tabledecoder.deleteRow(-1);
-        }
-        controller(4);
-    }
-    
-    pooptranslationsectionnext_btn.onclick = () =>{
-        // document.querySelector('#downloadoutput').remove();
-        
-        //insert
-        //username
-        //output_string;
-        pooptranslationsectionnext_btn.style.display = "none"
-        loader.style.display = "inline-block"
-        InsertQ(username,output_string);
-
-        
-        for (let index = 0; index < characters.length-1; index++) {
-             tabledecoder.deleteRow(-1);
-        }
-
-        // controller(7);
-    }
-    
-    let clickbtndiv = document.querySelector('.clickbtndiv2');
-    
-    let toggledecode = document.querySelector('#toggledecode');
-    toggledecode.onclick =()=>{
-        if(toggle_state == false){
-            decoderarea.style.display = "flex";
-            outputarea.style.display = "none";
-            toggle_state = true;
-        }else{
-            outputarea.style.display = "flex";
-            decoderarea.style.display = "none";
-            toggle_state = false;
-        }
-    }
-    
-    decoderarea.style.display = "none";
-}   
-
-
-const poopsentInit=()=>{
-
-    // let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
     let timertext = document.querySelector('#timertext');
-    console.log("remainTIme0 = "+remainTime);
     timertext.innerHTML =`ข้อความของคุณจะปรากฏบนผนังในอีก ${remainTime} วินาที`;
     let countTime = remainTime;
+    // let countTime = 10;
+    let countTime2 = 30;
+    let countTime3 = 30;
     // let countTime = 30;
-    
+    let navbar = document.querySelector('.navbar');
+    let poopsentdetail = document.querySelector('.poopsentdetail');
+    let imgclockDiv = document.querySelector('.imgclock');
+    if(counqmorethan == 0){
+        let timer2 = setInterval(() => {
+                --countTime2;
+                navbar.classList.add('navbarred');
+                timertext.innerHTML =`ข้อความของคุณได้จัดแสดงแล้ว คุณมีเวลา ${countTime2} วินาทีก่อนจะถูกเซ็นเซอร์หายไป`;
+                if(countTime2<=0){
+                        clearInterval(timer2);
+                        imgclockDiv.classList.add('imgclockend');
+                        timertext.innerHTML =`หมดเวลา`;
+                }
+                
+            },1000);
+    }else if(counqmorethan == 1) {
         console.log("remainTIme = "+countTime);
         let timer = setInterval(() => {
         --countTime;
         timertext.innerHTML =`ข้อความของคุณจะปรากฏบนผนังในอีก ${countTime} วินาที`;
-        if(countTime<0){
+        if(countTime<=0){
             clearInterval(timer);
-            controller(8);
+            let timer3 = setInterval(() => {
+                --countTime3;
+                navbar.classList.add('navbarred');
+                timertext.innerHTML =`ข้อความของคุณได้จัดแสดงแล้ว คุณมีเวลา ${countTime3} วินาทีก่อนจะถูกเซ็นเซอร์หายไป`;
+                if(countTime3<=0){
+                        clearInterval(timer3);
+                        imgclockDiv.classList.add('imgclockend');
+                        timertext.innerHTML =`หมดเวลา`;
+                }
+                
+            },1000);
         }
         }, 1000);
+    }
+        
 
     // poopsentsectionback_btn.onclick = () =>{
     //     controller(1);
     // }
-}
-
-const poopplayInit=()=>{
-    let warningmassage = document.querySelector('#warningmassage');
-    let whosaid = document.querySelector('#whosaid');
-    let outputarea2 = document.querySelector('#outputarea2');
-    let outputareaheader = document.querySelector('#outputareaheader');
-    let outputareaDiv = document.querySelector('.outputarea');
-    let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
-    let arrowz = document.getElementById('arrowz');
-    let eyez = document.getElementById('eyez');
-    // let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
-    let contentwrap = document.querySelector('.contentwrap');
-    let endgame = document.querySelector('.endgame');
-    let thankyoumassage = document.querySelector('.thankyoumassage');
-    contentwrap.style.display = "flex";
-    endgame.style.display = "none";
-    thankyoumassage.style.display = "none";
-
-    // poopdownloademoji_btn.innerHTML = "Download Your Emojis";
-    poopdownloadkey_btn.innerHTML = "Download Your Key";
-    console.log("OUTPUT_string = "+output_string);
-    outputarea2.value = output_string; 
-    if(output_height>300){
-        output_height = output_height+100;
-    }
-    // outputarea2.style.height = output_height+'px';
-    // outputareaDiv.style.display ="none";
-    outputarea2.style.visibility ="hidden";
-    outputareaheader.style.visibility ="hidden";
-    let tabledecoder = document.querySelector('#decodertable2');
+    navbar.style.display="none"
+    poopsentdetail.style.display="none";
     
-    for (let index = 0; index < characters.length-1; index++) {
-        var row = tabledecoder.insertRow(-1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        if(characters[index]==" "){
-            cell2.innerHTML = "space";
-        }else{
-            cell2.innerHTML = characters[index];
-        }
-        
-        // cell2.innerHTML = String.fromCodePoint(randomEmoji[index]);
-        cell1.innerHTML = String.fromCodePoint(emojis[index]);
-    }
-    
-
-    poopdownloadkey_btn.onclick = ()=>{
-        // console.log("img = "+img);
-        // location.href = imgpath;
-    }
-    // html2canvas(document.querySelector('#outputarea2')).then(function(canvas) {
-    //         canvas.setAttribute("id", "canvasdiv");
-    //         // canvas_div.appendChild(canvas);
-    //         let img = canvas.toDataURL("image/png");
-    //         // console.log("img = "+img);
-            
-    //         // let canvas_img= document.createElement('img');
-    //         let link = document.createElement('a');
-    //         link.setAttribute("id","downloadoutput");
-    //         link.download = 'emojis.png';
-    //         link.setAttribute('href',img);
-    //         link.href = canvas.toDataURL();
-    //         link.innerHTML = "Download Your Emojis";
-    //         // canvas_img.setAttribute('src',img);
-            
-    //         poopdownloademoji_btn.appendChild(link);
-    //         // <a href="/images/myw3schoolsimage.jpg" download></a>
-    //         // document.write('<img src="'+img+'"/>');
-    //         // console.log("img_canvas = "+img);
-    //     });
-        let link = document.createElement('a');
         html2canvas(document.querySelector('.decoderpage')).then(function(canvas) {
+            let link = document.createElement('a');
             canvas.setAttribute("id", "canvasdiv");
+            // canvas_div.appendChild(canvas);
+            let img = canvas.toDataURL("image/png");
+            
+            // console.log("img = "+img);
+            
+            // let canvas_img= document.createElement('img');
+            
+            link.setAttribute("class","downloadoutput");
+            link.download = 'key.png';
+            link.setAttribute('href',img);
+            link.href = canvas.toDataURL();
+            link.innerHTML = "Download Your Key";
+            poopdownloadkey_btn.innerHTML="";
+                setTimeout(() => {
+                    // window.open(img);
+                    navbar.style.display="flex"
+                    poopsentdetail.style.display="flex";
+                    bodytag.style.position ="static";
+                    poopdownloadkey_btn.appendChild(link);      
+                    imgarrow.classList.add('imgarrowdukedik');
+                }, 1000);
+        });
+
+        html2canvas(document.querySelector('.outputareafinishwrap')).then(function(canvas) {
+            let link = document.createElement('a');
+            canvas.setAttribute("id", "canvasdiv2");
             // canvas_div.appendChild(canvas);
             let img = canvas.toDataURL("image/png");
             // console.log("img = "+img);
             
             // let canvas_img= document.createElement('img');
             
-            link.setAttribute("id","downloadoutput");
+            link.setAttribute("class","downloadoutput");
             link.download = 'emojis.png';
             link.setAttribute('href',img);
             link.href = canvas.toDataURL();
-            link.innerHTML = "Download Your Key";
-            // canvas_img.setAttribute('src',img);
-            
-            
-            // <a href="/images/myw3schoolsimage.jpg" download></a>
-            // document.write('<img src="'+img+'"/>');
-            // console.log("img_canvas = "+img);
+            link.innerHTML = "Download Your Emoji";
+            poopdownloademoji_btn.innerHTML="";
+                setTimeout(() => {
+                    navbar.style.display="flex"
+                    poopsentdetail.style.display="flex";
+                    bodytag.style.position ="static";
+                    poopdownloademoji_btn.appendChild(link);
+                    imgarrow.classList.add('imgarrowdukedik');       
+                }, 1000);
         });
+}
 
-    whosaid.innerHTML = `ผลงานของคุณ${username}ได้จัดแสดงแล้ว<br>มองไปที่กำแพง ด้านบนได้เลย!`;
-    let countTime = 30;
+const poopplayInit=()=>{
+//     let warningmassage = document.querySelector('#warningmassage');
+//     let whosaid = document.querySelector('#whosaid');
+//     let outputarea2 = document.querySelector('#outputarea2');
+//     let outputareaheader = document.querySelector('#outputareaheader');
+//     let outputareaDiv = document.querySelector('.outputarea');
+//     let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
+//     let arrowz = document.getElementById('arrowz');
+//     let eyez = document.getElementById('eyez');
+//     // let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
+//     let contentwrap = document.querySelector('.contentwrap');
+//     let endgame = document.querySelector('.endgame');
+//     let thankyoumassage = document.querySelector('.thankyoumassage');
+//     contentwrap.style.display = "flex";
+//     endgame.style.display = "none";
+//     thankyoumassage.style.display = "none";
+
+//     // poopdownloademoji_btn.innerHTML = "Download Your Emojis";
+//     poopdownloadkey_btn.innerHTML = "Download Your Key";
+//     console.log("OUTPUT_string = "+output_string);
+//     outputarea2.value = output_string; 
+//     if(output_height>300){
+//         output_height = output_height+100;
+//     }
+//     // outputarea2.style.height = output_height+'px';
+//     // outputareaDiv.style.display ="none";
+//     outputarea2.style.visibility ="hidden";
+//     outputareaheader.style.visibility ="hidden";
+//     let tabledecoder = document.querySelector('#decodertable2');
     
-    warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
-    let timerwarningmassage = setInterval(() => {
-        --countTime;
-        warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
-        if(countTime<=0){
-            eyez.src="../img/nowshowpage/eye_fade.png";
-            arrowz.src="../img/nowshowpage/arrow-up-fade.png";
-            warningmassage.innerHTML = `หมดเวลา`;
-            clearInterval(timerwarningmassage);
-            whosaid.classList.add('whosaidfade');
-            // controller(7);
+//     for (let index = 0; index < characters.length-1; index++) {
+//         var row = tabledecoder.insertRow(-1);
+//         var cell1 = row.insertCell(0);
+//         var cell2 = row.insertCell(1);
+//         if(characters[index]==" "){
+//             cell2.innerHTML = "space";
+//         }else{
+//             cell2.innerHTML = characters[index];
+//         }
+        
+//         // cell2.innerHTML = String.fromCodePoint(randomEmoji[index]);
+//         cell1.innerHTML = String.fromCodePoint(emojis[index]);
+//     }
+    
+
+//     poopdownloadkey_btn.onclick = ()=>{
+//         // console.log("img = "+img);
+//         // location.href = imgpath;
+//     }
+//     // html2canvas(document.querySelector('#outputarea2')).then(function(canvas) {
+//     //         canvas.setAttribute("id", "canvasdiv");
+//     //         // canvas_div.appendChild(canvas);
+//     //         let img = canvas.toDataURL("image/png");
+//     //         // console.log("img = "+img);
+            
+//     //         // let canvas_img= document.createElement('img');
+//     //         let link = document.createElement('a');
+//     //         link.setAttribute("id","downloadoutput");
+//     //         link.download = 'emojis.png';
+//     //         link.setAttribute('href',img);
+//     //         link.href = canvas.toDataURL();
+//     //         link.innerHTML = "Download Your Emojis";
+//     //         // canvas_img.setAttribute('src',img);
+            
+//     //         poopdownloademoji_btn.appendChild(link);
+//     //         // <a href="/images/myw3schoolsimage.jpg" download></a>
+//     //         // document.write('<img src="'+img+'"/>');
+//     //         // console.log("img_canvas = "+img);
+//     //     });
+//         let link = document.createElement('a');
+//         html2canvas(document.querySelector('.decoderpage')).then(function(canvas) {
+//             canvas.setAttribute("id", "canvasdiv");
+//             // canvas_div.appendChild(canvas);
+//             let img = canvas.toDataURL("image/png");
+//             // console.log("img = "+img);
+            
+//             // let canvas_img= document.createElement('img');
+            
+//             link.setAttribute("id","downloadoutput");
+//             link.download = 'emojis.png';
+//             link.setAttribute('href',img);
+//             link.href = canvas.toDataURL();
+//             link.innerHTML = "Download Your Key";
+//             // canvas_img.setAttribute('src',img);
+            
+            
+//             // <a href="/images/myw3schoolsimage.jpg" download></a>
+//             // document.write('<img src="'+img+'"/>');
+//             // console.log("img_canvas = "+img);
+//         });
+
+//     whosaid.innerHTML = `ผลงานของคุณ${username}ได้จัดแสดงแล้ว<br>มองไปที่กำแพง ด้านบนได้เลย!`;
+//     let countTime = 30;
+    
+//     warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
+//     let timerwarningmassage = setInterval(() => {
+//         --countTime;
+//         warningmassage.innerHTML = `ข้อความของคุณจะถูกเซ็นเซอร์หายไปในอีก ${countTime} วินาที`;
+//         if(countTime<=0){
+//             eyez.src="../img/nowshowpage/eye_fade.png";
+//             arrowz.src="../img/nowshowpage/arrow-up-fade.png";
+//             warningmassage.innerHTML = `หมดเวลา`;
+//             clearInterval(timerwarningmassage);
+//             whosaid.classList.add('whosaidfade');
+//             // controller(7);
 
             
-            // contentwrap.style.display = "none";
-            // endgame.style.display = "flex";
-            // poopdownloademoji_btn.innerHTML="";
-            // poopdownloadkey_btn.innerHTML="";
-            // poopdownloademoji_btn.classList.add("clickbtn2");
-            // poopdownloadkey_btn.classList.add("clickbtn2");
-            // poopdownloadkey_btn.appendChild(link);
+//             // contentwrap.style.display = "none";
+//             // endgame.style.display = "flex";
+//             // poopdownloademoji_btn.innerHTML="";
+//             // poopdownloadkey_btn.innerHTML="";
+//             // poopdownloademoji_btn.classList.add("clickbtn2");
+//             // poopdownloadkey_btn.classList.add("clickbtn2");
+//             // poopdownloadkey_btn.appendChild(link);
 
         
-            setTimeout(() => {
-                contentwrap.style.display = "none";
-                endgame.style.display = "flex";
-                thankyoumassage.style.display = "inline";
-                poopdownloadkey_btn.classList.add("clickbtn2");
-                poopdownloadkey_btn.innerHTML="";
-                poopdownloadkey_btn.appendChild(link);
-                // outputareaDiv.style.display ="inline";
-                outputarea2.style.visibility ="visible";
-                outputareaheader.style.visibility ="visible";
-            }, 2000);
+//             setTimeout(() => {
+//                 contentwrap.style.display = "none";
+//                 endgame.style.display = "flex";
+//                 thankyoumassage.style.display = "inline";
+//                 poopdownloadkey_btn.classList.add("clickbtn2");
+//                 poopdownloadkey_btn.innerHTML="";
+//                 poopdownloadkey_btn.appendChild(link);
+//                 // outputareaDiv.style.display ="inline";
+//                 outputarea2.style.visibility ="visible";
+//                 outputareaheader.style.visibility ="visible";
+//             }, 2000);
 
-        }
-        }, 1000);
+//         }
+//         }, 1000);
 }
 
 

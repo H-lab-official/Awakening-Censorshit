@@ -166,7 +166,23 @@ body {
     background-color: black;
     padding: 15px 14px; 
     border-radius: 42px;
-    border-width: 0px; 
+    border-color: black;
+    border-width: 1px; 
+}
+
+.clickbtn2edit{
+    width: 100%;
+    font-size: 1rem;
+    /* padding: 10% 0 10% 0; */
+    /* height: 60%; */
+    color: black;
+    background-color: white;
+    padding: 15px 14px; 
+    border-radius: 42px;
+    border-color: black;
+    border-width: 1px; 
+    margin-top: 10px;
+    margin-bottom: 12px;
 }
 
 .warningtext{
@@ -191,10 +207,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: 40%;
+    bottom: 50%;
 }
 
 .explainwrap h2{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .explaindot h2{
@@ -206,6 +225,45 @@ body {
     text-align: center;
 }
 
+.explainggroup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#explainggroup1{
+    
+}
+
+#explainggroup2{
+    display: none;
+}
+
+#explainggroup3{
+    display: none;
+}
+.fadeinout{
+    animation: fadeinout 8s linear 1 forwards;
+}
+
+.fadein{
+    animation: fadein 8s linear 1 forwards;
+}
+
+
+@keyframes fadeinout {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
 
 /* secondpage tutorial section */
@@ -466,7 +524,22 @@ table, th, td {
     left: -999em;
 }
 
+.decoderpagewrap{
+    /* height: 90vh; */
+    height: 100vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    
+}
+
+.canvasdiv{
+    display: block;
+}
+
 .decoderpage{
+    /* padding-top: 6rem; */
     /* background-color: red; */
     font-family: 'bpdotssquaresbold';
     /* padding: 0px 50px 0px 50px; */
@@ -475,11 +548,15 @@ table, th, td {
     border-top: 0px;
     border-bottom: 0px;
 
-  
+    
     width:  100vw; /* For 100% screen width */
     /* margin-bottom: 40px; */
-    position: absolute; 
-    left: -999em;
+    /* position: absolute; 
+    left: -999em; */
+    padding:0;
+      margin:0;
+      overflow: -moz-hidden-unscrollable;
+	overflow: hidden;
 }
 
 .decoderheader{
@@ -572,12 +649,16 @@ table, th, td {
     border-color: black;
 }
 
+.decoderhlablogo{
+    padding-bottom: 20px;
+}
+
 .decoderhlablogo p{
     text-align: right;
     position: relative;
     right: 30px;
-    margin-top: 0px;
-    margin-bottom: 10px;
+    /* margin-top: 0px; */
+    /* margin-bottom: 10px; */
 }
 
 .decoderhlablogo img{
@@ -590,11 +671,51 @@ table, th, td {
     line-height: 1.2;
 }
 
-#bottomP1{
+
+.clickbtndiv3{
+    width: 50%;
+    /* text-align:center; */
+}
+
+.clickbtndiv3 button{
+    /* height:20px; 
+    width:100px; 
+    margin: -20px -50px;  */
+    margin-top: 10px;
+    position:relative;
+    top:50%; 
+    left:50%;
+}
+
+.clickbtndiv4{
+    width: 70%;
+    /* text-align:center; */
+}
+
+.clickbtndiv4 button{
+    /* height:20px; 
+    width:100px; 
+    margin: -20px -50px;  */
+    margin-top: 10px;
+    position:relative;
+    top:50%; 
+    left:20%;
+}
+
+.clickbtndiv4 p{
+    /* font-size: 0.7rem; */
+    /* text-align:center; */
+}
+
+#youremojimessage{
+    /* padding-top: rem; */
+}
+
+#bottomP1 p{
     text-align: left;
 }
 
-#bottomP2{
+#bottomP2 p{
     text-align: right;
 }
 
@@ -628,9 +749,19 @@ table, th, td {
   100% { transform: rotate(360deg); }
 }
 
+.outputarea{
+    margin-bottom: 20px;
+}
+
+.outputareafinish{
+    height: 100vh;
+}
+
 
 .explainback{
-    margin-top: 40px;
+    /* margin-top: 40px; */
+    padding-left: 30px;
+    padding-right: 30px;
     /* padding: 0 10px 0 10px; */
 }
 
@@ -648,16 +779,61 @@ table, th, td {
 
 /*------------poopsentdetail------------*/
 .poopsentdetail{
-    margin-top: 70px;
+    /* margin-top: 2rem; */
+    /* padding-top: 8rem; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100vh;
 }
+
+.poopsentdetail h3{
+    margin-bottom: 6px;
+}
+
+#pleasescorlldowna{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+#pleasescorlldownb{
+    text-align: center;
+    margin-top: 0px;
+}
+
 
 .imgcorrect img{
     width: 6rem;
 }
+
+.imgarrow{
+    margin: 2.2rem 0 2.2rem 0;
+    
+}
+
+.imgarrow img{
+    width: 6.5rem;
+    
+}
+
+.imgarrowdukedik {
+  animation: MoveUpDown 2s linear infinite;
+  position: relative;
+  /* left: 0; */
+  bottom: 0;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: -2rem;
+  }
+}
+
+
 
 .textdetail p{
     text-align: center;
@@ -668,8 +844,8 @@ table, th, td {
     color: red;
     font-size: 0.9rem;
     text-align: center;
-    position: absolute;
-    bottom: 60px;
+    /* position: absolute;
+    bottom: 60px; */
 }
 
 /*------------poopoutput------------*/
@@ -716,22 +892,22 @@ table, th, td {
 
 
 
-#downloadoutput:link{
+.downloadoutput:link{
     color: rgb(238, 238, 238);
     text-decoration: none;
 }
 
-#downloadoutput:visited{
+.downloadoutput:visited{
     color: rgb(238, 238, 238);
     text-decoration: none;
 }
 
-#downloadoutput:hover{
+.downloadoutput:hover{
     color: rgb(219, 219, 219);
     text-decoration: none;
 }
 
-#downloadoutput:active{
+.downloadoutput:active{
     color: white;
     text-decoration: none;
 }
@@ -820,6 +996,59 @@ table, th, td {
     text-align: center;
 }
 
+.navbar {
+  overflow: hidden;
+  background-color: black;
+  position: fixed; /* Set the navbar to fixed position */
+  /* top: 2rem;  */
+  top: 0;
+  width: 100%; /* Full width */
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  color: white;
+}
+
+.navbarred {
+  background-color: red;
+}
+
+#timertext{
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 1.4em;
+    font-weight: 10;
+    line-height: 120%;
+}
+
+.imgclock{
+    position: relative;
+    top: 17px;
+    right: -21px;
+}
+
+.imgclockend{
+    position: relative;
+    top: 3px;
+    right: -21px;
+}
+
+
+.imgclock img{
+
+    width: 3.5rem;
+}
+
+.outputareafinish{
+    border-top: dashed 2px;
+    border-top-color: #c4c4c4;
+}
+
+.outputareafinishwrap{
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
 @media screen and (max-width: 330px) {
   .endgame img{
     width: 5rem;
@@ -837,4 +1066,54 @@ table, th, td {
     font-size: 1rem;
     text-align: center;
 }
+
+
+.explainwrap h2{
+    font-size: 1rem;
+}
+
+#timertext{
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 1em;
+}
+
+.imgcorrect img{
+    width: 2.5rem;
+}
+
+.imgarrow img{
+    width: 4rem;
+    
+}
+
+.imgclock{
+    position: relative;
+    top: 11px;
+    right: -21px;
+}
+
+.imgclockend{
+    position: relative;
+    top: 3px;
+    right: -21px;
+}
+
+
+.imgclock img{    
+    width: 2.5rem;
+}
+
+.decoderpagewrap{
+    height: 120vh;
+}
+
+.clickbtndiv3 p{
+    font-size: 0.8rem;
+}
+
+.clickbtn2 a{
+    font-size: 0.8rem;
+}
+
 }
