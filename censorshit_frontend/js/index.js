@@ -493,8 +493,8 @@ explainInit=()=>{
             explainggroup2.style.display = "none";
             explainggroup3.style.display = "flex";
             explainggroup3.classList.add('fadein');
-        }, 8000);
-    }, 8000);
+        }, 6000);
+    }, 6000);
     explainsubmit_btn.onclick =()=>{
         controller(4);
     }

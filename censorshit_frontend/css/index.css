@@ -246,11 +246,11 @@ body {
     display: none;
 }
 .fadeinout{
-    animation: fadeinout 8s linear 1 forwards;
+    animation: fadeinout 6s linear 1 forwards;
 }
 
 .fadein{
-    animation: fadein 8s linear 1 forwards;
+    animation: fadein 6s linear 1 forwards;
 }
 
 
