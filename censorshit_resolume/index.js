@@ -21,7 +21,7 @@ const getPlayerContent = async (keyID)=>{
         console.log("remainTIme = "+countTime);
             let timer = setInterval(() => {
             --countTime;
-            timertext.innerHTML =`${countTime} seconds.`;
+            timertext.innerHTML =`${countTime} s.`;
             if(countTime<=0){
                 // ul.innerHTML="";
                 clearInterval(timer);

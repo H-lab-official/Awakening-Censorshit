@@ -34,6 +34,7 @@ body{
 #timerdivp2{
     margin-top: 0px;
     margin-bottom: 0px;
+    text-align: right;
 }
 
 #timer{
@@ -42,7 +43,7 @@ body{
 
 .logotimer{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
      /* align-items: center; */
     justify-content: space-between;
     align-content: stretch;
@@ -52,9 +53,12 @@ body{
 
 .logo{
     /* width: 37%; */
-    width: 47%;
+    /* width: 47%; */
     position: relative;
     left: -25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .logo img{
@@ -66,6 +70,10 @@ body{
     margin-bottom: 5px;
     position: relative;
     right: -8px;
+}
+
+#whonexttt{
+    font-size: 1.4rem;
 }
 
 .showcolumn{
@@ -89,8 +97,9 @@ body{
 
 .rightcolumn{
     position: relative;
-    top: 133px;
-    right: -24px;
+    top: 24px;
+    right: -40px;
+
 }
 
 .rightcolumn h1{
@@ -188,3 +197,18 @@ li:before {
     font-size: 17px;
 }
 
+.bottomspot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.bottomdescrip{
+    position: relative;
+    left: -70px;
+}
+
+.imageqr img{
+    width: 40%;
+}
