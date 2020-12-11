@@ -92,6 +92,7 @@ let output_string = "";
 let counqmorethan = 2;
 
 
+
 //------------START FIREBASE FUNCTION------------//
 const getNowSecond = async () =>{
     const eventref = firebase.database().ref('Emojis/nowSecond/val');
@@ -466,7 +467,7 @@ const inputnameInit=()=>{
     inputnamesectionDiv.classList.add('animate__animated','animate__fadeIn','animate__slow')
     output_string = "";
     nameinput.value = "";
-
+    
     nameinput.onkeyup = (event)=>{
         var pattern = new RegExp('^' + nameinput.getAttribute('pattern') + '$');
         
@@ -542,6 +543,11 @@ const poopcontentInit = () =>{
     textarea.classList.add('animate__animated','animate__fadeIn','animate__slow')
     let clickbtndiv = document.querySelector('.clickbtndiv');
     let offset = textarea.offsetHeight - textarea.clientHeight;
+    textarea.onpaste = (event)=>{
+        alert("Please do not Paste");
+        event.preventDefault();
+    }
+
     textarea.onkeyup = (event)=>{
         // console.log("Countext = "+event.target.value);
         let input_area = event.target.value;
