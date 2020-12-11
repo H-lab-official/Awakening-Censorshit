@@ -15,7 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;500&family=Roboto:wght@300;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
@@ -125,8 +124,8 @@
             </div>
 
             <div class="nameinputdiv">
-                <p>พิมพ์ชื่อคุณลงในช่องด้านล่าง</p>
-                <input type="text" class="nameinput" placeholder="Type your name..." maxlength="14">
+                <p>Type Your Name</p>
+                <input type="text" class="nameinput" pattern="[a-zA-Z0-9\s~\u2022!@#£€$¥%^&*()-_+=\{\}\[\]|\\/:;\x22\x27\u201c\u201d\u2018\u2019<>,.?¢]+" placeholder="Type your name... (English Only)" maxlength="14">
             </div>
 
             <div class="clickbtndivinputname">
@@ -175,13 +174,10 @@
                 
                 <div class="explainggroup" id="explainggroup3">
                     <div class="explaindetail">
-                        <h2>นี่คือเวลาของคุณแล้ว ที่จะได้เผยมันออกมาให้โลกได้เห็น แต่จะไม่มีใครรู้ความหมาย ยกเว้นตัวคุณเอง</h2>
+                        <h2>นี่คือเวลาของคุณแล้ว ที่จะได้เผยมันออกมาให้โลกได้เห็น</h2>
                     </div>
                     <div class="explaindot">
                         <h2>.</h2>
-                    </div>
-                    <div class="explaindetail">
-                        <h2>หรือคนที่คุณต้องการ</h2>
                     </div>
                     <div class="explaindot">
                         <h2>.</h2>
@@ -287,31 +283,39 @@
                 <div class="imgclock"><img src="img/waitpage/access_alarms_24px.png"></div>
                 <h2 id="timertext"></h2>
             </div>
-            <div class="poopsentdetail">
-                <div class="imgcorrect"><img src="img/waitpage/correct.png"></div>
-                <h3>
-                    การส่งข้อความเสร็จสิ้น
-                </h3>
-                <!-- <div class="textdetail">
+            <!-- <div class="poopsentdetail"> -->
+                <!-- <div class="imgcorrect"><img src="img/waitpage/correct.png"></div> -->
 
+                <!-- <div class="textdetail">
+                    <p>dfsd</p>
                 
-                </div> -->
+                </div> 
                 <div class="warningtext2">
                     <p>เพื่อให้คุณติดตามเวลาได้ กรุณาอย่ากด
                         Quit browser (คุณยังสามารถใช้โทรศัพท์มือถือได้ตามปกติ)</p>
                 </div>
                 <div class="imgarrow"><img src="img/nowshowpage/arrow-down.png"></div>
                 <h3 id="pleasescorlldowna">เลื่อนลงด้านล่างเพื่อรับ</h3>
-                <h3 id="pleasescorlldownb">Key และ Emoji message ของคุณ</h3>
-            </div>
+                <h3 id="pleasescorlldownb">Key และ Emoji message ของคุณ</h3> -->
+            <!-- </div> -->
             <div class="decoderpagewrap">
-                <div class="decoderpage">
+                <div class="decodertitle">
+                    <h2>
+                        การส่งข้อความเสร็จสิ้น
+                    </h2>
+                    <p id="keyptitle">ดู Key สำหรับปลดล็อกข้อความของคุณที่</p>
+                    <h1>IG : hlab.official</h1>
+                </div>  
+                <div class="iglogo">
+                    <p><img src="img/decoder/QR_IG_HLAB.png"></p>
+                </div>
+                <!-- <div class="decoderpage">
                     <div class="decoderheader">
                         <h3 id="decoderheader">Annop's key</h3>
                         <span><img src="img/decoder/key_icon.png"></span>
                     </div>
                     <div class="decoderareawrap">
-                        <div class="decoderareaA">
+                        <div class="decoderareaA"> -->
                             <!-- <div>😀A</div>
                                                     <div>😀B</div>
                                                     <div>😀C</div>
@@ -401,11 +405,11 @@
                                                     <div>😀€</div>
                                                     <div>😀$</div>
                                                     <div>😀¥</div> -->
-                        </div>
-                    </div>
-                    <div class="decoderhlablogo">
+                        <!-- </div>
+                    </div> -->
+                    <!-- <div class="decoderhlablogo">
                         <p><img src="img/decoder/hlab-logo-b.png"></p>
-                    </div>
+                    </div> -->
                     <!-- <div class="decoderbottom">
                                     <div id="bottomP1">
                                         <p>"Messages that anyone can see but no one knows what they mean unless you have the key"</p>
@@ -415,26 +419,26 @@
                                     </div>
                                 </div> -->
                 </div>
-                <div class="clickbtndiv3">
+                <!-- <div class="clickbtndiv3">
                     <button class="clickbtn2" id="poopdownloadkey_btn"><p>Wating ...</p></button>
-                </div>
+                </div> -->
                 
             </div>
             
-            <div class="outputareafinish">
+            <!-- <div class="outputareafinish">
                 <div class="outputareafinishwrap">
                     <h2 id="youremojimessage">Your emoji message</h2>
                     <textarea data-autoresize rows="10" cols="29" id="outputarea2" class="outoutareadownload"
-                        maxlength="140"></textarea>
+                        maxlength="140">😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀</textarea>
                     
                 </div>
                 <div class="clickbtndiv4">
                     <button class="clickbtn2" id="poopdownloademoji_btn">
                         <p>Download your emoji</p>
                     </button>
-                </div>
+                </div> 
             </div>
-            <!-- <div class="clickbtndiv2">
+            <div class="clickbtndiv2">
                 <button class="clickbtn2" id="poopsentsectionback_btn">Back</button>
             </div> -->
         </div>
@@ -471,9 +475,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
                https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
         // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyDFSl2QDM96BReRFGR4MwrpbFXwao7NuP0",

@@ -99,6 +99,7 @@ body {
 .nameinputdiv p{
     position: relative;
     left: 4px;
+    font-size: 1.5rem;
 }
 
 .clickbtndivinputname{
@@ -246,11 +247,11 @@ body {
     display: none;
 }
 .fadeinout{
-    animation: fadeinout 6s linear 1 forwards;
+    animation: fadeinout 5s linear 1 forwards;
 }
 
 .fadein{
-    animation: fadein 6s linear 1 forwards;
+    animation: fadein 5s linear 1 forwards;
 }
 
 
@@ -526,12 +527,44 @@ table, th, td {
 
 .decoderpagewrap{
     /* height: 90vh; */
-    height: 100vh;
+    /* padding-top: 6rem; */
+    /* padding-left: 2rem;
+    padding-right: 2rem; */
+    /* height: 100vh; */
     /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; */
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
     
+}
+
+
+.decodertitle{
+    padding-bottom: 15px;
+}
+
+
+.decodertitle h2{
+    margin-bottom: 0px;
+}
+
+.decodertitle h1{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.decodertitle h2,p,h1 {
+    text-align: center;
+}
+
+#keyptitle{
+    font-size: 1.2rem;
 }
 
 .canvasdiv{
@@ -548,6 +581,7 @@ table, th, td {
     border-top: 0px;
     border-bottom: 0px;
 
+    
     
     width:  100vw; /* For 100% screen width */
     /* margin-bottom: 40px; */
@@ -754,7 +788,7 @@ table, th, td {
 }
 
 .outputareafinish{
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 
@@ -785,7 +819,7 @@ table, th, td {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .poopsentdetail h3{
@@ -1105,7 +1139,8 @@ table, th, td {
 }
 
 .decoderpagewrap{
-    height: 120vh;
+    /* height: 120vh; */
+    
 }
 
 .clickbtndiv3 p{

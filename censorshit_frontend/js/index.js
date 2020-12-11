@@ -52,25 +52,25 @@ const funckingthings = [];
 //     0x1F9E0,0x1F9B7,0x1F9B4,0x1F436,0x1F981,0x1F42F,0x1F434,0x1F984,0x1F42E,0x1F437,
 //     0x1F439,0x1F430,0x1F428,0x1F423,0x1F989,0x1F414
 // ]
+const emojis = [127797,129315,128536,128522,128154,128544,129326,128518,128051,128076,128057,129303,128515,127868,129324,128046,128070,127825,128025,129460,129412,128139,129299,127775,128513,129418,128293,128035,129322,128584,129463,128150,128122,128020,129310,128123,128523,129504,129321,128055,128171,127812,129297,128075,128139,129409,128125,128538,128049,128110,129395,128128,129302,128519,128169,128155,128548,128037,128591,128586,129313,127804,128525,128130,128054,128074,129325,128047,128048,128571,128585,128579,128163];
+// const emojis = [
+//     0x1F49B,0x1F603,0x1F49A,0x1F601,0x1F606,0x1F496, 
+//     0x1F923,0x1F48B,0x1F913,0x1F643,0x1F973,0x1F60A, 
+//     0x1F607,0x1F92E,0x1F60D,0x1F929,0x1F618,0x1F46E, 
+//     0x1F61A,0x1F60B,0x1F482,0x1F98A,0x1F92A,0x1F431, 
+//     0x1F911,0x1F917,0x1F92D,
 
-const emojis = [
-    0x1F49B,0x1F603,0x1F49A,0x1F601,0x1F606,0x1F496, 
-    0x1F923,0x1F48B,0x1F913,0x1F643,0x1F973,0x1F60A, 
-    0x1F607,0x1F92E,0x1F60D,0x1F929,0x1F618,0x1F46E, 
-    0x1F61A,0x1F60B,0x1F482,0x1F98A,0x1F92A,0x1F431, 
-    0x1F911,0x1F917,0x1F92D,
 
-
-    0x1F624,0x1F433,0x1F620,0x1F92C,0x1F425,0x1F419,
-    0x1F480,0x1F4A9,0x1F921,0x1F33C,
+//     0x1F624,0x1F433,0x1F620,0x1F92C,0x1F425,0x1F419,
+//     0x1F480,0x1F4A9,0x1F921,0x1F33C,
     
-    0x1F47A,0x1F47B,0x1F47D,0x1F335,0x1F916,0x1F63B,
-    0x1F351,0x1F64A,0x1F648,0x1F649,0x1F48B,0x1F344,
-    0x1F4AB,0x1F4A3,0x1F44B,0x1F44C,0x1F91E,0x1F446,
-    0x1F44A,0x1F64F,0x1F9E0,0x1F9B7,0x1F9B4,0x1F436,
-    0x1F981,0x1F42F,0x1F37C,0x1F984,0x1F42E,0x1F437,
-    0x1F439,0x1F430,0x1F31F,0x1F423,0x1F525,0x1F414
-]
+//     0x1F47A,0x1F47B,0x1F47D,0x1F335,0x1F916,0x1F63B,
+//     0x1F351,0x1F64A,0x1F648,0x1F649,0x1F48B,0x1F344,
+//     0x1F4AB,0x1F4A3,0x1F44B,0x1F44C,0x1F91E,0x1F446,
+//     0x1F44A,0x1F64F,0x1F9E0,0x1F9B7,0x1F9B4,0x1F436,
+//     0x1F981,0x1F42F,0x1F37C,0x1F984,0x1F42E,0x1F437,
+//     0x1F439,0x1F430,0x1F31F,0x1F423,0x1F525,0x1F414
+// ]
 
 const censorCharacter ='ก';
 const censorEmoji = 0x1F4A9;
@@ -313,7 +313,8 @@ const func =(a, b) =>{
 }  
 
 const randommapping = (emojis_arr) =>{
-    randomEmoji = emojis_arr.sort(func)
+    // randomEmoji = emojis_arr.sort(func)
+    randomEmoji = emojis_arr;
     for (let index = 0; index < emojis.length; index++) {
         decoder_emoji[characters[index]] = String.fromCodePoint(randomEmoji[index]);
     }
@@ -465,8 +466,36 @@ const inputnameInit=()=>{
     inputnamesectionDiv.classList.add('animate__animated','animate__fadeIn','animate__slow')
     output_string = "";
     nameinput.value = "";
+
+    nameinput.onkeyup = (event)=>{
+        var pattern = new RegExp('^' + nameinput.getAttribute('pattern') + '$');
+        
+        let input_area2 = event.target.value;
+        var phoneResult = pattern.test(input_area2);
+        if(phoneResult==false){
+            if(input_area2!=""){
+                let new_textarea = nameinput.value.substr(0,nameinput.value.length-1);
+                nameinput.value = new_textarea;
+                alert("Support English only")
+                return false;
+            }else{
+                return false;
+            }
+            
+        }
+    }
+    
+
     submit_btn.onclick = () =>{
         if(nameinput.value!=""){
+            let input_area = nameinput.value.toLowerCase();
+            var pattern = new RegExp('^' + nameinput.getAttribute('pattern') + '$');
+            var phoneResult = pattern.test(input_area);
+            if(phoneResult==false){
+                alert("Support English only")
+                nameinput.value = "";
+                return false;
+            }
             // alert("Hello "+nameinput.value+" !!");
             username = nameinput.value;
             randommapping(emojis);
@@ -493,8 +522,8 @@ explainInit=()=>{
             explainggroup2.style.display = "none";
             explainggroup3.style.display = "flex";
             explainggroup3.classList.add('fadein');
-        }, 6000);
-    }, 6000);
+        }, 5000);
+    }, 5000);
     explainsubmit_btn.onclick =()=>{
         controller(4);
     }
@@ -697,7 +726,7 @@ const poopoutputInit=()=>{
 
 const poopsentInit=()=>{
     let bodytag = document.querySelector('body');
-    bodytag.style.position = "fixed";
+    // bodytag.style.position = "fixed";
     // let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
     
     
@@ -705,58 +734,58 @@ const poopsentInit=()=>{
     let imgarrow = document.querySelector('.imgarrow');
     
     let outputarea2 = document.querySelector('#outputarea2');
-    outputarea2.value = output_string;
+    // outputarea2.value = output_string;
     let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
-    let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
+    // let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
     // youremojimessagename.innerHTML = `asdasdasfasdf's emoji message`
     // youremojimessagename.innerHTML = `${username}'s emoji message`
     console.log("remainTIme0 = "+remainTime);
     
-    let decoderheader = document.querySelector('#decoderheader');
-    let griddecoderA = document.querySelector('.decoderareaA');
-    let griddecoderB = document.querySelector('.decoderareaB');
-    let griddecoderC = document.querySelector('.decoderareaC');
-    decoderheader.innerHTML = `${username}'s key`;
-    for (let index = 0; index < 27; index++) {
-        let label = characters[index].toUpperCase();
-        let emoji = String.fromCodePoint(randomEmoji[index]);
-        // let emoji = String.fromCodePoint(emojis[index]);
+    // let decoderheader = document.querySelector('#decoderheader');
+    // let griddecoderA = document.querySelector('.decoderareaA');
+    // let griddecoderB = document.querySelector('.decoderareaB');
+    // let griddecoderC = document.querySelector('.decoderareaC');
+    // decoderheader.innerHTML = `${username}'s key`;
+    // for (let index = 0; index < 27; index++) {
+    //     let label = characters[index].toUpperCase();
+    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
+    //     let emoji = String.fromCodePoint(emojis[index]);
         
-        let divchild = document.createElement('div');
-        if(index==26){
-            divchild.setAttribute("id","gridspace");
-            label = "SpaceBar"
-        }
-        let labelemoji = `${emoji}${label}`;
-        divchild.innerHTML = labelemoji;
-        griddecoderA.appendChild(divchild);
-    }
+    //     let divchild = document.createElement('div');
+    //     if(index==26){
+    //         divchild.setAttribute("id","gridspace");
+    //         label = "SpaceBar"
+    //     }
+    //     let labelemoji = `${emoji}${label}`;
+    //     divchild.innerHTML = labelemoji;
+    //     griddecoderA.appendChild(divchild);
+    // }
 
-    for (let index = 27; index < 37; index++)
-    {
-        let label = characters[index];
-        let emoji = String.fromCodePoint(randomEmoji[index]);
-        // let emoji = String.fromCodePoint(emojis[index]);
+    // for (let index = 27; index < 37; index++)
+    // {
+    //     let label = characters[index];
+    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
+    //     let emoji = String.fromCodePoint(emojis[index]);
         
-        let divchild = document.createElement('div');
-        if(index==36){
-            divchild.setAttribute("id","gridspace2");
-        }
-        let labelemoji = `${emoji}${label}`;
-        divchild.innerHTML = labelemoji;
-        griddecoderB.appendChild(divchild);
-    }
+    //     let divchild = document.createElement('div');
+    //     if(index==36){
+    //         divchild.setAttribute("id","gridspace2");
+    //     }
+    //     let labelemoji = `${emoji}${label}`;
+    //     divchild.innerHTML = labelemoji;
+    //     griddecoderB.appendChild(divchild);
+    // }
 
-    for (let index = 37; index < 73; index++)
-    {
-        let label = characters[index];
-        let emoji = String.fromCodePoint(randomEmoji[index]);
-        // let emoji = String.fromCodePoint(emojis[index]);
-        let divchild = document.createElement('div');
-        let labelemoji = `${emoji}${label}`;
-        divchild.innerHTML = labelemoji;
-        griddecoderC.appendChild(divchild);
-    }
+    // for (let index = 37; index < 73; index++)
+    // {
+    //     let label = characters[index];
+    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
+    //     let emoji = String.fromCodePoint(emojis[index]);
+    //     let divchild = document.createElement('div');
+    //     let labelemoji = `${emoji}${label}`;
+    //     divchild.innerHTML = labelemoji;
+    //     griddecoderC.appendChild(divchild);
+    // }
 
 
     let timertext = document.querySelector('#timertext');
@@ -807,61 +836,61 @@ const poopsentInit=()=>{
     // poopsentsectionback_btn.onclick = () =>{
     //     controller(1);
     // }
-    navbar.style.display="none"
-    poopsentdetail.style.display="none";
+    // navbar.style.display="none"
+    // poopsentdetail.style.display="none";
     
-        html2canvas(document.querySelector('.decoderpage')).then(function(canvas) {
-            let link = document.createElement('a');
-            canvas.setAttribute("id", "canvasdiv");
-            // canvas_div.appendChild(canvas);
-            let img = canvas.toDataURL("image/png");
+        // html2canvas(document.querySelector('.decoderpage')).then(function(canvas) {
+        //     let link = document.createElement('a');
+        //     canvas.setAttribute("id", "canvasdiv");
+        //     // canvas_div.appendChild(canvas);
+        //     let img = canvas.toDataURL("image/png");
             
-            // console.log("img = "+img);
+        //     // console.log("img = "+img);
             
-            // let canvas_img= document.createElement('img');
+        //     // let canvas_img= document.createElement('img');
             
-            link.setAttribute("class","downloadoutput");
-            link.download = 'key.png';
-            link.setAttribute('href',img);
-            link.href = canvas.toDataURL();
-            link.innerHTML = "Download Your Key";
+        //     link.setAttribute("class","downloadoutput");
+        //     link.download = 'key.png';
+        //     link.setAttribute('href',img);
+        //     link.href = canvas.toDataURL();
+        //     link.innerHTML = "Download Your Key";
 
-            let decoderpagewrap = document.querySelector('.decoderpagewrap');
-            // decoderpagewrap.appendChild(canvas);
-            poopdownloadkey_btn.innerHTML="";
-                setTimeout(() => {
-                    // window.open(img);
-                    navbar.style.display="flex"
-                    poopsentdetail.style.display="flex";
-                    bodytag.style.position ="static";
-                    poopdownloadkey_btn.appendChild(link);      
-                    imgarrow.classList.add('imgarrowdukedik');
-                }, 1000);
-        });
+        //     let decoderpagewrap = document.querySelector('.decoderpagewrap');
+        //     // decoderpagewrap.appendChild(canvas);
+        //     poopdownloadkey_btn.innerHTML="";
+        //         setTimeout(() => {
+        //             // window.open(img);
+        //             // navbar.style.display="flex"
+        //             // poopsentdetail.style.display="flex";
+        //             bodytag.style.position ="static";
+        //             poopdownloadkey_btn.appendChild(link);      
+        //             imgarrow.classList.add('imgarrowdukedik');
+        //         }, 1000);
+        // });
 
-        html2canvas(document.querySelector('.outputareafinishwrap')).then(function(canvas) {
-            let link = document.createElement('a');
-            canvas.setAttribute("id", "canvasdiv2");
-            // canvas_div.appendChild(canvas);
-            let img = canvas.toDataURL("image/png");
-            // console.log("img = "+img);
+        // html2canvas(document.querySelector('.outputareafinishwrap')).then(function(canvas) {
+        //     let link = document.createElement('a');
+        //     canvas.setAttribute("id", "canvasdiv2");
+        //     // canvas_div.appendChild(canvas);
+        //     let img = canvas.toDataURL("image/png");
+        //     // console.log("img = "+img);
             
-            // let canvas_img= document.createElement('img');
+        //     // let canvas_img= document.createElement('img');
             
-            link.setAttribute("class","downloadoutput");
-            link.download = 'emojis.png';
-            link.setAttribute('href',img);
-            link.href = canvas.toDataURL();
-            link.innerHTML = "Download Your Emoji";
-            poopdownloademoji_btn.innerHTML="";
-                setTimeout(() => {
-                    navbar.style.display="flex"
-                    poopsentdetail.style.display="flex";
-                    bodytag.style.position ="static";
-                    poopdownloademoji_btn.appendChild(link);
-                    imgarrow.classList.add('imgarrowdukedik');       
-                }, 1000);
-        });
+        //     link.setAttribute("class","downloadoutput");
+        //     link.download = 'emojis.png';
+        //     link.setAttribute('href',img);
+        //     link.href = canvas.toDataURL();
+        //     link.innerHTML = "Download Your Emoji";
+        //     poopdownloademoji_btn.innerHTML="";
+        //         setTimeout(() => {
+        //             // navbar.style.display="flex"
+        //             // poopsentdetail.style.display="flex";
+        //             bodytag.style.position ="static";
+        //             poopdownloademoji_btn.appendChild(link);
+        //             // imgarrow.classList.add('imgarrowdukedik');       
+        //         }, 1000);
+        // });
 }
 
 const poopplayInit=()=>{
