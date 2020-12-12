@@ -253,6 +253,27 @@ const mockup = async() =>{
 }
 
 
+const mockCountPlayerday = async () =>{
+    for (let index = 11; index <=31; index++) {
+        let date = ""+index;
+        console.log(date);
+        firebase.database().ref("Emojis/daycounts/"+date).set({
+             val : 0,
+        });
+    }
+    
+}
+
+const setCountPlayerday = async (day) =>{
+    // await firebase.database().ref("Emojis/countPlayer").set({
+    //          "val" : countq
+    // });
+    var ref = firebase.database().ref('Emojis/daycounts/'+day+'/val');
+    let transaction =  await ref.transaction(function(currentCountQ) {
+        return (currentCountQ || 0) + 1;
+    });
+}
+
 const resetVal = async()=>{
     setallowTransaction(1);
     // setCountQ(0);
@@ -273,3 +294,4 @@ const resetVal = async()=>{
 checkNowplayerchange();
 // resetVal();
 // countPlayer();
+// setCountPlayerday();

@@ -544,6 +544,14 @@ table, th, td {
     
 }
 
+.decoderpagewrap2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-top: 7rem;
+}
+
 
 .decodertitle{
     padding-bottom: 15px;
@@ -564,6 +572,14 @@ table, th, td {
 }
 
 #keyptitle{
+    font-size: 1.2rem;
+}
+
+#keyptitle2{
+    font-size: 1.2rem;
+}
+
+#keyptitle2{
     font-size: 1.2rem;
 }
 
@@ -1038,6 +1054,7 @@ table, th, td {
   top: 0;
   width: 100%; /* Full width */
   display: flex;
+  flex-direction: row;
   justify-content: center;
   z-index: 100;
   color: white;
@@ -1048,6 +1065,14 @@ table, th, td {
 }
 
 #timertext{
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 1.4em;
+    font-weight: 10;
+    line-height: 120%;
+}
+
+#timertext2{
     padding-left: 40px;
     padding-right: 40px;
     font-size: 1.4em;
@@ -1112,6 +1137,12 @@ table, th, td {
     font-size: 0.8em;
 }
 
+#timertext2{
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 0.8em;
+}
+
 .imgcorrect img{
     width: 2.5rem;
 }
@@ -1143,6 +1174,11 @@ table, th, td {
     
 }
 
+.decoderpagewrap2{
+    /* height: 120vh; */
+    
+}
+
 .clickbtndiv3 p{
     font-size: 0.8rem;
 }
@@ -1154,5 +1190,10 @@ table, th, td {
 .explainwrap h2{
     font-size: 1rem;
 }
+
+#keyptitle2{
+    font-size: 1rem;
+}
+
 
 }
