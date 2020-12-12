@@ -1200,7 +1200,7 @@ table, th, td {
 
 .decoderpagewrap{
     /* height: 120vh; */
-    top: 65%;
+    top: 85%;
     
 }
 
@@ -1226,4 +1226,12 @@ table, th, td {
 }
 
 
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+    /* .decoderpagewrap{ */
+    /* height: 120vh; */
+    /* top: 65%; */
+    
+/* } */
 }
