@@ -152,7 +152,7 @@ const checkAllow = async () =>{
                     // alert("COUNTQ==1")
                     if(counqmorethan==0){
                         // controller(7);
-                        controller(7);
+                        controller(8);
                     }
                     
                 }else{
@@ -172,7 +172,7 @@ const checkAllow = async () =>{
                                 counqmorethan = 1;
                                 // alert("COUNTQ>1")
                                 if(counqmorethan==1){
-                                    controller(7);
+                                    controller(8);
                                 }
                                 
                                 
@@ -306,8 +306,8 @@ const func =(a, b) =>{
 }  
 
 const randommapping = (emojis_arr) =>{
-    // randomEmoji = emojis_arr.sort(func)
-    randomEmoji = emojis_arr;
+    randomEmoji = emojis_arr.sort(func)
+    // randomEmoji = emojis_arr;
     for (let index = 0; index < emojis.length; index++) {
         // if(index%2==0){
         //     decoder_emoji[characters[index]] = characters[index];
