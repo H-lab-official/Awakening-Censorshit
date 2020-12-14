@@ -264,6 +264,16 @@ const mockCountPlayerday = async () =>{
     
 }
 
+const mockCountPlayerdaykey = async () =>{
+    for (let index = 11; index <=31; index++) {
+        let date = ""+index;
+        console.log(date);
+        firebase.database().ref("Emojis/daycountsKey/"+date).set({
+             val : 0,
+        });
+    }   
+}
+
 const setCountPlayerday = async (day) =>{
     // await firebase.database().ref("Emojis/countPlayer").set({
     //          "val" : countq
@@ -295,3 +305,5 @@ checkNowplayerchange();
 // resetVal();
 // countPlayer();
 // setCountPlayerday();
+
+// mockCountPlayerdaykey();

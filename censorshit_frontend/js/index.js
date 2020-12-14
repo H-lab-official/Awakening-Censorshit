@@ -126,6 +126,18 @@ const setCountQ = async () =>{
         return countQ;
 }
 
+const setCountPlayerKeyday = async (day) =>{
+    // await firebase.database().ref("Emojis/countPlayer").set({
+    //          "val" : countq
+    // });
+    // alert('KUyday = '+day);
+    var ref = firebase.database().ref('Emojis/daycountsKey/'+day+'/val');
+    let transaction =  await ref.transaction(function(currentCountQ) {
+        console.log("currentCountQ = "+currentCountQ);
+        return (currentCountQ || 0) + 1;
+    });
+}
+
 const checkAllow = async () =>{
     // firebase.database().ref("Emojis/countQ").set({
     //          "val" : countq
@@ -911,6 +923,20 @@ const poopplayInit=()=>{
     let griddecoderA = document.querySelector('.decoderareaA');
     let griddecoderB = document.querySelector('.decoderareaB');
     let griddecoderC = document.querySelector('.decoderareaC');
+    let keyclickBTN = document.querySelector('#keyclick');
+    let decoderpage = document.querySelector('.decoderpage');
+    let outputareafinish = document.querySelector('.outputareafinish');
+
+    // let decoderpage = document.querySelector('.decoderpage');
+    decoderpage.style.visibility = "hidden";
+    outputareafinish.style.visibility = "hidden";
+    keyclickBTN.onclick = () =>{
+        keyclickBTN.style.display = "none";
+        decoderpage.style.visibility = "visible";
+        outputareafinish.style.visibility = "visible";
+        setCountPlayerKeyday(now_today);
+        window.open('https://www.instagram.com/hlab.official/');
+    }
     outputarea2.value = output_string;
     decoderheader.innerHTML = `${username}'s key`;
     for (let index = 0; index < 27; index++) {
