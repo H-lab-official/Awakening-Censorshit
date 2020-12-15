@@ -935,7 +935,7 @@ const poopplayInit=()=>{
         decoderpage.style.visibility = "visible";
         outputareafinish.style.visibility = "visible";
         setCountPlayerKeyday(now_today);
-        window.open('https://www.instagram.com/hlab.official/');
+        // window.open('https://www.instagram.com/hlab.official/');
     }
     outputarea2.value = output_string;
     decoderheader.innerHTML = `${username}'s key`;
