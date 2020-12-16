@@ -748,67 +748,31 @@ const poopoutputInit=()=>{
 
 
 const poopsentInit=()=>{
-    let bodytag = document.querySelector('body');
-    // bodytag.style.position = "fixed";
-    // let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
+
+
+    // let tagatoig =  document.querySelector('#tagatoig');
+    // let tagh1toig =  document.querySelector('#tagh1toig');
     
-    
-    let youremojimessagename = document.querySelector('#youremojimessage');
-    let imgarrow = document.querySelector('.imgarrow');
-    
-    let outputarea2 = document.querySelector('#outputarea2');
-    // outputarea2.value = output_string;
-    let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
-    // let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
-    // youremojimessagename.innerHTML = `asdasdasfasdf's emoji message`
-    // youremojimessagename.innerHTML = `${username}'s emoji message`
+    // tagatoig.onclick = ()=>{
+    //     setCountPlayerKeyday(now_today);
+    // }
+
+    // tagh1toig.onclick = () =>{
+    //     // alert('asff')
+    //     // setCountPlayerKeyday(now_today);
+    // }
+    let allreadyclick = 1;
+    let keyclickBTN = document.querySelector('.keyclick');
+    keyclickBTN.onclick = () =>{
+        if(allreadyclick==1){
+            allreadyclick=0
+            setCountPlayerKeyday(now_today);
+        }
+        window.open('https://www.instagram.com/hlab.official/');
+    }
+
     console.log("remainTIme0 = "+remainTime);
     
-    // let decoderheader = document.querySelector('#decoderheader');
-    // let griddecoderA = document.querySelector('.decoderareaA');
-    // let griddecoderB = document.querySelector('.decoderareaB');
-    // let griddecoderC = document.querySelector('.decoderareaC');
-    // decoderheader.innerHTML = `${username}'s key`;
-    // for (let index = 0; index < 27; index++) {
-    //     let label = characters[index].toUpperCase();
-    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
-    //     let emoji = String.fromCodePoint(emojis[index]);
-        
-    //     let divchild = document.createElement('div');
-    //     if(index==26){
-    //         divchild.setAttribute("id","gridspace");
-    //         label = "SpaceBar"
-    //     }
-    //     let labelemoji = `${emoji}${label}`;
-    //     divchild.innerHTML = labelemoji;
-    //     griddecoderA.appendChild(divchild);
-    // }
-
-    // for (let index = 27; index < 37; index++)
-    // {
-    //     let label = characters[index];
-    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
-    //     let emoji = String.fromCodePoint(emojis[index]);
-        
-    //     let divchild = document.createElement('div');
-    //     if(index==36){
-    //         divchild.setAttribute("id","gridspace2");
-    //     }
-    //     let labelemoji = `${emoji}${label}`;
-    //     divchild.innerHTML = labelemoji;
-    //     griddecoderB.appendChild(divchild);
-    // }
-
-    // for (let index = 37; index < 73; index++)
-    // {
-    //     let label = characters[index];
-    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
-    //     let emoji = String.fromCodePoint(emojis[index]);
-    //     let divchild = document.createElement('div');
-    //     let labelemoji = `${emoji}${label}`;
-    //     divchild.innerHTML = labelemoji;
-    //     griddecoderC.appendChild(divchild);
-    // }
 
 
     let timertext = document.querySelector('#timertext');
@@ -925,7 +889,7 @@ const poopplayInit=()=>{
     let griddecoderA = document.querySelector('.decoderareaA');
     let griddecoderB = document.querySelector('.decoderareaB');
     let griddecoderC = document.querySelector('.decoderareaC');
-    let keyclickBTN = document.querySelector('#keyclick');
+    let keyclickBTN = document.querySelector('.keyclick');
     let decoderpage = document.querySelector('.decoderpage');
     let outputareafinish = document.querySelector('.outputareafinish');
 
