@@ -54,16 +54,16 @@ const funckingthings = [];
 // ]
 const emojis = [128571,128579,128518,128522,128122,128020,128163,128155,129409,128037,128128,127812,128586,128548,128293,127804,128544,128075,128139,128110,129325,128035,129310,128515,129460,128584,129463,128070,128123,128139,129321,127868,128536,129395,129299,129303,129313,128154,129418,129504,128513,127825,128525,128054,128591,127797,128169,128051,129324,129297,128171,128046,128519,129326,128523,128538,128150,128025,128130,127775,128074,129315,128047,129322,128076,128049,128048,128125,129302,128585,128055,129412,128057];
 // const emojis = [
-//     0x1F49B,0x1F603,0x1F49A,0x1F601,0x1F606,0x1F496, 
-//     0x1F923,0x1F48B,0x1F913,0x1F643,0x1F973,0x1F60A, 
-//     0x1F607,0x1F92E,0x1F60D,0x1F929,0x1F618,0x1F46E, 
-//     0x1F61A,0x1F60B,0x1F482,0x1F98A,0x1F92A,0x1F431, 
+//     0x1F49B,0x1F603,0x1F49A,0x1F601,0x1F606,0x1F496,
+//     0x1F923,0x1F48B,0x1F913,0x1F643,0x1F973,0x1F60A,
+//     0x1F607,0x1F92E,0x1F60D,0x1F929,0x1F618,0x1F46E,
+//     0x1F61A,0x1F60B,0x1F482,0x1F98A,0x1F92A,0x1F431,
 //     0x1F911,0x1F917,0x1F92D,
 
 
 //     0x1F624,0x1F433,0x1F620,0x1F92C,0x1F425,0x1F419,
 //     0x1F480,0x1F4A9,0x1F921,0x1F33C,
-    
+
 //     0x1F47A,0x1F47B,0x1F47D,0x1F335,0x1F916,0x1F63B,
 //     0x1F351,0x1F64A,0x1F648,0x1F649,0x1F48B,0x1F344,
 //     0x1F4AB,0x1F4A3,0x1F44B,0x1F44C,0x1F91E,0x1F446,
@@ -167,12 +167,12 @@ const checkAllow = async () =>{
                         // controller(8);
                         controller(8);
                     }
-                    
+
                 }else{
                     console.log("KUY4");
                     console.log("COUNTQ iNCorrect = "+countQ);
                     let nowSecond = 0;
-                    
+
                     let setSecondRef = firebase.database().ref(`Emojis/nowSecond/val`);
                     setSecondRef.on('value',async (dataSnapshot)=> {
                             nowSecond= dataSnapshot.val();
@@ -188,16 +188,16 @@ const checkAllow = async () =>{
                                     // controller(8);
                                     controller(8);
                                 }
-                                
-                                
+
+
                             }
                     });
                 }
-                
+
         }else if(allow==0){
             console.log("KUY0");
         }
-        
+
     });
 }
 
@@ -272,12 +272,12 @@ const pushPlayer = async (username,content)=>{
              "name" : username,
              "content" : content
     });
-    
+
 
     // firebase.database().ref("Emojis/playerList/"+playerRef.key).set({
     //          "name" : username,
     // });
-    
+
     // return playerRef.key;
 }
 
@@ -299,7 +299,7 @@ const InsertQ = async (username,content)=>{
     checkAllow();
     // countQpublic
 
-} 
+}
 //------------END FIREBASE FUNCTION------------//
 const addAutoResize=()=>{
     // alert("autoresize")
@@ -315,13 +315,13 @@ const addAutoResize=()=>{
             });
 }
 
-const func =(a, b) =>{  
+const func =(a, b) =>{
   return 0.5 - Math.random();
-}  
+}
 
 const randommapping = (emojis_arr) =>{
-    randomEmoji = emojis_arr.sort(func)
-    // randomEmoji = emojis_arr;
+    // randomEmoji = emojis_arr.sort(func)
+    randomEmoji = emojis_arr;
     for (let index = 0; index < emojis.length; index++) {
         // if(index%2==0){
         //     decoder_emoji[characters[index]] = characters[index];
@@ -329,7 +329,7 @@ const randommapping = (emojis_arr) =>{
         //     decoder_emoji[characters[index]] = String.fromCodePoint(randomEmoji[index]);
         // }
         decoder_emoji[characters[index]] = String.fromCodePoint(randomEmoji[index]);
-        
+
     }
     // decoder_emoji[censorCharacter] = String.fromCodePoint(censorEmoji);
     console.log(JSON.stringify(decoder_emoji));
@@ -358,7 +358,7 @@ const randommapping = (emojis_arr) =>{
 //             output_string = output_string + decoder_emoji[censor_input_area[index].toLowerCase()];
 //         }
 //         // console.log("newline = "+(censor_input_area.match(/\n/g)||[]).length);
-        
+
 //         // output_string = output_string + input_area[index].toLowerCase();
 //     }
 //     let outputDiv = document.querySelector('#outputarea');
@@ -374,7 +374,7 @@ const randommapping = (emojis_arr) =>{
 //         // output_string = output_string + input_area[index].toLowerCase();
 //     }
 //     let outputDiv = document.querySelector('#outputarea');
-//     outputDiv.innerHTML = output_string;    
+//     outputDiv.innerHTML = output_string;
 // }
 
 // const downloadDecoder = (event) =>{
@@ -393,7 +393,7 @@ const censorFunckingthings = (fuckingwords)=>{
        let countwords  = fuckingwords.indexOf(funckingthings[index]);
        console.log("countwords = "+countwords);
        while(countwords>=0){
-        fuckingwords = fuckingwords.replace(funckingthings[index],"กกก");  
+        fuckingwords = fuckingwords.replace(funckingthings[index],"กกก");
         countwords = fuckingwords.indexOf(funckingthings[index]);
        }
     }
@@ -445,15 +445,15 @@ const splashInit=()=>{
     let shitlogoDiv =document.querySelector('.shitlogo');
     let startbtnDiv =document.querySelector('.startbtn');
     let hlablogoDiv =document.querySelector('.hlablogo');
-    
+
     let today = new Date();
     // alert(today)
     today = today.toDateString().split(' ');
     today = today[2];
     now_today = today;
     console.log(now_today);
-    
-    
+
+
     splashstart_btn.onclick = ()=>{
         controller(2);
     }
@@ -484,10 +484,10 @@ const inputnameInit=()=>{
     inputnamesectionDiv.classList.add('animate__animated','animate__fadeIn','animate__slow')
     output_string = "";
     nameinput.value = "";
-    
+
     nameinput.onkeyup = (event)=>{
         var pattern = new RegExp('^' + nameinput.getAttribute('pattern') + '$');
-        
+
         let input_area2 = event.target.value;
         var phoneResult = pattern.test(input_area2);
         if(phoneResult==false){
@@ -499,10 +499,10 @@ const inputnameInit=()=>{
             }else{
                 return false;
             }
-            
+
         }
     }
-    
+
 
     submit_btn.onclick = () =>{
         if(nameinput.value!=""){
@@ -600,7 +600,7 @@ const poopcontentInit = () =>{
             }else{
                 return false;
             }
-            
+
         }
         event.target.style.height = 'auto';
         event.target.style.height = event.target.scrollHeight + offset + 'px';
@@ -613,7 +613,7 @@ const poopcontentInit = () =>{
         console.log("output_height = "+output_height);
         console.log("screen_height = "+screen.height);
     };
-    
+
     // poopcontentsectionback_btn.onclick = () =>{
     //     controller(2);
     // }
@@ -630,10 +630,10 @@ const poopcontentInit = () =>{
                 textarea.value = "";
                 return false;
             }
-            
+
             let censor_input_area = censorFunckingthings(input_area);
 
-            
+
             for (let index = 0; index < censor_input_area.length; index++) {
                 console.log(censor_input_area[index]=="\n");
                 // if(censor_input_area[index]=="\n"){
@@ -652,7 +652,7 @@ const poopcontentInit = () =>{
                     output_string = output_string + decoder_emoji[censor_input_area[index].toLowerCase()];
                 }
                 // console.log("newline = "+(censor_input_area.match(/\n/g)||[]).length);
-                
+
                 // output_string = output_string + input_area[index].toLowerCase();
             }
             console.log("output_string = "+output_string);
@@ -664,7 +664,7 @@ const poopcontentInit = () =>{
 }
 
 const popproogressInit=()=>{
-    
+
     let smallspan = document.querySelector('#smallspan');
     let bigspan = document.querySelector('#bigspan');
     let showpercent = document.querySelector('#showpercent');
@@ -682,13 +682,13 @@ const popproogressInit=()=>{
 
 
 const poopoutputInit=()=>{
-    
+
     let outputarea = document.querySelector('#outputarea');
     let decoderarea = document.querySelector('.decoderarea');
     let loader = document.querySelector('.loader');
     let toggle_state = false;
     outputarea.style.display = "flex";
-    
+
     decoderarea.style.display = "none";
     let pooptranslationsectionback_btn = document.querySelector('#pooptranslationsectionback_btn');
     let pooptranslationsectionnext_btn = document.querySelector('#pooptranslationsectionnext_btn');
@@ -710,10 +710,10 @@ const poopoutputInit=()=>{
         // }
         controller(4);
     }
-    
+
     pooptranslationsectionnext_btn.onclick = () =>{
         // document.querySelector('#downloadoutput').remove();
-        
+
         //insert
         //username
         //output_string;
@@ -722,14 +722,14 @@ const poopoutputInit=()=>{
         loader.style.display = "inline-block"
         InsertQ(username,output_string);
 
-        
-     
+
+
 
         // controller(7);
     }
-    
+
     let clickbtndiv = document.querySelector('.clickbtndiv2');
-    
+
     // let toggledecode = document.querySelector('#toggledecode');
     // toggledecode.onclick =()=>{
     //     if(toggle_state == false){
@@ -742,9 +742,9 @@ const poopoutputInit=()=>{
     //         toggle_state = false;
     //     }
     // }
-    
+
     decoderarea.style.display = "none";
-}   
+}
 
 
 const poopsentInit=()=>{
@@ -752,7 +752,7 @@ const poopsentInit=()=>{
 
     // let tagatoig =  document.querySelector('#tagatoig');
     // let tagh1toig =  document.querySelector('#tagh1toig');
-    
+
     // tagatoig.onclick = ()=>{
     //     setCountPlayerKeyday(now_today);
     // }
@@ -772,7 +772,7 @@ const poopsentInit=()=>{
     }
 
     console.log("remainTIme0 = "+remainTime);
-    
+
 
 
     let timertext = document.querySelector('#timertext');
@@ -795,7 +795,7 @@ const poopsentInit=()=>{
                         imgclockDiv.classList.add('imgclockend');
                         timertext.innerHTML =`หมดเวลา`;
                 }
-                
+
             },1000);
     }else if(counqmorethan == 1) {
         console.log("remainTIme = "+countTime);
@@ -813,29 +813,29 @@ const poopsentInit=()=>{
                         imgclockDiv.classList.add('imgclockend');
                         timertext.innerHTML =`หมดเวลา`;
                 }
-                
+
             },1000);
         }
         }, 1000);
     }
-        
+
 
     // poopsentsectionback_btn.onclick = () =>{
     //     controller(1);
     // }
     // navbar.style.display="none"
     // poopsentdetail.style.display="none";
-    
+
         // html2canvas(document.querySelector('.decoderpage')).then(function(canvas) {
         //     let link = document.createElement('a');
         //     canvas.setAttribute("id", "canvasdiv");
         //     // canvas_div.appendChild(canvas);
         //     let img = canvas.toDataURL("image/png");
-            
+
         //     // console.log("img = "+img);
-            
+
         //     // let canvas_img= document.createElement('img');
-            
+
         //     link.setAttribute("class","downloadoutput");
         //     link.download = 'key.png';
         //     link.setAttribute('href',img);
@@ -850,7 +850,7 @@ const poopsentInit=()=>{
         //             // navbar.style.display="flex"
         //             // poopsentdetail.style.display="flex";
         //             bodytag.style.position ="static";
-        //             poopdownloadkey_btn.appendChild(link);      
+        //             poopdownloadkey_btn.appendChild(link);
         //             imgarrow.classList.add('imgarrowdukedik');
         //         }, 1000);
         // });
@@ -861,9 +861,9 @@ const poopsentInit=()=>{
         //     // canvas_div.appendChild(canvas);
         //     let img = canvas.toDataURL("image/png");
         //     // console.log("img = "+img);
-            
+
         //     // let canvas_img= document.createElement('img');
-            
+
         //     link.setAttribute("class","downloadoutput");
         //     link.download = 'emojis.png';
         //     link.setAttribute('href',img);
@@ -875,7 +875,7 @@ const poopsentInit=()=>{
         //             // poopsentdetail.style.display="flex";
         //             bodytag.style.position ="static";
         //             poopdownloademoji_btn.appendChild(link);
-        //             // imgarrow.classList.add('imgarrowdukedik');       
+        //             // imgarrow.classList.add('imgarrowdukedik');
         //         }, 1000);
         // });
 }
@@ -906,7 +906,7 @@ const poopplayInit=()=>{
     setTimeout(() => {
             modal.style.display = "block";
     }, 5000);
- 
+
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
@@ -923,7 +923,7 @@ const poopplayInit=()=>{
     // decoderpage.style.visibility = "hidden";
     // outputareafinish.style.visibility = "hidden";
     keyclickBTN.onclick = () =>{
-        
+
         // decoderpage.style.visibility = "visible";
         // outputareafinish.style.visibility = "visible";
         setCountPlayerKeyday(now_today);
@@ -936,7 +936,7 @@ const poopplayInit=()=>{
         let label = characters[index].toUpperCase();
         let emoji = String.fromCodePoint(randomEmoji[index]);
         // let emoji = String.fromCodePoint(emojis[index]);
-        
+
         let divchild = document.createElement('div');
         if(index==26){
             divchild.setAttribute("id","gridspace");
@@ -952,7 +952,7 @@ const poopplayInit=()=>{
         let label = characters[index];
         let emoji = String.fromCodePoint(randomEmoji[index]);
         // let emoji = String.fromCodePoint(emojis[index]);
-        
+
         let divchild = document.createElement('div');
         if(index==36){
             divchild.setAttribute("id","gridspace2");
@@ -994,7 +994,7 @@ const poopplayInit=()=>{
                         imgclockDiv.classList.add('imgclockend');
                         timertext.innerHTML =`หมดเวลา`;
                 }
-                
+
             },1000);
     }else if(counqmorethan == 1) {
         console.log("remainTIme = "+countTime);
@@ -1012,7 +1012,7 @@ const poopplayInit=()=>{
                         imgclockDiv.classList.add('imgclockend');
                         timertext.innerHTML =`หมดเวลา`;
                 }
-                
+
             },1000);
         }
         }, 1000);
@@ -1068,7 +1068,7 @@ const controller=(state)=>{
                 poopplaysection.style.visibility = "visible";
                 instructionInit();
 
-                
+
 
                 break;
             case 2:
@@ -1161,7 +1161,7 @@ const controller=(state)=>{
                 poopsentInit();
 
                 break;
-            
+
             case 8:
                 splashsection.style.display = "none";
                 inputnamesection.style.display = "none";
@@ -1175,14 +1175,14 @@ const controller=(state)=>{
                 poopplayInit();
 
                 break;
-            
+
             default:
-                break;            
+                break;
     }
 }
 
 controller(0);
-    
+
 
 
 
