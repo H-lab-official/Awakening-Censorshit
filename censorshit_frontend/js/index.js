@@ -320,8 +320,8 @@ const func =(a, b) =>{
 }
 
 const randommapping = (emojis_arr) =>{
-    // randomEmoji = emojis_arr.sort(func)
-    randomEmoji = emojis_arr;
+    randomEmoji = emojis_arr.sort(func)
+    // randomEmoji = emojis_arr;
     for (let index = 0; index < emojis.length; index++) {
         // if(index%2==0){
         //     decoder_emoji[characters[index]] = characters[index];
@@ -889,7 +889,7 @@ const poopplayInit=()=>{
     let griddecoderA = document.querySelector('.decoderareaA');
     let griddecoderB = document.querySelector('.decoderareaB');
     let griddecoderC = document.querySelector('.decoderareaC');
-    let keyclickBTN = document.querySelector('.keyclick');
+    let keyclickBTN = document.querySelector('#keyclick');
     let decoderpage = document.querySelector('.decoderpage');
     let outputareafinish = document.querySelector('.outputareafinish');
 
@@ -923,7 +923,6 @@ const poopplayInit=()=>{
     // decoderpage.style.visibility = "hidden";
     // outputareafinish.style.visibility = "hidden";
     keyclickBTN.onclick = () =>{
-
         // decoderpage.style.visibility = "visible";
         // outputareafinish.style.visibility = "visible";
         setCountPlayerKeyday(now_today);

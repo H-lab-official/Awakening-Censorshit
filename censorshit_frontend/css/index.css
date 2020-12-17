@@ -1174,6 +1174,11 @@ table, th, td {
         width: 40%;
 }
 
+#keyclick{
+        width: 40%;
+}
+
+
 /* The Close Button */
 .close {
   color: #aaa;
