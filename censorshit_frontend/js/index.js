@@ -52,7 +52,7 @@ const funckingthings = [];
 //     0x1F9E0,0x1F9B7,0x1F9B4,0x1F436,0x1F981,0x1F42F,0x1F434,0x1F984,0x1F42E,0x1F437,
 //     0x1F439,0x1F430,0x1F428,0x1F423,0x1F989,0x1F414
 // ]
-const emojis = [128544,129418,128519,128025,129322,128139,128051,128523,128525,128110,128150,128518,128169,128536,128130,128513,128538,128128,129326,129313,128579,128049,129395,129297,129325,128154,129324,129303,129321,128046,129299,128515,129315,128037,128155,128075,128548,127804,128293,127825,129409,128055,128020,128123,128054,128591,128171,128048,127812,129412,128585,129310,127797,127775,128584,129460,127868,128074,128586,128571,128076,128139,128035,128122,128070,128047,129504,128125,128057,129463,129302,128163,128522];
+const emojis = [128571,128579,128518,128522,128122,128020,128163,128155,129409,128037,128128,127812,128586,128548,128293,127804,128544,128075,128139,128110,129325,128035,129310,128515,129460,128584,129463,128070,128123,128139,129321,127868,128536,129395,129299,129303,129313,128154,129418,129504,128513,127825,128525,128054,128591,127797,128169,128051,129324,129297,128171,128046,128519,129326,128523,128538,128150,128025,128130,127775,128074,129315,128047,129322,128076,128049,128048,128125,129302,128585,128055,129412,128057];
 // const emojis = [
 //     0x1F49B,0x1F603,0x1F49A,0x1F601,0x1F606,0x1F496, 
 //     0x1F923,0x1F48B,0x1F913,0x1F643,0x1F973,0x1F60A, 
@@ -164,6 +164,7 @@ const checkAllow = async () =>{
                     // alert("COUNTQ==1")
                     if(counqmorethan==0){
                         // controller(7);
+                        // controller(8);
                         controller(8);
                     }
                     
@@ -184,6 +185,7 @@ const checkAllow = async () =>{
                                 counqmorethan = 1;
                                 // alert("COUNTQ>1")
                                 if(counqmorethan==1){
+                                    // controller(8);
                                     controller(8);
                                 }
                                 
@@ -746,67 +748,31 @@ const poopoutputInit=()=>{
 
 
 const poopsentInit=()=>{
-    let bodytag = document.querySelector('body');
-    // bodytag.style.position = "fixed";
-    // let poopsentsectionback_btn = document.querySelector('#poopsentsectionback_btn');
+
+
+    // let tagatoig =  document.querySelector('#tagatoig');
+    // let tagh1toig =  document.querySelector('#tagh1toig');
     
-    
-    let youremojimessagename = document.querySelector('#youremojimessage');
-    let imgarrow = document.querySelector('.imgarrow');
-    
-    let outputarea2 = document.querySelector('#outputarea2');
-    // outputarea2.value = output_string;
-    let poopdownloadkey_btn = document.querySelector('#poopdownloadkey_btn');
-    // let poopdownloademoji_btn = document.querySelector('#poopdownloademoji_btn');
-    // youremojimessagename.innerHTML = `asdasdasfasdf's emoji message`
-    // youremojimessagename.innerHTML = `${username}'s emoji message`
+    // tagatoig.onclick = ()=>{
+    //     setCountPlayerKeyday(now_today);
+    // }
+
+    // tagh1toig.onclick = () =>{
+    //     // alert('asff')
+    //     // setCountPlayerKeyday(now_today);
+    // }
+    let allreadyclick = 1;
+    let keyclickBTN = document.querySelector('.keyclick');
+    keyclickBTN.onclick = () =>{
+        if(allreadyclick==1){
+            allreadyclick=0
+            setCountPlayerKeyday(now_today);
+        }
+        window.open('https://www.instagram.com/hlab.official/');
+    }
+
     console.log("remainTIme0 = "+remainTime);
     
-    // let decoderheader = document.querySelector('#decoderheader');
-    // let griddecoderA = document.querySelector('.decoderareaA');
-    // let griddecoderB = document.querySelector('.decoderareaB');
-    // let griddecoderC = document.querySelector('.decoderareaC');
-    // decoderheader.innerHTML = `${username}'s key`;
-    // for (let index = 0; index < 27; index++) {
-    //     let label = characters[index].toUpperCase();
-    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
-    //     let emoji = String.fromCodePoint(emojis[index]);
-        
-    //     let divchild = document.createElement('div');
-    //     if(index==26){
-    //         divchild.setAttribute("id","gridspace");
-    //         label = "SpaceBar"
-    //     }
-    //     let labelemoji = `${emoji}${label}`;
-    //     divchild.innerHTML = labelemoji;
-    //     griddecoderA.appendChild(divchild);
-    // }
-
-    // for (let index = 27; index < 37; index++)
-    // {
-    //     let label = characters[index];
-    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
-    //     let emoji = String.fromCodePoint(emojis[index]);
-        
-    //     let divchild = document.createElement('div');
-    //     if(index==36){
-    //         divchild.setAttribute("id","gridspace2");
-    //     }
-    //     let labelemoji = `${emoji}${label}`;
-    //     divchild.innerHTML = labelemoji;
-    //     griddecoderB.appendChild(divchild);
-    // }
-
-    // for (let index = 37; index < 73; index++)
-    // {
-    //     let label = characters[index];
-    //     // let emoji = String.fromCodePoint(randomEmoji[index]);
-    //     let emoji = String.fromCodePoint(emojis[index]);
-    //     let divchild = document.createElement('div');
-    //     let labelemoji = `${emoji}${label}`;
-    //     divchild.innerHTML = labelemoji;
-    //     griddecoderC.appendChild(divchild);
-    // }
 
 
     let timertext = document.querySelector('#timertext');
@@ -923,19 +889,46 @@ const poopplayInit=()=>{
     let griddecoderA = document.querySelector('.decoderareaA');
     let griddecoderB = document.querySelector('.decoderareaB');
     let griddecoderC = document.querySelector('.decoderareaC');
-    let keyclickBTN = document.querySelector('#keyclick');
+    let keyclickBTN = document.querySelector('.keyclick');
     let decoderpage = document.querySelector('.decoderpage');
     let outputareafinish = document.querySelector('.outputareafinish');
 
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    // var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    setTimeout(() => {
+            modal.style.display = "block";
+    }, 5000);
+ 
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
     // let decoderpage = document.querySelector('.decoderpage');
-    decoderpage.style.visibility = "hidden";
-    outputareafinish.style.visibility = "hidden";
+    // decoderpage.style.visibility = "hidden";
+    // outputareafinish.style.visibility = "hidden";
     keyclickBTN.onclick = () =>{
-        keyclickBTN.style.display = "none";
-        decoderpage.style.visibility = "visible";
-        outputareafinish.style.visibility = "visible";
+        
+        // decoderpage.style.visibility = "visible";
+        // outputareafinish.style.visibility = "visible";
         setCountPlayerKeyday(now_today);
-        // window.open('https://www.instagram.com/hlab.official/');
+        window.open('https://www.instagram.com/hlab.official/');
+        modal.style.display = "none";
     }
     outputarea2.value = output_string;
     decoderheader.innerHTML = `${username}'s key`;
@@ -957,8 +950,8 @@ const poopplayInit=()=>{
     for (let index = 27; index < 37; index++)
     {
         let label = characters[index];
-        // let emoji = String.fromCodePoint(randomEmoji[index]);
-        let emoji = String.fromCodePoint(emojis[index]);
+        let emoji = String.fromCodePoint(randomEmoji[index]);
+        // let emoji = String.fromCodePoint(emojis[index]);
         
         let divchild = document.createElement('div');
         if(index==36){
@@ -972,8 +965,8 @@ const poopplayInit=()=>{
     for (let index = 37; index < 73; index++)
     {
         let label = characters[index];
-        // let emoji = String.fromCodePoint(randomEmoji[index]);
-        let emoji = String.fromCodePoint(emojis[index]);
+        let emoji = String.fromCodePoint(randomEmoji[index]);
+        // let emoji = String.fromCodePoint(emojis[index]);
         let divchild = document.createElement('div');
         let labelemoji = `${emoji}${label}`;
         divchild.innerHTML = labelemoji;
@@ -1184,13 +1177,7 @@ const controller=(state)=>{
                 break;
             
             default:
-                break;
-
-
-
-
-
-            
+                break;            
     }
 }
 
