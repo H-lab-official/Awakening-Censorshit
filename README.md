@@ -2,14 +2,19 @@
 
 มี3folder
 
-censorshit_frontend คือตัว webapp ที่เอาไว้แปลง text เป็น emoji
-censorshit_backend คือ server ที่เอาไว้รันคิว
-censorshit_resolume คือหน้าwebที่เอาไว้ขึ้นprojector
+1.censorshit_frontend คือตัว webapp ที่เอาไว้แปลง text เป็น emoji
+
+2.censorshit_backend คือ server ที่เอาไว้รันคิว
+
+3.censorshit_resolume คือหน้าwebที่เอาไว้ขึ้นprojector
+
 
 โปรแกรมที่ต้องลง
 
 1.nodejs https://nodejs.org/en/
+
 2.VisualStudioCode https://code.visualstudio.com/
+
 3.liveserver (VisualStudioCode extension)
 https://youtu.be/pKsvDf-sJQE
 
