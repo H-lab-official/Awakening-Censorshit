@@ -1,17 +1,20 @@
 # Awakening-Censorshit
 
 มี3folder
+
 censorshit_frontend คือตัว webapp ที่เอาไว้แปลง text เป็น emoji
 censorshit_backend คือ server ที่เอาไว้รันคิว
 censorshit_resolume คือหน้าwebที่เอาไว้ขึ้นprojector
 
 โปรแกรมที่ต้องลง
+
 1.nodejs https://nodejs.org/en/
 2.VisualStudioCode https://code.visualstudio.com/
 3.liveserver (VisualStudioCode extension)
 https://youtu.be/pKsvDf-sJQE
 
 ขั้นตอนการเปิดระบบ
+
 1.เปิด terminal เพื่อ รัน server รันq
 node Awakening-Censorshit/censorshit_backend/server.js
 *ขึ้นอยู่กับว่า code วางไว้อยู่ที่ไหน*
