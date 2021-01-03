@@ -20,9 +20,9 @@ https://youtu.be/pKsvDf-sJQE
 
 ขั้นตอนการเปิดระบบ
 
-1.เปิด terminal เพื่อ รัน server รันq
-node Awakening-Censorshit/censorshit_backend/server.js
-*ขึ้นอยู่กับว่า code วางไว้อยู่ที่ไหน*
+1.เปิด terminal เพื่อ รัน server โดยใช้คำสั่ง
+node Awakening-Censorshit/censorshit_backend/server.js 
+แต่ก็ขึ้นอยู่กับว่า code วางไว้อยู่ที่pathไหน 
 
 2.เปิด folder censorshit_frontend ด้วย VisualStudioCode
 รัน liveserver ที่หน้า index.html
